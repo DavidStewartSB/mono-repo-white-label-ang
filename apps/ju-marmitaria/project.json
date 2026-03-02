@@ -37,27 +37,44 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+           "fileReplacements": [
+            {
+              "replace": "apps/ju-marmitaria/src/environments/environment.ts",
+              "with": "apps/ju-marmitaria/src/environments/environment.prod.ts"
+            }
+          ]
         },
-        "development": {
-          "optimization": false,
+             "dev": {
+                  "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/ju-marmitaria/src/environments/environment.ts",
+              "with": "apps/ju-marmitaria/src/environments/environment.dev.ts"
+            }
+          ]
+        },
+         "local": {
+          "fileReplacements": [
+            {
+              "replace": "apps/ju-marmitaria/src/environments/environment.ts",
+              "with": "apps/ju-marmitaria/src/environments/environment.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
     },
     "serve": {
       "executor": "@angular-devkit/build-angular:dev-server",
-      "configurations": {
-        "production": {
-          "buildTarget": "ju-marmitaria:build:production"
-        },
-        "development": {
-          "buildTarget": "ju-marmitaria:build:development"
-        }
+   "configurations": {
+        "local": { "buildTarget": "ju-marmitaria:build:local" },
+        "dev": { "buildTarget": "ju-marmitaria:build:dev" },
+        "prod": { "buildTarget": "ju-marmitaria:build:prod" }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "local"
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

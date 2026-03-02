@@ -10,6 +10,8 @@ import { appRoutes } from './app.routes';
 import { ShellModule } from '@cardapio-online/shell';
 import { APP_CONFIG } from '@cardapio-online/config';
 import { HttpCoreModule } from '@cardapio-online/http';
+import { environment } from '@env/ju-marmitaria';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,10 +25,15 @@ import { HttpCoreModule } from '@cardapio-online/http';
   providers: [
     {
       provide: APP_CONFIG,
-      useValue: {
-        appName: 'Ju Marmitaria',
-        brandPrimary: '#7c3aed',
-      },
+ useValue: {
+      appName: 'Ju Marmitaria',
+      brandPrimary: '#7c3aed',
+      brandLogoUrl: '/assets/brand/logo.png',
+
+      environmentName: environment.name,
+      apiBaseUrl: environment.apiBaseUrl,
+      authStorageKey: environment.authStorageKey,
+    },
     },
   ],
   bootstrap: [AppComponent],

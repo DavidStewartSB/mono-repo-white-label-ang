@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T15:16:34.569Z
+- **Gerado em:** 2026-03-02T18:35:22.851Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -22,6 +22,11 @@ cardapio-online/
 │   │   │   │   └── app.routes.ts
 │   │   │   ├── assets/
 │   │   │   │   └── brand/
+│   │   │   │       └── logo.png
+│   │   │   ├── environments/
+│   │   │   │   ├── environment.dev.ts
+│   │   │   │   ├── environment.prod.ts
+│   │   │   │   └── environment.ts
 │   │   │   ├── styles/
 │   │   │   │   └── _brand.scss
 │   │   │   ├── favicon.ico
@@ -59,6 +64,11 @@ cardapio-online/
 │   │   │   │   └── app.routes.ts
 │   │   │   ├── assets/
 │   │   │   │   └── brand/
+│   │   │   │       └── logo.png
+│   │   │   ├── environments/
+│   │   │   │   ├── environment.dev.ts
+│   │   │   │   ├── environment.prod.ts
+│   │   │   │   └── environment.ts
 │   │   │   ├── styles/
 │   │   │   │   └── _brand.scss
 │   │   │   ├── favicon.ico
@@ -87,15 +97,27 @@ cardapio-online/
 │       └── tsconfig.json
 ├── libs/
 │   ├── components/
-│   │   └── button/
+│   │   ├── button/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── ui-button/
+│   │   │   │   │   │   ├── ui-button.component.html
+│   │   │   │   │   │   ├── ui-button.component.scss
+│   │   │   │   │   │   ├── ui-button.component.spec.ts
+│   │   │   │   │   │   └── ui-button.component.ts
+│   │   │   │   │   └── button.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   └── inputs/
 │   │       ├── src/
 │   │       │   ├── lib/
-│   │       │   │   ├── ui-button/
-│   │       │   │   │   ├── ui-button.component.html
-│   │       │   │   │   ├── ui-button.component.scss
-│   │       │   │   │   ├── ui-button.component.spec.ts
-│   │       │   │   │   └── ui-button.component.ts
-│   │       │   │   └── button.module.ts
+│   │       │   │   └── inputs.module.ts
 │   │       │   ├── index.ts
 │   │       │   └── test-setup.ts
 │   │       ├── jest.config.ts
@@ -105,6 +127,23 @@ cardapio-online/
 │   │       ├── tsconfig.lib.json
 │   │       └── tsconfig.spec.json
 │   ├── core/
+│   │   ├── auth/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── data-access/
+│   │   │   │   │   │   ├── auth.service.spec.ts
+│   │   │   │   │   │   └── auth.service.ts
+│   │   │   │   │   ├── guards/
+│   │   │   │   │   │   └── auth.guard.ts
+│   │   │   │   │   └── auth.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
 │   │   ├── config/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
@@ -152,17 +191,75 @@ cardapio-online/
 │   │       ├── tsconfig.lib.json
 │   │       └── tsconfig.spec.json
 │   └── featureds/
-│       └── agendamento/
+│       ├── agendamento/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── pages/
+│       │   │   │   │   └── agendamento-home/
+│       │   │   │   │       ├── agendamento-home.component.html
+│       │   │   │   │       ├── agendamento-home.component.scss
+│       │   │   │   │       ├── agendamento-home.component.spec.ts
+│       │   │   │   │       └── agendamento-home.component.ts
+│       │   │   │   ├── agendamento.module.ts
+│       │   │   │   └── lib.routes.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
+│       ├── login/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── pages/
+│       │   │   │   │   └── login-page/
+│       │   │   │   │       ├── login-page.component.html
+│       │   │   │   │       ├── login-page.component.scss
+│       │   │   │   │       ├── login-page.component.spec.ts
+│       │   │   │   │       └── login-page.component.ts
+│       │   │   │   ├── lib.routes.ts
+│       │   │   │   └── login.module.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
+│       └── produtos/
 │           ├── src/
 │           │   ├── lib/
+│           │   │   ├── data-access/
+│           │   │   │   ├── products.service.spec.ts
+│           │   │   │   └── products.service.ts
 │           │   │   ├── pages/
-│           │   │   │   └── agendamento-home/
-│           │   │   │       ├── agendamento-home.component.html
-│           │   │   │       ├── agendamento-home.component.scss
-│           │   │   │       ├── agendamento-home.component.spec.ts
-│           │   │   │       └── agendamento-home.component.ts
-│           │   │   ├── agendamento.module.ts
-│           │   │   └── lib.routes.ts
+│           │   │   │   ├── admin/
+│           │   │   │   │   ├── product-form/
+│           │   │   │   │   │   ├── product-form.component.html
+│           │   │   │   │   │   ├── product-form.component.scss
+│           │   │   │   │   │   ├── product-form.component.spec.ts
+│           │   │   │   │   │   └── product-form.component.ts
+│           │   │   │   │   └── product-table/
+│           │   │   │   │       ├── product-table.component.html
+│           │   │   │   │       ├── product-table.component.scss
+│           │   │   │   │       ├── product-table.component.spec.ts
+│           │   │   │   │       └── product-table.component.ts
+│           │   │   │   └── public/
+│           │   │   │       ├── product-detail/
+│           │   │   │       │   ├── product-detail.component.html
+│           │   │   │       │   ├── product-detail.component.scss
+│           │   │   │       │   ├── product-detail.component.spec.ts
+│           │   │   │       │   └── product-detail.component.ts
+│           │   │   │       └── products-list/
+│           │   │   │           ├── products-list.component.html
+│           │   │   │           ├── products-list.component.scss
+│           │   │   │           ├── products-list.component.spec.ts
+│           │   │   │           └── products-list.component.ts
+│           │   │   ├── lib.routes.ts
+│           │   │   └── produtos.module.ts
 │           │   ├── index.ts
 │           │   └── test-setup.ts
 │           ├── jest.config.ts

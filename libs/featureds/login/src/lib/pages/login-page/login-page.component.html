@@ -1,0 +1,29 @@
+<!-- libs/featureds/login/src/lib/pages/login-page/login-page.component.html -->
+<section class="login">
+  <header class="login__header">
+    <img class="login__logo" [src]="cfg.brandLogoUrl" [alt]="cfg.appName" width="250" height="200" />
+    <div class="login__brand">
+      <h1 class="login__title">{{ cfg.appName }}</h1>
+      <p class="login__meta">
+        Env: <strong>{{ cfg.environmentName }}</strong> • API:
+        <strong>{{ cfg.apiBaseUrl }}</strong>
+      </p>
+    </div>
+  </header>
+{{cfg.brandLogoUrl}}
+  <div class="login__panel">
+    <p class="login__hint">
+      Botões abaixo existem só para validar arquitetura (env/config + auth guard).
+    </p>
+
+    <div class="login__actions">
+      <button class="login__btn login__btn--primary" (click)="loginFake()">
+        Login Fake
+      </button>
+
+      <button class="login__btn login__btn--ghost" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</section>
