@@ -1,0 +1,7 @@
+libs/featureds/<feature>/src/lib/
+├── pages/                # rotas e páginas
+├── components/           # componentes internos (não exportar)
+├── data-access/          # services, facades, repositories client-side
+├── models/               # interfaces/types
+├── feature-<feature>.routes.ts (ou lib.routes.ts)
+└── <feature>.module.ts

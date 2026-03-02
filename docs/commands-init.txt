@@ -1,0 +1,61 @@
+//Init project
+Step 1
+bunx create-nx-workspace@18.3.5 cardapio-online --preset=ts --nxCloud=skip
+
+Step 2
+bun add -D nx@18.3.5 @nx/angular@18.3.5 @nx/workspace@18.3.5
+
+Step 3
+bun add @angular/core@17 @angular/common@17 @angular/compiler@17 @angular/forms@17 @angular/platform-browser@17 @angular/router@17 rxjs@7.8 @angular/platform-browser-dynamic@17 zone.js
+
+Step 4
+bun add -D @angular/cli@17 @angular/compiler-cli@17 typescript@5.3.3
+
+
+//Apps
+Step 5
+bunx nx g @nx/angular:app ju-marmitaria --directory=apps/ju-marmitaria --routing --style=scss --standalone=false --ssr=false --tags="type:app"
+
+Step 5.1
+bunx nx g @nx/angular:app blend-food --directory=apps/blend-food --routing --style=scss --standalone=false --ssr=false --tags="type:app"
+
+//Criação de Components
+Step 6:
+bunx nx g @nx/angular:lib button --directory=libs/components/button --style=scss --standalone=false --tags="type:ui"
+
+Step 6.1:
+bunx nx g @nx/angular:component ui-button --directory=libs/components/button/src/lib/ui-button --style=scss --standalone=false --export
+
+//Criação de featureds
+Step 7:
+bunx nx g @nx/angular:lib agendamento --directory=libs/featureds/agendamento --routing --lazy --style=scss --standalone=false --tags="type:feature"
+
+Step 7.1:
+
+bunx nx g @nx/angular:component agendamento-home --directory=libs/featureds/agendamento/src/lib/pages/agendamento-home --style=scss --standalone=false --export
+
+//Criação de CORE. O Shell do sistema
+Step 8:
+bunx nx g @nx/angular:lib shell --directory=libs/core/shell --style=scss --standalone=false --tags="type:core"
+
+Step 8.1
+errado: bunx nx g @nx/angular:component layout/shell-layout --project=core-shell --style=scss --standalone=false --export
+certo: bunx nx g @nx/angular:component shell-layout --directory=libs/core/shell/src/lib/layout/shell-layout --style=scss --standalone=false --export
+
+Step 9
+bunx nx g @nx/angular:lib config --directory=libs/core/config --style=scss --standalone=false --tags="type:core"
+
+
+
+Step 10 //services/modules/components
+bunx nx g @nx/angular:service data-access/products --project=nome
+bunx nx g @nx/angular:module data-access --project=nome
+
+bunx nx g @nx/angular:component pages/products-list --project=produtos --style=scss --standalone=false
+
+
+
+bunx nx g @nx/angular:service data-access --project=auth
+
+
+

@@ -1,0 +1,21 @@
+# /cardapio-online
+mkdir apps\ju-marmitaria\src\assets\brand
+mkdir apps\blend-food\src\assets\brand
+mkdir apps\ju-marmitaria\src\styles
+mkdir apps\blend-food\src\styles
+
+Rodar lint por projeto (debug rápido):
+bunx nx lint ju-marmitaria
+bunx nx lint blend-food
+bunx nx lint agendamento
+
+
+# /cardapio-online
+bunx nx g @nx/angular:lib produtos --directory=libs/featureds/produtos --routing --lazy --style=scss --standalone=false --tags="type:feature"
+
+# /cardapio-online
+bunx nx g @nx/angular:lib inputs --directory=libs/components/inputs --style=scss --standalone=false --tags="type:ui"
+
+
+# /cardapio-online
+bunx nx g @nx/angular:lib auth --directory=libs/core/auth --style=scss --standalone=false --tags="type:core"
