@@ -2,6 +2,7 @@
 import { Route } from '@angular/router';
 import { ShellLayoutComponent } from '@cardapio-online/shell';
 
+
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -11,8 +12,10 @@ export const appRoutes: Route[] = [
       {
         path: 'agendamento',
         loadChildren: () =>
-          import('@cardapio-online/agendamento').then((m) => m.AgendamentoModule),
+          import('@cardapio-online/agendamento').then(
+            (m) => m.AgendamentoModule
+          ),
       },
     ],
   },
-]
+];

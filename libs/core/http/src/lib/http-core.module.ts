@@ -1,6 +1,5 @@
-// libs/core/http/src/lib/http-core.module.ts  (ajuste o caminho conforme sua lib real)
+// libs/core/http/src/lib/http-core.module.ts
 import { ModuleWithProviders, NgModule } from '@angular/core';
-
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BaseUrlInterceptor } from './interceptors/base-url.interceptor';
 

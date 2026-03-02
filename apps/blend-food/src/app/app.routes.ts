@@ -1,9 +1,8 @@
-// apps/ju-marmitaria/src/app/app.routes.ts
+// apps/blend-food/src/app/app.routes.ts
 import { Route } from '@angular/router';
 import { ShellLayoutComponent } from '@cardapio-online/shell';
-import { APP_CONFIG } from '@cardapio-online/config';
 
-export const appRoutes: Route[] =  [
+export const appRoutes: Route[] = [
   {
     path: '',
     component: ShellLayoutComponent,
@@ -16,4 +15,4 @@ export const appRoutes: Route[] =  [
       },
     ],
   },
-]
+];

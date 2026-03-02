@@ -1,4 +1,4 @@
-// libs/components/button/src/lib/button/button.component.scss
+// libs/components/button/src/lib/ui-button/ui-button.component.scss
 .c-button {
   @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition;
   @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
@@ -9,7 +9,7 @@
 
   &--primary {
     @apply text-white;
-    background: var(--brand-primary);
+    background: var(--btn-primary);
   }
 
   &--ghost {

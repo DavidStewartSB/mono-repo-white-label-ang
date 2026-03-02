@@ -1,23 +1,30 @@
+// apps/blend-food/src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
+
+import { ShellModule } from '@cardapio-online/shell';
 import { APP_CONFIG } from '@cardapio-online/config';
 import { HttpCoreModule } from '@cardapio-online/http';
-import { ShellModule } from '@cardapio-online/shell';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    ShellModule, 
+    HttpClientModule,
+    ShellModule,
     HttpCoreModule.forRoot(),
-    RouterModule.forRoot(appRoutes)],
-     providers: [
+    RouterModule.forRoot(appRoutes),
+  ],
+  providers: [
     {
       provide: APP_CONFIG,
       useValue: {
-        appName: 'Bleend Food',
+        appName: 'Blend Food',
         brandPrimary: '#16a34a',
       },
     },

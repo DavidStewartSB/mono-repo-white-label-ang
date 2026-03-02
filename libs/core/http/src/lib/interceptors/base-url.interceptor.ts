@@ -13,9 +13,12 @@ import { APP_CONFIG, AppConfig } from '@cardapio-online/config';
 export class BaseUrlInterceptor implements HttpInterceptor {
   constructor(@Inject(APP_CONFIG) private readonly cfg: AppConfig) {}
 
-  intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // placeholder: futuramente cfg pode ter apiBaseUrl
-    // aqui só prova o singleton e o acesso à config
+  intercept(
+    req: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    // Prova de acesso a config por app (singleton)
+    // Futuro: cfg.apiBaseUrl + prefix em req.url
     return next.handle(req);
   }
 }
