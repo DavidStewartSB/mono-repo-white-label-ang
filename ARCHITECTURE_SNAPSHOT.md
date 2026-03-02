@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T18:35:22.851Z
+- **Gerado em:** 2026-03-02T18:46:14.449Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -210,6 +210,52 @@ cardapio-online/
 │       │   ├── tsconfig.json
 │       │   ├── tsconfig.lib.json
 │       │   └── tsconfig.spec.json
+│       ├── categories/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── pages/
+│       │   │   │   │   └── admin/
+│       │   │   │   │       ├── category-form/
+│       │   │   │   │       │   ├── category-form.component.html
+│       │   │   │   │       │   ├── category-form.component.scss
+│       │   │   │   │       │   ├── category-form.component.spec.ts
+│       │   │   │   │       │   └── category-form.component.ts
+│       │   │   │   │       └── category-list/
+│       │   │   │   │           ├── category-list.component.html
+│       │   │   │   │           ├── category-list.component.scss
+│       │   │   │   │           ├── category-list.component.spec.ts
+│       │   │   │   │           └── category-list.component.ts
+│       │   │   │   ├── categories.module.ts
+│       │   │   │   └── lib.routes.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
+│       ├── company/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── pages/
+│       │   │   │   │   ├── admin/
+│       │   │   │   │   │   └── company-detail/
+│       │   │   │   │   │       ├── company-detail.component.html
+│       │   │   │   │   │       ├── company-detail.component.scss
+│       │   │   │   │   │       ├── company-detail.component.spec.ts
+│       │   │   │   │   │       └── company-detail.component.ts
+│       │   │   │   │   └── client/
+│       │   │   │   ├── company.module.ts
+│       │   │   │   └── lib.routes.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
 │       ├── login/
 │       │   ├── src/
 │       │   │   ├── lib/
@@ -221,6 +267,19 @@ cardapio-online/
 │       │   │   │   │       └── login-page.component.ts
 │       │   │   │   ├── lib.routes.ts
 │       │   │   │   └── login.module.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
+│       ├── orders/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── lib.routes.ts
+│       │   │   │   └── orders.module.ts
 │       │   │   ├── index.ts
 │       │   │   └── test-setup.ts
 │       │   ├── jest.config.ts

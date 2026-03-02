@@ -1,0 +1,29 @@
+// libs/core/shell/src/lib/layout/shell-header/shell-header.component.scss
+.c-header {
+  @apply border-b border-slate-200 bg-white;
+
+  &__container {
+    @apply mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-3;
+  }
+
+  &__brand {
+    @apply inline-flex items-center gap-3 no-underline;
+  }
+
+  &__logo {
+    @apply h-10 w-10 rounded-xl object-cover border border-slate-200;
+  }
+
+  &__name {
+    @apply text-base font-bold;
+    color: var(--brand-primary);
+  }
+
+  &__nav {
+    @apply flex items-center gap-4;
+  }
+
+  &__link {
+    @apply text-sm font-semibold text-slate-700 hover:text-slate-900 no-underline;
+  }
+}

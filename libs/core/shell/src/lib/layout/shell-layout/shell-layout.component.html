@@ -1,14 +1,12 @@
 <!-- libs/core/shell/src/lib/layout/shell-layout/shell-layout.component.html -->
 <div class="l-shell">
-  <header class="l-shell__header">
-    <div class="l-shell__container">
-      <span class="l-shell__brand">Shell</span>
-    </div>
-  </header>
+  <lib-shell-header></lib-shell-header>
 
   <main class="l-shell__main">
     <div class="l-shell__container">
       <router-outlet></router-outlet>
     </div>
   </main>
+
+  <lib-shell-footer></lib-shell-footer>
 </div>

@@ -1,0 +1,12 @@
+// libs/core/shell/src/lib/layout/shell-footer/shell-footer.component.scss
+.c-footer {
+  @apply border-t border-slate-200 bg-white;
+
+  &__container {
+    @apply mx-auto w-full max-w-5xl px-4 py-4;
+  }
+
+  &__text {
+    @apply text-sm text-slate-600;
+  }
+}

@@ -1,0 +1,16 @@
+<!-- libs/core/shell/src/lib/layout/shell-header/shell-header.component.html -->
+<header class="c-header" role="banner">
+  <div class="c-header__container">
+    <a class="c-header__brand" routerLink="/" aria-label="Ir para o início">
+      <img class="c-header__logo" [src]="cfg.brandLogoUrl" [alt]="cfg.appName" />
+      <span class="c-header__name">{{ cfg.appName }}</span>
+    </a>
+
+    <nav class="c-header__nav" aria-label="Navegação principal">
+      <a class="c-header__link" routerLink="/agendamento">Agendamento</a>
+      <a class="c-header__link" routerLink="/produtos/public/list">Produtos</a>
+      <a class="c-header__link" routerLink="/produtos/admin/table">Admin</a>
+      <a class="c-header__link" routerLink="/login">Login</a>
+    </nav>
+  </div>
+</header>
