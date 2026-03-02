@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T14:22:25.235Z
+- **Gerado em:** 2026-03-02T14:46:29.443Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -108,6 +108,12 @@ cardapio-online/
 │       └── agendamento/
 │           ├── src/
 │           │   ├── lib/
+│           │   │   ├── pages/
+│           │   │   │   └── agendamento-home/
+│           │   │   │       ├── agendamento-home.component.html
+│           │   │   │       ├── agendamento-home.component.scss
+│           │   │   │       ├── agendamento-home.component.spec.ts
+│           │   │   │       └── agendamento-home.component.ts
 │           │   │   ├── agendamento.module.ts
 │           │   │   └── lib.routes.ts
 │           │   ├── index.ts

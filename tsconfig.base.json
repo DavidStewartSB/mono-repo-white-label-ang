@@ -18,7 +18,14 @@
       "@cardapio-online/agendamento": [
         "libs/featureds/agendamento/src/index.ts"
       ],
-      "@cardapio-online/button": ["libs/components/button/src/index.ts"]
+      "@cardapio-online/button": ["libs/components/button/src/index.ts"],
+   
+
+        "@components/button": ["libs/components/button/src/index.ts"],
+      "@components/*": ["libs/components/*/src/index.ts"],
+
+      "@featureds/agendamento": ["libs/featureds/agendamento/src/index.ts"],
+      "@featureds/*": ["libs/featureds/*/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

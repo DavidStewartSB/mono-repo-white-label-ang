@@ -1,5 +1,9 @@
 import { Route } from '@angular/router';
+import { AgendamentoHomeComponent } from './pages/agendamento-home/agendamento-home.component';
 
 export const agendamentoRoutes: Route[] = [
-  /* { path: '', pathMatch: 'full', component: InsertYourComponentHere } */
+  {
+    path: '',
+    component: AgendamentoHomeComponent,
+  },
 ];
