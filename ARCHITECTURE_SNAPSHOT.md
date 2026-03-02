@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T14:46:29.443Z
+- **Gerado em:** 2026-03-02T15:16:34.569Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -96,6 +96,53 @@ cardapio-online/
 │   │       │   │   │   ├── ui-button.component.spec.ts
 │   │       │   │   │   └── ui-button.component.ts
 │   │       │   │   └── button.module.ts
+│   │       │   ├── index.ts
+│   │       │   └── test-setup.ts
+│   │       ├── jest.config.ts
+│   │       ├── project.json
+│   │       ├── README.md
+│   │       ├── tsconfig.json
+│   │       ├── tsconfig.lib.json
+│   │       └── tsconfig.spec.json
+│   ├── core/
+│   │   ├── config/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── app-config.token.ts
+│   │   │   │   │   └── config.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   ├── http/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── interceptors/
+│   │   │   │   │   │   └── base-url.interceptor.ts
+│   │   │   │   │   ├── http-core.module.ts
+│   │   │   │   │   └── http-providers.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   └── shell/
+│   │       ├── src/
+│   │       │   ├── lib/
+│   │       │   │   ├── layout/
+│   │       │   │   │   └── shell-layout/
+│   │       │   │   │       ├── shell-layout.component.html
+│   │       │   │   │       ├── shell-layout.component.scss
+│   │       │   │   │       ├── shell-layout.component.spec.ts
+│   │       │   │   │       └── shell-layout.component.ts
+│   │       │   │   └── shell.module.ts
 │   │       │   ├── index.ts
 │   │       │   └── test-setup.ts
 │   │       ├── jest.config.ts
