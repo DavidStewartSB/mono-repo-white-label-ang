@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T14:06:56.983Z
+- **Gerado em:** 2026-03-02T14:22:25.235Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -19,9 +19,11 @@ cardapio-online/
 │   │   │   │   ├── app.component.spec.ts
 │   │   │   │   ├── app.component.ts
 │   │   │   │   ├── app.module.ts
-│   │   │   │   ├── app.routes.ts
-│   │   │   │   └── nx-welcome.component.ts
+│   │   │   │   └── app.routes.ts
 │   │   │   ├── assets/
+│   │   │   │   └── brand/
+│   │   │   ├── styles/
+│   │   │   │   └── _brand.scss
 │   │   │   ├── favicon.ico
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
@@ -54,9 +56,11 @@ cardapio-online/
 │   │   │   │   ├── app.component.spec.ts
 │   │   │   │   ├── app.component.ts
 │   │   │   │   ├── app.module.ts
-│   │   │   │   ├── app.routes.ts
-│   │   │   │   └── nx-welcome.component.ts
+│   │   │   │   └── app.routes.ts
 │   │   │   ├── assets/
+│   │   │   │   └── brand/
+│   │   │   ├── styles/
+│   │   │   │   └── _brand.scss
 │   │   │   ├── favicon.ico
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
@@ -81,8 +85,42 @@ cardapio-online/
 │       ├── cypress.config.ts
 │       ├── project.json
 │       └── tsconfig.json
+├── libs/
+│   ├── components/
+│   │   └── button/
+│   │       ├── src/
+│   │       │   ├── lib/
+│   │       │   │   ├── ui-button/
+│   │       │   │   │   ├── ui-button.component.html
+│   │       │   │   │   ├── ui-button.component.scss
+│   │       │   │   │   ├── ui-button.component.spec.ts
+│   │       │   │   │   └── ui-button.component.ts
+│   │       │   │   └── button.module.ts
+│   │       │   ├── index.ts
+│   │       │   └── test-setup.ts
+│   │       ├── jest.config.ts
+│   │       ├── project.json
+│   │       ├── README.md
+│   │       ├── tsconfig.json
+│   │       ├── tsconfig.lib.json
+│   │       └── tsconfig.spec.json
+│   └── featureds/
+│       └── agendamento/
+│           ├── src/
+│           │   ├── lib/
+│           │   │   ├── agendamento.module.ts
+│           │   │   └── lib.routes.ts
+│           │   ├── index.ts
+│           │   └── test-setup.ts
+│           ├── jest.config.ts
+│           ├── project.json
+│           ├── README.md
+│           ├── tsconfig.json
+│           ├── tsconfig.lib.json
+│           └── tsconfig.spec.json
 ├── tools/
 │   └── snapshot-arch.mjs
+├── ARCHITECTURE_SNAPSHOT.md
 ├── jest.config.ts
 ├── jest.preset.js
 ├── nx.json
@@ -95,6 +133,7 @@ cardapio-online/
 
 ```txt
 - apps/
+- libs/
 ```
 
 _Dica: ajuste os marcadores em `ARCHITECTURE_MARKERS` para refletir seu padrão real (Clean/Hexagonal/Nx/etc)._

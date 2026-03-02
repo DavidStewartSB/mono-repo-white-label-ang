@@ -1,0 +1,11 @@
+<button
+  class="c-button"
+  [class.c-button--primary]="variant === 'primary'"
+  [class.c-button--ghost]="variant === 'ghost'"
+  [disabled]="disabled"
+  [attr.type]="type"
+>
+  <span class="c-button__label">
+    <ng-content></ng-content>
+  </span>
+</button>
