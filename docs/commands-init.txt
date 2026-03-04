@@ -15,16 +15,19 @@ bun add -D @angular/cli@17 @angular/compiler-cli@17 typescript@5.3.3
 //Apps
 Step 5
 bunx nx g @nx/angular:app ju-marmitaria --directory=apps/ju-marmitaria --routing --style=scss --standalone=false --ssr=false --tags="type:app"
-
 Step 5.1
 bunx nx g @nx/angular:app blend-food --directory=apps/blend-food --routing --style=scss --standalone=false --ssr=false --tags="type:app"
 
 //Criação de Components
 Step 6:
 bunx nx g @nx/angular:lib button --directory=libs/components/button --style=scss --standalone=false --tags="type:ui"
-
 Step 6.1:
 bunx nx g @nx/angular:component ui-button --directory=libs/components/button/src/lib/ui-button --style=scss --standalone=false --export
+
+Exemple 2
+Step 6: bunx nx g @nx/angular:lib drawer --directory=libs/components/drawer --style=scss --standalone=false --tags="type:ui" 
+Step 6.1: bunx nx g @nx/angular:component ui-button --directory=libs/components/button/src/lib/ui-button --style=scss --standalone=false --export
+
 
 //Criação de featureds
 Step 7:

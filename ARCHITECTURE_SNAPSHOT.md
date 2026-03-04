@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-03T13:02:35.883Z
+- **Gerado em:** 2026-03-04T13:53:25.494Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -75,6 +75,7 @@ cardapio-online/
 │   │   │   └── test-setup.ts
 │   │   ├── jest.config.ts
 │   │   ├── project.json
+│   │   ├── proxy.conf.json
 │   │   ├── tsconfig.app.json
 │   │   ├── tsconfig.editor.json
 │   │   ├── tsconfig.json
@@ -109,7 +110,8 @@ cardapio-online/
 │   │   │   │   ├── environment.prod.ts
 │   │   │   │   └── environment.ts
 │   │   │   ├── styles/
-│   │   │   │   └── _brand.scss
+│   │   │   │   ├── _brand.scss
+│   │   │   │   └── _config.scss
 │   │   │   ├── favicon.ico
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
@@ -182,8 +184,7 @@ cardapio-online/
 │   │   │   │   │   ├── tenant/
 │   │   │   │   │   │   ├── guards/
 │   │   │   │   │   │   │   └── tenant-auth.guard.ts
-│   │   │   │   │   │   ├── tenant-auth.service.ts
-│   │   │   │   │   │   └── tenant-http-core.module.ts
+│   │   │   │   │   │   └── tenant-auth.service.ts
 │   │   │   │   │   ├── types/
 │   │   │   │   │   │   ├── login.type.ts
 │   │   │   │   │   │   └── tenant.state.type.ts
@@ -232,21 +233,23 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── layout/
-│   │   │   │   │   │   ├── shell-footer/
-│   │   │   │   │   │   │   ├── shell-footer.component.html
-│   │   │   │   │   │   │   ├── shell-footer.component.scss
-│   │   │   │   │   │   │   ├── shell-footer.component.spec.ts
-│   │   │   │   │   │   │   └── shell-footer.component.ts
-│   │   │   │   │   │   ├── shell-header/
-│   │   │   │   │   │   │   ├── shell-header.component.html
-│   │   │   │   │   │   │   ├── shell-header.component.scss
-│   │   │   │   │   │   │   ├── shell-header.component.spec.ts
-│   │   │   │   │   │   │   └── shell-header.component.ts
-│   │   │   │   │   │   └── shell-layout/
-│   │   │   │   │   │       ├── shell-layout.component.html
-│   │   │   │   │   │       ├── shell-layout.component.scss
-│   │   │   │   │   │       ├── shell-layout.component.spec.ts
-│   │   │   │   │   │       └── shell-layout.component.ts
+│   │   │   │   │   │   ├── admin/
+│   │   │   │   │   │   └── public/
+│   │   │   │   │   │       ├── shell-footer/
+│   │   │   │   │   │       │   ├── shell-footer.component.html
+│   │   │   │   │   │       │   ├── shell-footer.component.scss
+│   │   │   │   │   │       │   ├── shell-footer.component.spec.ts
+│   │   │   │   │   │       │   └── shell-footer.component.ts
+│   │   │   │   │   │       ├── shell-header/
+│   │   │   │   │   │       │   ├── shell-header.component.html
+│   │   │   │   │   │       │   ├── shell-header.component.scss
+│   │   │   │   │   │       │   ├── shell-header.component.spec.ts
+│   │   │   │   │   │       │   └── shell-header.component.ts
+│   │   │   │   │   │       └── shell-layout/
+│   │   │   │   │   │           ├── shell-layout.component.html
+│   │   │   │   │   │           ├── shell-layout.component.scss
+│   │   │   │   │   │           ├── shell-layout.component.spec.ts
+│   │   │   │   │   │           └── shell-layout.component.ts
 │   │   │   │   │   ├── theme/
 │   │   │   │   │   │   └── theme-applier.service.ts
 │   │   │   │   │   └── shell.module.ts

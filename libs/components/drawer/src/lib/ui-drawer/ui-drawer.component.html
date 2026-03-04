@@ -1,0 +1,29 @@
+<aside
+  class="c-drawer"
+  [attr.data-open]="(isOpen$ | async) ? 'true' : 'false'"
+  [attr.aria-hidden]="(isOpen$ | async) ? 'false' : 'true'"
+  (keydown)="onKeyDown($event)"
+>
+  <div class="c-drawer__backdrop" (click)="close()"></div>
+
+  <div
+    class="c-drawer__panel"
+    role="dialog"
+    [attr.aria-label]="title || id"
+    tabindex="-1"
+  >
+    <div class="c-drawer__top">
+      <h3 class="c-drawer__title">{{ title }}</h3>
+
+      <button class="c-iconbtn" type="button" (click)="close()" aria-label="Fechar">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="c-drawer__content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</aside>
