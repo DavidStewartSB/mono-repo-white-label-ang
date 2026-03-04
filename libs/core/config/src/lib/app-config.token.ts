@@ -4,12 +4,15 @@ import { InjectionToken } from '@angular/core';
 export type AppConfig = {
   appName: string;
   brandPrimary: string;
-
-  apiBaseUrl: string;
-  authStorageKey: string;
+  brandLogoUrl: string;
 
   environmentName: 'local' | 'dev' | 'prod';
-  brandLogoUrl: string; // ex: '/assets/brand/logo.png'
+  apiBaseUrl: string;
+
+  tenantSlug: string;
+
+  // storage key por tenant (evita colidir)
+  authStorageKey: string;
 };
 
 export const APP_CONFIG = new InjectionToken<AppConfig>('APP_CONFIG');

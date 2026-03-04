@@ -55,7 +55,7 @@ bunx nx g @nx/angular:component pages/products-list --project=produtos --style=s
 
 
 
-bunx nx g @nx/angular:service data-access --project=auth
+bunx nx g @nx/angular:service data-access/auth --project=auth
 
 
 

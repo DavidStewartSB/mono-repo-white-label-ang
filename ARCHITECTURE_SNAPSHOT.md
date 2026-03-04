@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-02T18:46:14.449Z
+- **Gerado em:** 2026-03-03T13:02:35.883Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -41,6 +41,45 @@ cardapio-online/
 │   │   ├── tsconfig.json
 │   │   └── tsconfig.spec.json
 │   ├── blend-food-e2e/
+│   │   ├── src/
+│   │   │   ├── e2e/
+│   │   │   │   └── app.cy.ts
+│   │   │   ├── fixtures/
+│   │   │   │   └── example.json
+│   │   │   └── support/
+│   │   │       ├── app.po.ts
+│   │   │       ├── commands.ts
+│   │   │       └── e2e.ts
+│   │   ├── cypress.config.ts
+│   │   ├── project.json
+│   │   └── tsconfig.json
+│   ├── cardapio-multi/
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── app.component.html
+│   │   │   │   ├── app.component.scss
+│   │   │   │   ├── app.component.spec.ts
+│   │   │   │   ├── app.component.ts
+│   │   │   │   ├── app.module.ts
+│   │   │   │   ├── app.routes.ts
+│   │   │   │   └── nx-welcome.component.ts
+│   │   │   ├── assets/
+│   │   │   ├── environments/
+│   │   │   │   ├── environment.dev.ts
+│   │   │   │   ├── environment.prod.ts
+│   │   │   │   └── environment.ts
+│   │   │   ├── favicon.ico
+│   │   │   ├── index.html
+│   │   │   ├── main.ts
+│   │   │   ├── styles.scss
+│   │   │   └── test-setup.ts
+│   │   ├── jest.config.ts
+│   │   ├── project.json
+│   │   ├── tsconfig.app.json
+│   │   ├── tsconfig.editor.json
+│   │   ├── tsconfig.json
+│   │   └── tsconfig.spec.json
+│   ├── cardapio-multi-e2e/
 │   │   ├── src/
 │   │   │   ├── e2e/
 │   │   │   │   └── app.cy.ts
@@ -95,6 +134,11 @@ cardapio-online/
 │       ├── cypress.config.ts
 │       ├── project.json
 │       └── tsconfig.json
+├── docs/
+│   ├── commands-init.txt
+│   ├── criar-module.txt
+│   ├── criar-tokens.txt
+│   └── proposta-featureds.txt
 ├── libs/
 │   ├── components/
 │   │   ├── button/
@@ -135,6 +179,14 @@ cardapio-online/
 │   │   │   │   │   │   └── auth.service.ts
 │   │   │   │   │   ├── guards/
 │   │   │   │   │   │   └── auth.guard.ts
+│   │   │   │   │   ├── tenant/
+│   │   │   │   │   │   ├── guards/
+│   │   │   │   │   │   │   └── tenant-auth.guard.ts
+│   │   │   │   │   │   ├── tenant-auth.service.ts
+│   │   │   │   │   │   └── tenant-http-core.module.ts
+│   │   │   │   │   ├── types/
+│   │   │   │   │   │   ├── login.type.ts
+│   │   │   │   │   │   └── tenant.state.type.ts
 │   │   │   │   │   └── auth.module.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── test-setup.ts
@@ -148,7 +200,8 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── app-config.token.ts
-│   │   │   │   │   └── config.module.ts
+│   │   │   │   │   ├── config.module.ts
+│   │   │   │   │   └── runtime-app-config.service.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── test-setup.ts
 │   │   │   ├── jest.config.ts
@@ -162,6 +215,9 @@ cardapio-online/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── interceptors/
 │   │   │   │   │   │   └── base-url.interceptor.ts
+│   │   │   │   │   ├── tenant/
+│   │   │   │   │   │   ├── tenant-base-url.interceptor.ts
+│   │   │   │   │   │   └── tenant-http-core.module.ts
 │   │   │   │   │   ├── http-core.module.ts
 │   │   │   │   │   └── http-providers.module.ts
 │   │   │   │   ├── index.ts
@@ -172,16 +228,41 @@ cardapio-online/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
-│   │   └── shell/
+│   │   ├── shell/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── layout/
+│   │   │   │   │   │   ├── shell-footer/
+│   │   │   │   │   │   │   ├── shell-footer.component.html
+│   │   │   │   │   │   │   ├── shell-footer.component.scss
+│   │   │   │   │   │   │   ├── shell-footer.component.spec.ts
+│   │   │   │   │   │   │   └── shell-footer.component.ts
+│   │   │   │   │   │   ├── shell-header/
+│   │   │   │   │   │   │   ├── shell-header.component.html
+│   │   │   │   │   │   │   ├── shell-header.component.scss
+│   │   │   │   │   │   │   ├── shell-header.component.spec.ts
+│   │   │   │   │   │   │   └── shell-header.component.ts
+│   │   │   │   │   │   └── shell-layout/
+│   │   │   │   │   │       ├── shell-layout.component.html
+│   │   │   │   │   │       ├── shell-layout.component.scss
+│   │   │   │   │   │       ├── shell-layout.component.spec.ts
+│   │   │   │   │   │       └── shell-layout.component.ts
+│   │   │   │   │   ├── theme/
+│   │   │   │   │   │   └── theme-applier.service.ts
+│   │   │   │   │   └── shell.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   └── tenant/
 │   │       ├── src/
 │   │       │   ├── lib/
-│   │       │   │   ├── layout/
-│   │       │   │   │   └── shell-layout/
-│   │       │   │   │       ├── shell-layout.component.html
-│   │       │   │   │       ├── shell-layout.component.scss
-│   │       │   │   │       ├── shell-layout.component.spec.ts
-│   │       │   │   │       └── shell-layout.component.ts
-│   │       │   │   └── shell.module.ts
+│   │       │   │   ├── tenant-resolver.service.ts
+│   │       │   │   └── tenant.module.ts
 │   │       │   ├── index.ts
 │   │       │   └── test-setup.ts
 │   │       ├── jest.config.ts
@@ -334,7 +415,9 @@ cardapio-online/
 ├── jest.preset.js
 ├── nx.json
 ├── package.json
+├── postcss.config.js
 ├── README.md
+├── tailwind.config.js
 └── tsconfig.base.json
 ```
 

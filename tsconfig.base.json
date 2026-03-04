@@ -29,6 +29,7 @@
       "@cardapio-online/orders": ["libs/featureds/orders/src/index.ts"],
       "@cardapio-online/produtos": ["libs/featureds/produtos/src/index.ts"],
       "@cardapio-online/shell": ["libs/core/shell/src/index.ts"],
+      "@cardapio-online/tenant": ["libs/core/tenant/src/index.ts"],
       "@components/*": ["libs/components/*/src/index.ts"],
       "@components/button": ["libs/components/button/src/index.ts"],
       "@env/blend-food": ["apps/blend-food/src/environments/environment.ts"],
