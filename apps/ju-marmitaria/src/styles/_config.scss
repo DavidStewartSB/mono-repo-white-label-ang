@@ -69,8 +69,8 @@ body{
   color: var(--text);
    min-height: 100svh; 
   background:
-    radial-gradient(900px 520px at 20% -10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
-    radial-gradient(900px 520px at 90% 0%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 55%),
+    radial-gradient(900px 520px at 20% -10%, color-mix(in srgb, var(--accent) 0%, transparent), transparent 55%),
+    radial-gradient(900px 520px at 90% 0%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 0%),
     radial-gradient(1400px 900px at 50% 120%, color-mix(in srgb, var(--text) 8%, transparent), transparent 50%),
     var(--bg);
   overflow-x: hidden;

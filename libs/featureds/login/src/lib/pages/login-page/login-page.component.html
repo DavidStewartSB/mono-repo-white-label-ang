@@ -1,29 +1,106 @@
-<!-- libs/featureds/login/src/lib/pages/login-page/login-page.component.html -->
-<section class="login">
-  <header class="login__header">
-    <img class="login__logo" [src]="cfg.brandLogoUrl" [alt]="cfg.appName" width="250" height="200" />
-    <div class="login__brand">
-      <h1 class="login__title">{{ cfg.appName }}</h1>
-      <p class="login__meta">
-        Env: <strong>{{ cfg.environmentName }}</strong> • API:
-        <strong>{{ cfg.apiBaseUrl }}</strong>
-      </p>
-    </div>
-  </header>
-{{cfg.brandLogoUrl}}
-  <div class="login__panel">
-    <p class="login__hint">
-      Botões abaixo existem só para validar arquitetura (env/config + auth guard).
-    </p>
+<section class="l-login">
+  <lib-shell-header [showButtons]="false"></lib-shell-header>
 
-    <div class="login__actions">
-      <button class="login__btn login__btn--primary">
-        Login Fake
-      </button>
+  <main class="l-login__main" role="main">
+    <div class="c-auth">
+      <div class="c-auth__head">
+        <div class="c-auth__logo" aria-hidden="true">
+          <img [src]="cfg.brandLogoUrl" alt="logo" />
+        </div>
 
-      <button class="login__btn login__btn--ghost" (click)="logout()">
-        Logout
-      </button>
+        <div class="c-auth__infos">
+          <h1 class="c-auth__title">Entrar</h1>
+          <p class="c-auth__subtitle">
+            Acesse sua conta em <strong>{{ cfg.appName }}</strong>.
+          </p>
+        </div>
+      </div>
+
+      <form class="c-form" [formGroup]="form!" (ngSubmit)="submit()">
+        <!-- Email -->
+        <label class="c-field">
+          <span class="c-field__label">Email</span>
+
+          <div class="c-input">
+            <span class="c-input__icon" aria-hidden="true">
+              <!-- mail icon -->
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6.8h16v10.4H4V6.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M5 8l7 5 7-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <input
+              class="c-input__control"
+              type="email"
+              formControlName="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="seuemail@empresa.com"
+            />
+
+            <span class="c-input__ring" aria-hidden="true"></span>
+          </div>
+
+          <small class="c-field__hint">Use o email cadastrado.</small>
+        </label>
+
+        <!-- Senha -->
+        <label class="c-field">
+          <span class="c-field__label">Senha</span>
+
+          <div class="c-input" [class.is-revealed]="showPassword">
+            <span class="c-input__icon" aria-hidden="true">
+              <!-- lock icon -->
+              <svg viewBox="0 0 24 24">
+                <path d="M7 10V8.7A5 5 0 0 1 12 4a5 5 0 0 1 5 4.7V10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M7.5 10h9A2.5 2.5 0 0 1 19 12.5v5A2.5 2.5 0 0 1 16.5 20h-9A2.5 2.5 0 0 1 5 17.5v-5A2.5 2.5 0 0 1 7.5 10Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              </svg>
+            </span>
+
+            <input
+              class="c-input__control"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="password"
+              autocomplete="current-password"
+              placeholder="••••••••"
+            />
+
+            <button class="c-input__action" type="button" (click)="togglePassword()" aria-label="Mostrar senha">
+              <!-- eye -->
+              <svg class="is-eye" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M2.2 12s3.5-7 9.8-7 9.8 7 9.8 7-3.5 7-9.8 7-9.8-7-9.8-7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+              <!-- eye-off -->
+              <svg class="is-eyeoff" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4l16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <path d="M2.2 12s3.5-7 9.8-7c2 0 3.7.6 5.1 1.5M21.8 12s-3.5 7-9.8 7c-2 0-3.7-.6-5.1-1.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.2 10.2a3.2 3.2 0 0 0 4.4 4.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </button>
+
+            <span class="c-input__ring" aria-hidden="true"></span>
+          </div>
+
+          <small class="c-field__hint">
+            <a class="c-link" routerLink="/forgot-password">Esqueci minha senha</a>
+          </small>
+        </label>
+
+        <div class="c-auth__actions">
+          <ui-button [disabled]="form.invalid" size="sm" (click)="submit()">Entrar</ui-button>
+
+
+          <p class="c-auth__fineprint">
+            Ao continuar, você concorda com os termos de uso de {{ cfg.appName }}.
+          </p>
+        </div>
+      </form>
+
+      <div class="c-auth__foot">
+        <span class="c-chip">v0.1</span>
+      </div>
     </div>
-  </div>
+  </main>
 </section>

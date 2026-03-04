@@ -1,8 +1,7 @@
 //cardapio-online\libs\core\shell\src\lib\layout\public\shell-header\shell-header.component.ts
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConfig, APP_CONFIG} from '@cardapio-online/config';
-import { Observable } from 'rxjs';
 import { ThemeApplierService } from '../../../theme/theme-applier.service';
 import  { DrawerService } from "@cardapio-online/drawer"
 
@@ -15,7 +14,7 @@ export class  ShellHeaderComponent {
   private clickCount = 0;
   private timer: ReturnType<typeof setTimeout> | null = null;
   // count$: Observable<number> = this.cart.count$;
-
+  @Input() showButtons = true;
   constructor(
     @Inject(APP_CONFIG) public readonly cfg: AppConfig,
     private readonly router: Router,

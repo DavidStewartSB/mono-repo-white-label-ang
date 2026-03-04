@@ -1,22 +1,53 @@
 // libs/components/button/src/lib/ui-button/ui-button.component.scss
-.c-button {
-  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold transition;
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
-
-  &__label {
-    @apply leading-none;
-  }
-
-  &--primary {
-    @apply text-white;
-    background: var(--btn-primary);
-  }
-
-  &--ghost {
-    @apply bg-transparent border border-slate-300 text-slate-800;
-  }
-
-  &:disabled {
-    @apply opacity-50 cursor-not-allowed;
-  }
+:host{
+  display: inline-block;
 }
+
+.c-button{
+  height: var(--btn-h, 44px);
+  padding: 0 var(--btn-px, 14px);
+  border-radius: 16px;
+
+  border: 1px solid var(--btn-bd, transparent);
+  background: var(--btn-bg, var(--btn-brand, #2F80FF));
+  color: var(--btn-fg, #fff);
+
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  box-shadow: 0 18px 44px rgba(0,0,0,.16);
+  transition: transform .16s var(--ease), filter .16s var(--ease), background .16s var(--ease), border-color .16s var(--ease), color .16s var(--ease);
+}
+
+.c-button:hover{
+  background: var(--btn-bg-hover, var(--btn-bg));
+  border-color: var(--btn-bd-hover, var(--btn-bd));
+  color: var(--btn-fg-hover, var(--btn-fg));
+}
+
+.c-button:active{
+  transform: translateY(1px) scale(.99);
+}
+
+.c-button:disabled{
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.c-button__label{
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* sizes */
+.c-button[data-size="sm"]{ border-radius: 14px; width: 100%; }
+.c-button[data-size="lg"]{ border-radius: 18px; width: 100%; }

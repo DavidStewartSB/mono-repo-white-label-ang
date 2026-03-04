@@ -1,9 +1,10 @@
+<!--libs\components\button\src\lib\ui-button\ui-button.component.html-->
 <button
   class="c-button"
-  [class.c-button--primary]="variant === 'primary'"
-  [class.c-button--ghost]="variant === 'ghost'"
   [disabled]="disabled"
   [attr.type]="type"
+  [attr.data-variant]="variant"
+  [attr.data-size]="size"
 >
   <span class="c-button__label">
     <ng-content></ng-content>
