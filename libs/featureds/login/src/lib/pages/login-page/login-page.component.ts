@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { AppConfig, APP_CONFIG} from "@cardapio-online/config"
-import { AuthService, TenantAuthService } from "@cardapio-online/auth"
+import { TenantAuthService } from "@cardapio-online/auth"
 import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 

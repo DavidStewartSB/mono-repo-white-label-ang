@@ -1,0 +1,15 @@
+export type TipoInput =
+  | 'text'
+  | 'dropdown'
+  | 'search'
+  | 'number'
+  | 'email'
+  | 'datetime'
+  | 'date'
+  | 'textarea'
+  | 'radio'
+  | 'datetime-local'
+  | 'checkbox'
+  | 'button'
+  | 'switch'
+  | 'logo-picker';

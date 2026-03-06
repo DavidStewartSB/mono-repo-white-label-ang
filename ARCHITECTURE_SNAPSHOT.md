@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
-- **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-04T13:53:25.494Z
+- **Root:** `C:\dev\cardapio-online\mono-repo-white-label-ang`
+- **Gerado em:** 2026-03-06T17:44:18.210Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -9,7 +9,7 @@
 ## Árvore de pastas
 
 ```txt
-cardapio-online/
+mono-repo-white-label-ang/
 ├── apps/
 │   ├── blend-food/
 │   │   ├── src/
@@ -147,6 +147,8 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── ui-button/
+│   │   │   │   │   │   ├── button.palette.ts
+│   │   │   │   │   │   ├── button.types.ts
 │   │   │   │   │   │   ├── ui-button.component.html
 │   │   │   │   │   │   ├── ui-button.component.scss
 │   │   │   │   │   │   ├── ui-button.component.spec.ts
@@ -160,10 +162,104 @@ cardapio-online/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
-│   │   └── inputs/
+│   │   ├── drawer/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── ui-drawer/
+│   │   │   │   │   │   ├── ui-drawer.component.html
+│   │   │   │   │   │   ├── ui-drawer.component.scss
+│   │   │   │   │   │   ├── ui-drawer.component.spec.ts
+│   │   │   │   │   │   └── ui-drawer.component.ts
+│   │   │   │   │   ├── drawer.module.ts
+│   │   │   │   │   └── drawer.service.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   ├── forms/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── form-dynamic/
+│   │   │   │   │   │   ├── ui-forms-dynamic.component.html
+│   │   │   │   │   │   ├── ui-forms-dynamic.component.scss
+│   │   │   │   │   │   ├── ui-forms-dynamic.component.spec.ts
+│   │   │   │   │   │   └── ui-forms-dynamic.component.ts
+│   │   │   │   │   ├── ui-forms/
+│   │   │   │   │   │   ├── ui-forms.component.html
+│   │   │   │   │   │   ├── ui-forms.component.scss
+│   │   │   │   │   │   ├── ui-forms.component.spec.ts
+│   │   │   │   │   │   └── ui-forms.component.ts
+│   │   │   │   │   └── forms.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   ├── inputs/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── input-container/
+│   │   │   │   │   │   ├── input-container.component.html
+│   │   │   │   │   │   ├── input-container.component.scss
+│   │   │   │   │   │   ├── input-container.component.spec.ts
+│   │   │   │   │   │   └── input-container.component.ts
+│   │   │   │   │   ├── lib-input/
+│   │   │   │   │   │   ├── input.component.html
+│   │   │   │   │   │   ├── input.component.scss
+│   │   │   │   │   │   ├── input.component.spec.ts
+│   │   │   │   │   │   └── input.component.ts
+│   │   │   │   │   ├── lib-input-email/
+│   │   │   │   │   │   ├── input-email.component.html
+│   │   │   │   │   │   ├── input-email.component.scss
+│   │   │   │   │   │   ├── input-email.component.spec.ts
+│   │   │   │   │   │   └── input-email.component.ts
+│   │   │   │   │   ├── lib-input-password/
+│   │   │   │   │   │   ├── input-password.component.html
+│   │   │   │   │   │   ├── input-password.component.scss
+│   │   │   │   │   │   ├── input-password.component.spec.ts
+│   │   │   │   │   │   └── input-password.component.ts
+│   │   │   │   │   ├── lib-input-texto/
+│   │   │   │   │   │   ├── input-texto.component.html
+│   │   │   │   │   │   ├── input-texto.component.scss
+│   │   │   │   │   │   ├── input-texto.component.spec.ts
+│   │   │   │   │   │   └── input-texto.component.ts
+│   │   │   │   │   ├── ui-input-checkbox/
+│   │   │   │   │   │   ├── input-checkbox.component.html
+│   │   │   │   │   │   ├── input-checkbox.component.scss
+│   │   │   │   │   │   ├── input-checkbox.component.spec.ts
+│   │   │   │   │   │   └── input-checkbox.component.ts
+│   │   │   │   │   ├── utils/
+│   │   │   │   │   │   ├── input-global.ts
+│   │   │   │   │   │   ├── input-message.interface.ts
+│   │   │   │   │   │   ├── input-select.interface.ts
+│   │   │   │   │   │   ├── input.config.interface.ts
+│   │   │   │   │   │   ├── input.types.ts
+│   │   │   │   │   │   └── mensagens.errors.ts
+│   │   │   │   │   └── inputs.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   └── table/
 │   │       ├── src/
 │   │       │   ├── lib/
-│   │       │   │   └── inputs.module.ts
+│   │       │   │   ├── ui-tables/
+│   │       │   │   │   ├── ui-tables.component.html
+│   │       │   │   │   ├── ui-tables.component.scss
+│   │       │   │   │   ├── ui-tables.component.spec.ts
+│   │       │   │   │   └── ui-tables.component.ts
+│   │       │   │   └── tables.module.ts
 │   │       │   ├── index.ts
 │   │       │   └── test-setup.ts
 │   │       ├── jest.config.ts
@@ -233,7 +329,6 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── layout/
-│   │   │   │   │   │   ├── admin/
 │   │   │   │   │   │   └── public/
 │   │   │   │   │   │       ├── shell-footer/
 │   │   │   │   │   │       │   ├── shell-footer.component.html
@@ -323,13 +418,12 @@ cardapio-online/
 │       │   ├── src/
 │       │   │   ├── lib/
 │       │   │   │   ├── pages/
-│       │   │   │   │   ├── admin/
-│       │   │   │   │   │   └── company-detail/
-│       │   │   │   │   │       ├── company-detail.component.html
-│       │   │   │   │   │       ├── company-detail.component.scss
-│       │   │   │   │   │       ├── company-detail.component.spec.ts
-│       │   │   │   │   │       └── company-detail.component.ts
-│       │   │   │   │   └── client/
+│       │   │   │   │   └── admin/
+│       │   │   │   │       └── company-detail/
+│       │   │   │   │           ├── company-detail.component.html
+│       │   │   │   │           ├── company-detail.component.scss
+│       │   │   │   │           ├── company-detail.component.spec.ts
+│       │   │   │   │           └── company-detail.component.ts
 │       │   │   │   ├── company.module.ts
 │       │   │   │   └── lib.routes.ts
 │       │   │   ├── index.ts

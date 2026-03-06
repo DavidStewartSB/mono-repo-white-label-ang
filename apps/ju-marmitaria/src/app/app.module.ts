@@ -10,7 +10,7 @@ import { appRoutes } from './app.routes';
 import { ShellModule } from '@cardapio-online/shell';
 import { APP_CONFIG } from '@cardapio-online/config';
 import { HttpCoreModule } from '@cardapio-online/http';
-import { environment } from '@env/ju-marmitaria';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { environment } from '@env/ju-marmitaria';
     {
       provide: APP_CONFIG,
  useValue: {
-      appName: 'Ju Marmitaria',
+      appName: 'Brand',
       brandPrimary: '#7c3aed',
       brandLogoUrl: '/assets/brand/logo.png',
 

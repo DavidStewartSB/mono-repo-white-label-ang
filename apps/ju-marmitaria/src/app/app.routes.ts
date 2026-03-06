@@ -15,9 +15,14 @@ export const appRoutes: Route[] = [
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'cardapio' },
       {
-        path: 'cardapio',
+        path: '',
         loadChildren: () =>
           import('@cardapio-online/produtos').then((m) => m.ProdutosModule),
+      },
+      {
+        path: 'agendamento',
+        loadChildren: () =>
+          import('@cardapio-online/agendamento').then((m) => m.AgendamentoModule),
       },
     ],
   },

@@ -1,0 +1,85 @@
+:host {
+  position: fixed;
+  inset: 0 auto auto 0;
+  z-index: 1200;
+  pointer-events: none;
+}
+
+.ui-tooltip {
+  position: relative;
+  max-width: 260px;
+  padding: 0.4rem 0.675rem;
+  border-radius: 0.625rem;
+  background: #111827;
+  color: #f9fafb;
+  font-size: 0.7rem;
+  line-height: 1.35;
+  font-weight: 500;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.18),
+    0 6px 12px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  word-break: break-word;
+  animation: tooltip-fade-in 120ms ease-out;
+}
+
+.ui-tooltip__text {
+  display: block;
+}
+
+.ui-tooltip__arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-right: inherit;
+  border-bottom: inherit;
+  transform: rotate(45deg);
+}
+
+:host(.ui-tooltip-host--top) .ui-tooltip__arrow {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+:host(.ui-tooltip-host--bottom) .ui-tooltip__arrow {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(225deg);
+}
+
+:host(.ui-tooltip-host--left) .ui-tooltip__arrow {
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(315deg);
+}
+
+:host(.ui-tooltip-host--right) .ui-tooltip__arrow {
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%) rotate(135deg);
+}
+
+@keyframes tooltip-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+html[data-theme="dark"]{ 
+  .ui-tooltip {
+  position: relative;
+  max-width: 260px;
+  padding: 0.4rem 0.675rem;
+  border-radius: 0.625rem;
+  background: #ffffff;
+  color: #000000;
+
+  }
+}

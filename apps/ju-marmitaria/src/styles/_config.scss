@@ -37,6 +37,8 @@
   --grid-gap: 14px;
    --icon: color-mix(in srgb, var(--text) 86%, transparent);
   --icon-muted: color-mix(in srgb, var(--text) 68%, transparent);
+
+  --tooltip-bg: #111827;
 }
 
 html[data-theme="dark"]{
@@ -53,6 +55,7 @@ html[data-theme="dark"]{
   --shadow-2: 0 22px 72px rgba(0,0,0,.55);
   --icon: rgba(255,255,255,.92);
   --icon-muted: rgba(255,255,255,.72);
+  --tooltip-bg: rgba(255,255,255,.72);;
 }
 
 /* =========================================================

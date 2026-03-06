@@ -1,0 +1,1 @@
+export interface IInputSelect { value: string; label?: string }
