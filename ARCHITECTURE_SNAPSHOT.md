@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-09T18:24:50.726Z
+- **Gerado em:** 2026-03-09T20:19:42.592Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -276,6 +276,9 @@ cardapio-online/
 │   │   ├── table/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── table.interface.ts
+│   │   │   │   │   │   └── table.type.ts
 │   │   │   │   │   ├── ui-tables/
 │   │   │   │   │   │   ├── ui-tables.component.html
 │   │   │   │   │   │   ├── ui-tables.component.scss

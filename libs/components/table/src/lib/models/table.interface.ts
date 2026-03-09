@@ -20,3 +20,11 @@ export interface UiTablePaginationState {
   perPage: number;
   total: number;
 }
+
+export interface UiTableCellTemplateContext {
+  $implicit: Record<string, unknown>;
+  row: Record<string, unknown>;
+  column: UiTableColumn;
+  value: unknown;
+  rowIndex: number;
+}

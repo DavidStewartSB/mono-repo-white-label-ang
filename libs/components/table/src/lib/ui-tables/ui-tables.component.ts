@@ -1,6 +1,7 @@
 //cardapio-online\libs\components\table\src\lib\ui-tables\ui-tables.component.ts
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { UiTableAction, UiTableColumn } from '../models/table.interface';
+import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
+import { UiTableAction, UiTableCellTemplateContext, UiTableColumn } from '../models/table.interface';
+import { UiTableCellTemplates } from '../models/table.type';
 
 @Component({
   selector: 'lib-ui-tables',
@@ -9,7 +10,9 @@ import { UiTableAction, UiTableColumn } from '../models/table.interface';
    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiTablesComponent {
- @Input() receivedData: Record<string, unknown>[] = [];
+private readonly elementRef = inject(ElementRef<HTMLElement>);
+
+  @Input() receivedData: Record<string, unknown>[] = [];
   @Input() columns: UiTableColumn[] = [];
   @Input() displayedColumns: string[] = [];
   @Input() tabelaVazia = 'Nenhum registro encontrado.';
@@ -27,6 +30,7 @@ export class UiTablesComponent {
   @Input() paginationLabel = 'registros';
 
   @Input() actions: UiTableAction[] = [];
+  @Input() customCellTemplates: UiTableCellTemplates = {};
 
   @Output() perPageChange = new EventEmitter<number>();
   @Output() pageChange = new EventEmitter<number>();
@@ -87,6 +91,19 @@ export class UiTablesComponent {
       { length: end - normalizedStart + 1 },
       (_, index) => normalizedStart + index
     );
+  }
+
+  @HostListener('document:click', ['$event'])
+  protected onDocumentClick(event: MouseEvent): void {
+    const target = event.target as Node | null;
+
+    if (!target) {
+      return;
+    }
+
+    if (!this.elementRef.nativeElement.contains(target)) {
+      this.closeActions();
+    }
   }
 
   protected trackByColumn(index: number, column: UiTableColumn): string {
@@ -150,12 +167,33 @@ export class UiTablesComponent {
     return String(value);
   }
 
+  protected getCustomTemplate(columnKey: string) {
+    return this.customCellTemplates[columnKey] ?? null;
+  }
+
+  protected buildTemplateContext(
+    row: Record<string, unknown>,
+    column: UiTableColumn,
+    rowIndex: number
+  ): UiTableCellTemplateContext {
+    const value = this.getCellValue(row, column);
+
+    return {
+      $implicit: row,
+      row,
+      column,
+      value,
+      rowIndex,
+    };
+  }
+
   protected onPerPageChange(event: Event): void {
     const target = event.target as HTMLSelectElement;
     const value = Number(target.value);
 
     if (!Number.isNaN(value)) {
       this.perPageChange.emit(value);
+      this.closeActions();
     }
   }
 
@@ -165,9 +203,12 @@ export class UiTablesComponent {
     }
 
     this.pageChange.emit(page);
+    this.closeActions();
   }
 
-  protected toggleActions(index: number): void {
+  protected toggleActions(index: number, event?: Event): void {
+    event?.stopPropagation();
+
     this.openedActionRowIndex =
       this.openedActionRowIndex === index ? null : index;
   }
@@ -178,8 +219,10 @@ export class UiTablesComponent {
 
   protected onActionClick(
     action: UiTableAction,
-    row: Record<string, unknown>
+    row: Record<string, unknown>,
+    event?: Event
   ): void {
+    event?.stopPropagation();
     this.actionClick.emit({ action, row });
     this.closeActions();
   }

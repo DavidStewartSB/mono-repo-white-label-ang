@@ -1,4 +1,16 @@
+<!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-form\product-form-admin.component.ts-->
 <section class="product-form-admin">
-  <h1>Formulário de produto</h1>
-  <p>Placeholder inicial. Próximo passo: criar cadastro/edição com dados reais.</p>
+  <h1>{{ titulo }}</h1>
+
+  <p *ngIf="productId">
+    Produto selecionado: <strong>{{ productId }}</strong>
+  </p>
+
+  <p>
+    Modo atual: <strong>{{ modo }}</strong>
+  </p>
+
+  <p>
+    Placeholder inicial. Próximo passo: criar cadastro/edição com dados reais.
+  </p>
 </section>

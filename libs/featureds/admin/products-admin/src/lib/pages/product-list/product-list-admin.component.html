@@ -1,6 +1,5 @@
 <!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.html-->
 <lib-ui-tables
-  *ngIf="!isLoading && items.length"
   [receivedData]="items"
   [columns]="columns"
   [displayedColumns]="displayedColumns"
@@ -14,8 +13,35 @@
   [totalItems]="total"
   [paginationLabel]="'registros'"
   [actions]="tableActions"
+  [customCellTemplates]="customCellTemplates"
   (perPageChange)="onPerPageChange($event)"
   (pageChange)="onPageChange($event)"
   (actionClick)="onTableAction($event)"
   tabelaVazia="Nenhum produto encontrado."
 ></lib-ui-tables>
+
+<ng-template
+  #nameCellTemplate
+  let-row
+  let-value="value"
+>
+  <div class="ui-table__product-cell">
+    <img
+      class="ui-table__product-image"
+      [src]="row['image'] || 'assets/brand/empty.jpg'"
+      [alt]="value"
+      width="100"
+      height="100"
+    />
+
+    <div class="ui-table__product-info">
+      <strong class="ui-table__product-title">
+        {{ value }}
+      </strong>
+
+      <span class="ui-table__product-description">
+        {{ row['description'] || 'Sem descrição cadastrada.' }}
+      </span>
+    </div>
+  </div>
+</ng-template>
