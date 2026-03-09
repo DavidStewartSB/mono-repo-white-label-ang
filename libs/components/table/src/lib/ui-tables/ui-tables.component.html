@@ -1,1 +1,196 @@
-<p>ui-tables works!</p>
+<!--cardapio-online\libs\components\table\src\lib\ui-tables\ui-tables.component.html-->
+
+<section class="ui-table">
+  <header
+    class="ui-table__header"
+    *ngIf="headerTitle || headerSubtitle || perPageOptions.length"
+  >
+    <div class="ui-table__header-left">
+      <h2 class="ui-table__title" *ngIf="headerTitle">
+        {{ headerTitle }}
+      </h2>
+
+      <p class="ui-table__subtitle" *ngIf="headerSubtitle">
+        {{ headerSubtitle }}
+      </p>
+    </div>
+
+    <div class="ui-table__header-right" *ngIf="perPageOptions.length">
+      <label class="ui-table__per-page">
+        <span class="ui-table__per-page-label">
+          {{ perPageLabel }}
+        </span>
+
+        <select
+          class="ui-table__select"
+          [value]="selectedPerPage"
+          (change)="onPerPageChange($event)"
+        >
+          <option
+            *ngFor="let option of perPageOptions"
+            [value]="option"
+          >
+            {{ option }}
+          </option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <div *ngIf="loading" class="ui-table__state">
+    Carregando dados...
+  </div>
+
+  <div
+    *ngIf="!loading && !receivedData.length"
+    class="ui-table__state ui-table__state--empty"
+  >
+    {{ tabelaVazia }}
+  </div>
+
+  <div
+    *ngIf="!loading && receivedData.length"
+    class="ui-table__wrapper"
+  >
+    <table class="ui-table__table">
+      <thead class="ui-table__head">
+        <tr class="ui-table__head-row">
+          <th
+            *ngFor="let column of resolvedColumns; trackBy: trackByColumn"
+            class="ui-table__head-cell"
+            [style.width]="column.width || null"
+            [class.ui-table__head-cell--actions]="column.type === 'actions'"
+          >
+            {{ column.label }}
+          </th>
+        </tr>
+      </thead>
+
+      <tbody class="ui-table__body">
+        <tr
+          *ngFor="let row of receivedData; let rowIndex = index; trackBy: trackByRow"
+          class="ui-table__row"
+        >
+          <td
+            *ngFor="let column of resolvedColumns; trackBy: trackByColumn"
+            class="ui-table__cell"
+            [class.ui-table__cell--actions]="column.type === 'actions'"
+          >
+            <ng-container [ngSwitch]="column.type">
+              <span
+                *ngSwitchCase="'price'"
+                class="ui-table__text ui-table__text--strong"
+              >
+                {{ formatPrice(getCellValue(row, column)) }}
+              </span>
+
+              <span *ngSwitchCase="'date'" class="ui-table__text">
+                {{ formatDate(getCellValue(row, column)) }}
+              </span>
+
+              <span
+                *ngSwitchCase="'status'"
+                class="ui-table__status"
+                [class.ui-table__status--inactive]="!isActiveStatus(getCellValue(row, column))"
+              >
+                {{ isActiveStatus(getCellValue(row, column)) ? 'Ativo' : 'Inativo' }}
+              </span>
+
+              <div *ngSwitchCase="'tags'" class="ui-table__tags">
+                <ng-container *ngIf="getTags(row, column).length; else emptyTags">
+                  <span
+                    *ngFor="let tag of getTags(row, column)"
+                    class="ui-table__tag"
+                  >
+                    {{ tag }}
+                  </span>
+                </ng-container>
+              </div>
+
+              <div *ngSwitchCase="'actions'" class="ui-table__actions">
+                <button
+                  type="button"
+                  class="ui-table__icon-button"
+                  aria-label="Abrir ações"
+                  (click)="toggleActions(rowIndex)"
+                >
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+
+                <div
+                  class="ui-table__dropdown"
+                  *ngIf="openedActionRowIndex === rowIndex && actions.length"
+                >
+                  <button
+                    type="button"
+                    *ngFor="let action of actions; trackBy: trackByAction"
+                    class="ui-table__dropdown-item"
+                    [class.ui-table__dropdown-item--danger]="action.variant === 'danger'"
+                    (click)="onActionClick(action, row)"
+                  >
+                    <i *ngIf="action.icon" [class]="action.icon"></i>
+                    <span>{{ action.label }}</span>
+                  </button>
+                </div>
+              </div>
+
+              <span *ngSwitchDefault class="ui-table__text">
+                {{ resolveText(row, column) }}
+              </span>
+            </ng-container>
+
+            <ng-template #emptyTags>
+              <span class="ui-table__text ui-table__text--muted">
+                {{ column.emptyText || 'Sem tags' }}
+              </span>
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <footer
+    *ngIf="!loading && receivedData.length"
+    class="ui-table__footer"
+  >
+    <div class="ui-table__footer-info">
+      Exibindo <strong>{{ startItem }}</strong> a <strong>{{ endItem }}</strong>
+      de <strong>{{ totalItems }}</strong> {{ paginationLabel }}
+    </div>
+
+    <div class="ui-table__pagination">
+      <button
+        type="button"
+        class="ui-table__pagination-button ui-table__pagination-button--ghost"
+        [disabled]="currentPage <= 1"
+        (click)="goToPage(currentPage - 1)"
+      >
+        <i class="bx bx-chevron-left"></i>
+        <span>Anterior</span>
+      </button>
+
+      <div class="ui-table__pagination-pages">
+        <button
+          type="button"
+          *ngFor="let page of visiblePages"
+          class="ui-table__pagination-button"
+          [class.ui-table__pagination-button--active]="page === currentPage"
+          (click)="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="ui-table__pagination-button ui-table__pagination-button--ghost"
+        [disabled]="currentPage >= totalPages"
+        (click)="goToPage(currentPage + 1)"
+      >
+        <span>Próxima</span>
+        <i class="bx bx-chevron-right"></i>
+      </button>
+    </div>
+  </footer>
+</section>

@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-09T16:59:38.541Z
+- **Gerado em:** 2026-03-09T18:24:50.726Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -104,6 +104,7 @@ cardapio-online/
 │   │   │   │   └── app.routes.ts
 │   │   │   ├── assets/
 │   │   │   │   └── brand/
+│   │   │   │       ├── empty.jpg
 │   │   │   │       └── logo.png
 │   │   │   ├── environments/
 │   │   │   │   ├── environment.dev.ts
@@ -382,6 +383,7 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── onboarding-events.constants.ts
 │   │   │   │   │   │   ├── onboarding-step.model.ts
 │   │   │   │   │   │   └── onboarding-tour-options.model.ts
 │   │   │   │   │   ├── services/
@@ -462,19 +464,54 @@ cardapio-online/
 │   │       └── tsconfig.spec.json
 │   └── featureds/
 │       ├── admin/
-│       │   └── dashboard/
+│       │   ├── dashboard/
+│       │   │   ├── src/
+│       │   │   │   ├── lib/
+│       │   │   │   │   ├── pages/
+│       │   │   │   │   │   └── dashboard/
+│       │   │   │   │   │       ├── dashboard-admin.component.html
+│       │   │   │   │   │       ├── dashboard-admin.component.scss
+│       │   │   │   │   │       ├── dashboard-admin.component.spec.ts
+│       │   │   │   │   │       └── dashboard-admin.component.ts
+│       │   │   │   │   ├── utils/
+│       │   │   │   │   │   ├── dashboard-admin-tour.ts
+│       │   │   │   │   │   ├── dashboard-widget.registry.ts
+│       │   │   │   │   │   ├── dashboard.interfaces.ts
+│       │   │   │   │   │   └── dashboard.types.ts
+│       │   │   │   │   ├── dashboard.module.ts
+│       │   │   │   │   └── lib.routes.ts
+│       │   │   │   ├── index.ts
+│       │   │   │   └── test-setup.ts
+│       │   │   ├── jest.config.ts
+│       │   │   ├── pontas-soltas.txt
+│       │   │   ├── project.json
+│       │   │   ├── README.md
+│       │   │   ├── tsconfig.json
+│       │   │   ├── tsconfig.lib.json
+│       │   │   └── tsconfig.spec.json
+│       │   └── products-admin/
 │       │       ├── src/
 │       │       │   ├── lib/
+│       │       │   │   ├── data-access/
+│       │       │   │   │   └── products-admin.service.ts
+│       │       │   │   ├── mocks/
+│       │       │   │   │   └── products-admin.mock.ts
+│       │       │   │   ├── models/
+│       │       │   │   │   ├── product-admin-item.type.ts
+│       │       │   │   │   └── product-admin-list-response.type.ts
 │       │       │   │   ├── pages/
-│       │       │   │   │   └── dashboard/
-│       │       │   │   │       ├── dashboard-admin.component.html
-│       │       │   │   │       ├── dashboard-admin.component.scss
-│       │       │   │   │       ├── dashboard-admin.component.spec.ts
-│       │       │   │   │       └── dashboard-admin.component.ts
-│       │       │   │   ├── utils/
-│       │       │   │   │   └── dashboard-admin-tour.ts
-│       │       │   │   ├── dashboard.module.ts
-│       │       │   │   └── lib.routes.ts
+│       │       │   │   │   ├── product-form/
+│       │       │   │   │   │   ├── product-form-admin.component.html
+│       │       │   │   │   │   ├── product-form-admin.component.scss
+│       │       │   │   │   │   ├── product-form-admin.component.spec.ts
+│       │       │   │   │   │   └── product-form-admin.component.ts
+│       │       │   │   │   └── product-list/
+│       │       │   │   │       ├── product-list-admin.component.html
+│       │       │   │   │       ├── product-list-admin.component.scss
+│       │       │   │   │       ├── product-list-admin.component.spec.ts
+│       │       │   │   │       └── product-list-admin.component.ts
+│       │       │   │   ├── lib.routes.ts
+│       │       │   │   └── products-admin.module.ts
 │       │       │   ├── index.ts
 │       │       │   └── test-setup.ts
 │       │       ├── jest.config.ts

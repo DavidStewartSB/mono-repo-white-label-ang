@@ -1,6 +1,8 @@
 //cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-toolbar\shell-admin-toolbar.component.scss
 :host {
   display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .admin-toolbar {
@@ -9,12 +11,15 @@
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 100%;
   padding: 16px 18px;
   border-radius: 24px;
   border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
   background: var(--shell-panel, rgba(255, 255, 255, 0.88));
   box-shadow: var(--shell-shadow, 0 20px 60px rgba(15, 23, 42, 0.08));
   backdrop-filter: blur(16px);
+  box-sizing: border-box;
 
   &__left,
   &__right {
@@ -22,33 +27,63 @@
     align-items: center;
     gap: 10px 12px;
     flex-wrap: wrap;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  &__left {
+    flex: 1 1 320px;
+  }
+
+  &__right {
+    flex: 1 1 320px;
+    justify-content: flex-end;
   }
 
   &__search {
-    min-width: 280px;
+    flex: 1 1 260px;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
     padding: 12px 14px;
     border-radius: 14px;
     border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
     background: var(--shell-surface-strong, rgba(255, 255, 255, 0.86));
     color: var(--shell-text, #0f172a);
     outline: none;
+    box-sizing: border-box;
   }
 
   &__chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    max-width: 100%;
     padding: 10px 12px;
     border-radius: 999px;
     border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
     background: var(--shell-surface-strong, rgba(255, 255, 255, 0.86));
     color: var(--shell-text, #0f172a);
     font-size: 13px;
+    line-height: 1.2;
+    box-sizing: border-box;
   }
 
   &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
     padding: 12px 16px;
     border-radius: 14px;
     font-weight: 700;
     cursor: pointer;
-    transition: 180ms ease;
+    transition:
+      transform 180ms ease,
+      background-color 180ms ease,
+      border-color 180ms ease,
+      color 180ms ease;
+    box-sizing: border-box;
 
     &:hover {
       transform: translateY(-1px);
@@ -75,9 +110,36 @@
 @media (max-width: 820px) {
   .admin-toolbar {
     padding: 14px;
+    gap: 12px;
+
+    &__left,
+    &__right {
+      flex: 1 1 100%;
+      width: 100%;
+    }
+
+    &__right {
+      justify-content: stretch;
+    }
 
     &__search {
-      min-width: 100%;
+      flex: 1 1 100%;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .admin-toolbar {
+    padding: 12px;
+    border-radius: 18px;
+
+    &__chip {
+      width: 100%;
+      border-radius: 14px;
     }
   }
 }

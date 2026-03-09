@@ -1,0 +1,21 @@
+<!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.html-->
+<lib-ui-tables
+  *ngIf="!isLoading && items.length"
+  [receivedData]="items"
+  [columns]="columns"
+  [displayedColumns]="displayedColumns"
+  [loading]="isLoading"
+  [headerTitle]="'Produtos cadastrados'"
+  [headerSubtitle]="'Visualização em tabela com navegação horizontal e ações por registro.'"
+  [perPageLabel]="'Itens por página'"
+  [perPageOptions]="[10, 20, 30, 50]"
+  [selectedPerPage]="limit"
+  [currentPage]="page"
+  [totalItems]="total"
+  [paginationLabel]="'registros'"
+  [actions]="tableActions"
+  (perPageChange)="onPerPageChange($event)"
+  (pageChange)="onPageChange($event)"
+  (actionClick)="onTableAction($event)"
+  tabelaVazia="Nenhum produto encontrado."
+></lib-ui-tables>

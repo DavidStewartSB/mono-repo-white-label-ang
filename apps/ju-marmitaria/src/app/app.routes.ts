@@ -24,6 +24,11 @@ export const appRoutes: Route[] = [
       loadChildren: () =>
         import('@cardapio-online/dashboard').then((m) => m.DashboardModule),
     },
+    {
+  path: 'produtos',
+  loadChildren: () =>
+    import('@cardapio-online/products-admin').then((m) => m.ProductsAdminModule),
+},
   ],
 },
   {

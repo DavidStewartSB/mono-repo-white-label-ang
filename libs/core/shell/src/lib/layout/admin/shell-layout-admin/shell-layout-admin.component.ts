@@ -32,6 +32,11 @@ export class ShellLayoutAdminComponent implements OnInit {
       route: '/admin/agendamento',
       badge: '02',
     },
+    {
+      label: 'Produtos',
+      route: '/admin/produtos',
+      badge: '03',
+    },
   ];
 
   protected get resolvedNavItems(): AdminNavItem[] {
