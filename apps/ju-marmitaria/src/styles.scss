@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 //cardapio-online\apps\ju-marmitaria\src\styles.scss
+@use 'driver.js/dist/driver.css';
+
 @use './styles/config';
 @use './styles/brand';
-@use './styles//driver-tutorial';
+@use './styles/driver-tutorial';

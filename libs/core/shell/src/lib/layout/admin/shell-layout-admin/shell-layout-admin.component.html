@@ -8,7 +8,10 @@
   />
 
   <div class="admin-shell__content">
-    <lib-shell-admin-toolbar class="admin-shell__toolbar" />
+  <lib-shell-admin-toolbar
+  class="admin-shell__toolbar"
+  [chips]="toolbarChips"
+/>
 
     <main class="admin-shell__main">
       <router-outlet></router-outlet>

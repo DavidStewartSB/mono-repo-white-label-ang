@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-09T16:38:00.384Z
+- **Gerado em:** 2026-03-09T16:59:38.541Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -139,6 +139,7 @@ cardapio-online/
 │       └── tsconfig.json
 ├── docs/
 │   ├── commands-init.txt
+│   ├── core-commands.txt
 │   ├── criar-module.txt
 │   ├── criar-tokens.txt
 │   └── proposta-featureds.txt
@@ -377,6 +378,26 @@ cardapio-online/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
+│   │   ├── onboarding/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── onboarding-step.model.ts
+│   │   │   │   │   │   └── onboarding-tour-options.model.ts
+│   │   │   │   │   ├── services/
+│   │   │   │   │   │   ├── tour.service.spec.ts
+│   │   │   │   │   │   ├── tour.service.ts
+│   │   │   │   │   │   ├── tutorial-storage.service.spec.ts
+│   │   │   │   │   │   └── tutorial-storage.service.ts
+│   │   │   │   │   └── onboarding.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
 │   │   ├── shell/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
@@ -450,9 +471,8 @@ cardapio-online/
 │       │       │   │   │       ├── dashboard-admin.component.scss
 │       │       │   │   │       ├── dashboard-admin.component.spec.ts
 │       │       │   │   │       └── dashboard-admin.component.ts
-│       │       │   │   ├── services/
-│       │       │   │   │   ├── tour.service.ts
-│       │       │   │   │   └── tutorial-storage.service.ts
+│       │       │   │   ├── utils/
+│       │       │   │   │   └── dashboard-admin-tour.ts
 │       │       │   │   ├── dashboard.module.ts
 │       │       │   │   └── lib.routes.ts
 │       │       │   ├── index.ts

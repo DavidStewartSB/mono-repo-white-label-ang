@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class TutorialStorageService {
+private readonly prefix = 'cardapio-online:tutorial';
+
   isCompleted(key: string): boolean {
     return localStorage.getItem(this.buildKey(key)) === 'done';
   }
@@ -17,6 +19,6 @@ export class TutorialStorageService {
   }
 
   private buildKey(key: string): string {
-    return `cardapio-online:tutorial:${key}`;
+    return `${this.prefix}:${key}`;
   }
 }

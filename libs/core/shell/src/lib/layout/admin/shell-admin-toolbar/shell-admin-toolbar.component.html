@@ -1,9 +1,9 @@
 <!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-toolbar\shell-admin-toolbar.component.html-->
 <section class="admin-toolbar" id="tour-toolbar">
   <div class="admin-toolbar__left">
-    <span class="admin-toolbar__chip">Ambiente: Produção</span>
-    <span class="admin-toolbar__chip">Tenant: Demo Company</span>
-    <span class="admin-toolbar__chip">Plano: Enterprise</span>
+    <span class="admin-toolbar__chip" *ngFor="let chip of chips">
+      {{ chip.label }}: {{ chip.value }}
+    </span>
   </div>
 
   <div class="admin-toolbar__right">
@@ -17,6 +17,7 @@
       id="tour-theme-toggle"
       type="button"
       class="admin-toolbar__button admin-toolbar__button--ghost"
+      (click)="toggleTheme()"
     >
       Tema
     </button>

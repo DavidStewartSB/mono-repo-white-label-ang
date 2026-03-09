@@ -1,4 +1,4 @@
-
+<!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-sidebar\shell-admin-sidebar.component.html-->
 <aside class="admin-sidebar" id="tour-sidebar">
   <div class="admin-sidebar__brand">
     <div class="admin-sidebar__brand-badge">P</div>
@@ -32,8 +32,12 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, massa a dapibus feugiat.
     </p>
 
-    <button type="button" class="admin-sidebar__help-action">
-      Ver tutorial novamente
-    </button>
+   <button
+  type="button"
+  class="admin-sidebar__help-action"
+  (click)="restartTutorial()"
+>
+  Ver tutorial novamente
+</button>
   </div>
 </aside>

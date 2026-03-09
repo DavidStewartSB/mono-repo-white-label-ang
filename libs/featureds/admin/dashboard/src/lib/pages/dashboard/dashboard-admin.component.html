@@ -1,5 +1,34 @@
-<!--cardapio-online\libs\featureds\admin\dashboard\src\lib\pages\dashboard\dashboard-admin.component.html-->
 <section class="admin-dashboard">
+    <section class="admin-dashboard__widget-panel">
+    <div class="admin-dashboard__widget-panel-header">
+      <div>
+        <h3 class="admin-dashboard__widget-panel-title">Widgets do dashboard</h3>
+        <p class="admin-dashboard__widget-panel-text">
+          Controle quais blocos ficam visíveis nesta visão administrativa.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="admin-dashboard__button admin-dashboard__button--ghost"
+        (click)="resetWidgetVisibility()"
+      >
+        Restaurar widgets
+      </button>
+    </div>
+
+    <div class="admin-dashboard__widget-toggles">
+      <button
+        *ngFor="let widget of widgetRegistry"
+        type="button"
+        class="admin-dashboard__widget-toggle"
+        [class.admin-dashboard__widget-toggle--inactive]="!isWidgetVisible(widget.id)"
+        (click)="toggleWidgetVisibility(widget.id)"
+      >
+        {{ widget.title }}
+      </button>
+    </div>
+  </section>
   <section class="admin-dashboard__hero" id="tour-hero">
     <div>
       <h1 class="admin-dashboard__hero-title">
@@ -31,7 +60,7 @@
         <button
           type="button"
           class="admin-dashboard__button admin-dashboard__button--ghost"
-          (click)="startTutorial(true)"
+          (click)="startTutorial()"
         >
           Iniciar tutorial
         </button>
@@ -112,7 +141,7 @@
       <button
         type="button"
         class="admin-dashboard__button admin-dashboard__button--primary"
-        (click)="startTutorial(true)"
+        (click)="startTutorial()"
       >
         Iniciar tutorial
       </button>

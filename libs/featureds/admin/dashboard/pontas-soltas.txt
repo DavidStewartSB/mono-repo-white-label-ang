@@ -1,0 +1,33 @@
+Pontas soltas já mapeadas
+5.2.1
+
+O evento global resolve bem agora, mas depois podemos trocar por:
+
+service com subject/signal
+
+facade de onboarding
+
+5.2.2
+
+O widget registry ainda está no componente.
+Próximo passo saudável:
+
+mover para utils/dashboard-widget.registry.ts
+
+5.2.3
+
+A persistência atual só controla visibilidade.
+Depois podemos evoluir para:
+
+ordem
+
+tamanho
+
+widgets favoritos
+
+presets por tenant/perfil
+
+5.2.4
+
+A toolbar ainda não consome config real do runtime app config.
+Hoje está mock-friendly, o que é bom para esta fase.

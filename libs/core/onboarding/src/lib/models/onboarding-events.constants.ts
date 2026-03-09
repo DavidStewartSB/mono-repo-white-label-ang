@@ -1,0 +1,1 @@
+export const ONBOARDING_RESTART_EVENT = 'co:onboarding:restart';

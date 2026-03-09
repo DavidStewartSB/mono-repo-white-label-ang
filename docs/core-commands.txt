@@ -1,0 +1,3 @@
+bunx nx g @nx/angular:lib onboarding --directory=libs/core/onboarding --style=scss --standalone=false --tags="type:core"
+bunx nx g @nx/angular:service services/tour --project=onboarding
+bunx nx g @nx/angular:service services/tutorial-storage --project=onboarding
