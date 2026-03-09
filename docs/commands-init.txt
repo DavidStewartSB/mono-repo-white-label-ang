@@ -73,13 +73,14 @@ bunx nx g @nx/angular:component input --directory=libs/components/inputs/src/lib
 bunx nx g @nx/angular:component ui-forms --directory=libs/components/forms/src/lib/ui-forms --style=scss --standalone=false --export
 
 
-/* ScreensEvents
-- breadcrumb; //Onde recomenda criar
-- loaders; //Onde recomenda criar;
-- tooltip; //onde recomenda criar;
-*/
 
 Onde e porque. Não vejo necessidade de criar um module somente pra um loader ou para um tooltip. Seria um canhão pra matar algo pequeno, pensei em:
 bunx nx g @nx/angular:lib screen-events --directory=libs/components/screen-events --style=scss --standalone=false --tags="type:ui"
 
 Mas abre expanda pespectivas a respeito disso
+
+
+
+
+bunx nx g @nx/angular:lib dashboard --directory=libs/featureds/admin --routing --lazy --style=scss --standalone=false --tags="type:feature"
+bunx nx g @nx/angular:component dashboard-admin --directory=libs/admin/dashboard/src/lib/pages/dashboard --style=scss --standalone=false --export

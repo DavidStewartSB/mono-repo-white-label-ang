@@ -23,6 +23,9 @@
       "@cardapio-online/categories": ["libs/featureds/categories/src/index.ts"],
       "@cardapio-online/company": ["libs/featureds/company/src/index.ts"],
       "@cardapio-online/config": ["libs/core/config/src/index.ts"],
+      "@cardapio-online/dashboard": [
+        "libs/featureds/admin/dashboard/src/index.ts"
+      ],
       "@cardapio-online/drawer": ["libs/components/drawer/src/index.ts"],
       "@cardapio-online/forms": ["libs/components/forms/src/index.ts"],
       "@cardapio-online/http": ["libs/core/http/src/index.ts"],

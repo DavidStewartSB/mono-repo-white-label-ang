@@ -1,0 +1,39 @@
+
+<aside class="admin-sidebar" id="tour-sidebar">
+  <div class="admin-sidebar__brand">
+    <div class="admin-sidebar__brand-badge">P</div>
+
+    <div class="admin-sidebar__brand-content">
+      <h1 class="admin-sidebar__brand-title">{{ brandTitle }}</h1>
+      <p class="admin-sidebar__brand-subtitle">{{ brandSubtitle }}</p>
+    </div>
+  </div>
+
+  <div class="admin-sidebar__nav-group">
+    <p class="admin-sidebar__nav-title">Navegação</p>
+
+    <a
+      *ngFor="let item of navItems"
+      class="admin-sidebar__nav-link"
+      routerLinkActive="admin-sidebar__nav-link--active"
+      [routerLink]="item.route"
+    >
+      <span class="admin-sidebar__nav-label">{{ item.label }}</span>
+      <span class="admin-sidebar__nav-badge" *ngIf="item.badge !== undefined">
+        {{ item.badge }}
+      </span>
+    </a>
+  </div>
+
+  <div class="admin-sidebar__help" id="tour-help-card">
+    <strong class="admin-sidebar__help-title">Central de ajuda</strong>
+
+    <p class="admin-sidebar__help-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, massa a dapibus feugiat.
+    </p>
+
+    <button type="button" class="admin-sidebar__help-action">
+      Ver tutorial novamente
+    </button>
+  </div>
+</aside>

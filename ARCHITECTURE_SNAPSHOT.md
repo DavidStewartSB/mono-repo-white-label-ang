@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
-- **Root:** `C:\dev\cardapio-online\mono-repo-white-label-ang`
-- **Gerado em:** 2026-03-06T17:44:18.210Z
+- **Root:** `C:\dev\angular-arch\cardapio-online`
+- **Gerado em:** 2026-03-09T15:54:29.094Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -9,7 +9,7 @@
 ## Árvore de pastas
 
 ```txt
-mono-repo-white-label-ang/
+cardapio-online/
 ├── apps/
 │   ├── blend-food/
 │   │   ├── src/
@@ -111,7 +111,8 @@ mono-repo-white-label-ang/
 │   │   │   │   └── environment.ts
 │   │   │   ├── styles/
 │   │   │   │   ├── _brand.scss
-│   │   │   │   └── _config.scss
+│   │   │   │   ├── _config.scss
+│   │   │   │   └── _driver-tutorial.scss
 │   │   │   ├── favicon.ico
 │   │   │   ├── index.html
 │   │   │   ├── main.ts
@@ -251,15 +252,54 @@ mono-repo-white-label-ang/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
-│   │   └── table/
+│   │   ├── loaders/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── loader/
+│   │   │   │   │   │   ├── ui-loader.component.html
+│   │   │   │   │   │   ├── ui-loader.component.scss
+│   │   │   │   │   │   ├── ui-loader.component.spec.ts
+│   │   │   │   │   │   └── ui-loader.component.ts
+│   │   │   │   │   └── loaders.module.ts
+│   │   │   │   ├── types/
+│   │   │   │   │   └── loader.type.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   ├── table/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── ui-tables/
+│   │   │   │   │   │   ├── ui-tables.component.html
+│   │   │   │   │   │   ├── ui-tables.component.scss
+│   │   │   │   │   │   ├── ui-tables.component.spec.ts
+│   │   │   │   │   │   └── ui-tables.component.ts
+│   │   │   │   │   └── tables.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   └── tooltips/
 │   │       ├── src/
 │   │       │   ├── lib/
-│   │       │   │   ├── ui-tables/
-│   │       │   │   │   ├── ui-tables.component.html
-│   │       │   │   │   ├── ui-tables.component.scss
-│   │       │   │   │   ├── ui-tables.component.spec.ts
-│   │       │   │   │   └── ui-tables.component.ts
-│   │       │   │   └── tables.module.ts
+│   │       │   │   ├── tooltips/
+│   │       │   │   │   ├── tooltip.directive.ts
+│   │       │   │   │   ├── ui-tooltip.component.html
+│   │       │   │   │   ├── ui-tooltip.component.scss
+│   │       │   │   │   ├── ui-tooltip.component.spec.ts
+│   │       │   │   │   └── ui-tooltip.component.ts
+│   │       │   │   ├── utils/
+│   │       │   │   │   └── tooltip-position.type.ts
+│   │       │   │   └── tooltip.module.ts
 │   │       │   ├── index.ts
 │   │       │   └── test-setup.ts
 │   │       ├── jest.config.ts
@@ -325,10 +365,38 @@ mono-repo-white-label-ang/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
+│   │   ├── loading/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   └── loading.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
 │   │   ├── shell/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   ├── layout/
+│   │   │   │   │   │   ├── admin/
+│   │   │   │   │   │   │   ├── shell-admin-sidebar/
+│   │   │   │   │   │   │   │   ├── shell-admin-sidebar.component.html
+│   │   │   │   │   │   │   │   ├── shell-admin-sidebar.component.scss
+│   │   │   │   │   │   │   │   ├── shell-admin-sidebar.component.spec.ts
+│   │   │   │   │   │   │   │   └── shell-admin-sidebar.component.ts
+│   │   │   │   │   │   │   ├── shell-admin-toolbar/
+│   │   │   │   │   │   │   │   ├── shell-admin-toolbar.component.html
+│   │   │   │   │   │   │   │   ├── shell-admin-toolbar.component.scss
+│   │   │   │   │   │   │   │   ├── shell-admin-toolbar.component.spec.ts
+│   │   │   │   │   │   │   │   └── shell-admin-toolbar.component.ts
+│   │   │   │   │   │   │   └── shell-layout-admin/
+│   │   │   │   │   │   │       ├── shell-layout-admin.component.html
+│   │   │   │   │   │   │       ├── shell-layout-admin.component.scss
+│   │   │   │   │   │   │       ├── shell-layout-admin.component.spec.ts
+│   │   │   │   │   │   │       └── shell-layout-admin.component.ts
 │   │   │   │   │   │   └── public/
 │   │   │   │   │   │       ├── shell-footer/
 │   │   │   │   │   │       │   ├── shell-footer.component.html
@@ -345,6 +413,8 @@ mono-repo-white-label-ang/
 │   │   │   │   │   │           ├── shell-layout.component.scss
 │   │   │   │   │   │           ├── shell-layout.component.spec.ts
 │   │   │   │   │   │           └── shell-layout.component.ts
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── admin-nav-item.model.ts
 │   │   │   │   │   ├── theme/
 │   │   │   │   │   │   └── theme-applier.service.ts
 │   │   │   │   │   └── shell.module.ts
@@ -370,6 +440,29 @@ mono-repo-white-label-ang/
 │   │       ├── tsconfig.lib.json
 │   │       └── tsconfig.spec.json
 │   └── featureds/
+│       ├── admin/
+│       │   └── dashboard/
+│       │       ├── src/
+│       │       │   ├── lib/
+│       │       │   │   ├── pages/
+│       │       │   │   │   └── dashboard/
+│       │       │   │   │       ├── dashboard-admin.component.html
+│       │       │   │   │       ├── dashboard-admin.component.scss
+│       │       │   │   │       ├── dashboard-admin.component.spec.ts
+│       │       │   │   │       └── dashboard-admin.component.ts
+│       │       │   │   ├── services/
+│       │       │   │   │   ├── tour.service.ts
+│       │       │   │   │   └── tutorial-storage.service.ts
+│       │       │   │   ├── dashboard.module.ts
+│       │       │   │   └── lib.routes.ts
+│       │       │   ├── index.ts
+│       │       │   └── test-setup.ts
+│       │       ├── jest.config.ts
+│       │       ├── project.json
+│       │       ├── README.md
+│       │       ├── tsconfig.json
+│       │       ├── tsconfig.lib.json
+│       │       └── tsconfig.spec.json
 │       ├── agendamento/
 │       │   ├── src/
 │       │   │   ├── lib/
@@ -418,12 +511,13 @@ mono-repo-white-label-ang/
 │       │   ├── src/
 │       │   │   ├── lib/
 │       │   │   │   ├── pages/
-│       │   │   │   │   └── admin/
-│       │   │   │   │       └── company-detail/
-│       │   │   │   │           ├── company-detail.component.html
-│       │   │   │   │           ├── company-detail.component.scss
-│       │   │   │   │           ├── company-detail.component.spec.ts
-│       │   │   │   │           └── company-detail.component.ts
+│       │   │   │   │   ├── admin/
+│       │   │   │   │   │   └── company-detail/
+│       │   │   │   │   │       ├── company-detail.component.html
+│       │   │   │   │   │       ├── company-detail.component.scss
+│       │   │   │   │   │       ├── company-detail.component.spec.ts
+│       │   │   │   │   │       └── company-detail.component.ts
+│       │   │   │   │   └── client/
 │       │   │   │   ├── company.module.ts
 │       │   │   │   └── lib.routes.ts
 │       │   │   ├── index.ts
@@ -466,45 +560,46 @@ mono-repo-white-label-ang/
 │       │   ├── tsconfig.json
 │       │   ├── tsconfig.lib.json
 │       │   └── tsconfig.spec.json
-│       └── produtos/
-│           ├── src/
-│           │   ├── lib/
-│           │   │   ├── data-access/
-│           │   │   │   ├── products.service.spec.ts
-│           │   │   │   └── products.service.ts
-│           │   │   ├── pages/
-│           │   │   │   ├── admin/
-│           │   │   │   │   ├── product-form/
-│           │   │   │   │   │   ├── product-form.component.html
-│           │   │   │   │   │   ├── product-form.component.scss
-│           │   │   │   │   │   ├── product-form.component.spec.ts
-│           │   │   │   │   │   └── product-form.component.ts
-│           │   │   │   │   └── product-table/
-│           │   │   │   │       ├── product-table.component.html
-│           │   │   │   │       ├── product-table.component.scss
-│           │   │   │   │       ├── product-table.component.spec.ts
-│           │   │   │   │       └── product-table.component.ts
-│           │   │   │   └── public/
-│           │   │   │       ├── product-detail/
-│           │   │   │       │   ├── product-detail.component.html
-│           │   │   │       │   ├── product-detail.component.scss
-│           │   │   │       │   ├── product-detail.component.spec.ts
-│           │   │   │       │   └── product-detail.component.ts
-│           │   │   │       └── products-list/
-│           │   │   │           ├── products-list.component.html
-│           │   │   │           ├── products-list.component.scss
-│           │   │   │           ├── products-list.component.spec.ts
-│           │   │   │           └── products-list.component.ts
-│           │   │   ├── lib.routes.ts
-│           │   │   └── produtos.module.ts
-│           │   ├── index.ts
-│           │   └── test-setup.ts
-│           ├── jest.config.ts
-│           ├── project.json
-│           ├── README.md
-│           ├── tsconfig.json
-│           ├── tsconfig.lib.json
-│           └── tsconfig.spec.json
+│       ├── produtos/
+│       │   ├── src/
+│       │   │   ├── lib/
+│       │   │   │   ├── data-access/
+│       │   │   │   │   ├── products.service.spec.ts
+│       │   │   │   │   └── products.service.ts
+│       │   │   │   ├── pages/
+│       │   │   │   │   ├── admin/
+│       │   │   │   │   │   ├── product-form/
+│       │   │   │   │   │   │   ├── product-form.component.html
+│       │   │   │   │   │   │   ├── product-form.component.scss
+│       │   │   │   │   │   │   ├── product-form.component.spec.ts
+│       │   │   │   │   │   │   └── product-form.component.ts
+│       │   │   │   │   │   └── product-table/
+│       │   │   │   │   │       ├── product-table.component.html
+│       │   │   │   │   │       ├── product-table.component.scss
+│       │   │   │   │   │       ├── product-table.component.spec.ts
+│       │   │   │   │   │       └── product-table.component.ts
+│       │   │   │   │   └── public/
+│       │   │   │   │       ├── product-detail/
+│       │   │   │   │       │   ├── product-detail.component.html
+│       │   │   │   │       │   ├── product-detail.component.scss
+│       │   │   │   │       │   ├── product-detail.component.spec.ts
+│       │   │   │   │       │   └── product-detail.component.ts
+│       │   │   │   │       └── products-list/
+│       │   │   │   │           ├── products-list.component.html
+│       │   │   │   │           ├── products-list.component.scss
+│       │   │   │   │           ├── products-list.component.spec.ts
+│       │   │   │   │           └── products-list.component.ts
+│       │   │   │   ├── lib.routes.ts
+│       │   │   │   └── produtos.module.ts
+│       │   │   ├── index.ts
+│       │   │   └── test-setup.ts
+│       │   ├── jest.config.ts
+│       │   ├── project.json
+│       │   ├── README.md
+│       │   ├── tsconfig.json
+│       │   ├── tsconfig.lib.json
+│       │   └── tsconfig.spec.json
+│       └── public/
 ├── tools/
 │   └── snapshot-arch.mjs
 ├── ARCHITECTURE_SNAPSHOT.md

@@ -1,0 +1,205 @@
+<section class="admin-dashboard">
+  <section class="admin-dashboard__toolbar" id="tour-toolbar">
+    <div class="admin-dashboard__toolbar-left">
+      <span class="admin-dashboard__chip">Ambiente: Produção</span>
+      <span class="admin-dashboard__chip">Tenant: Demo Company</span>
+      <span class="admin-dashboard__chip">Plano: Enterprise</span>
+    </div>
+
+    <div class="admin-dashboard__toolbar-right">
+      <input
+        class="admin-dashboard__search"
+        placeholder="Pesquisar produto, SKU, categoria..."
+      />
+
+      <button
+        type="button"
+        class="admin-dashboard__button admin-dashboard__button--ghost"
+        (click)="markTutorialAsSeen()"
+      >
+        Marcar tutorial como visto
+      </button>
+
+      <button
+        type="button"
+        class="admin-dashboard__button admin-dashboard__button--primary"
+        (click)="startTutorial(true)"
+      >
+        Iniciar tutorial
+      </button>
+    </div>
+  </section>
+
+  <section class="admin-dashboard__hero" id="tour-hero">
+    <div>
+      <h1 class="admin-dashboard__hero-title">
+        Seu produto organizado em uma visão rápida e guiada
+      </h1>
+
+      <p class="admin-dashboard__hero-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin luctus,
+        risus sit amet tincidunt volutpat, tortor neque fringilla orci, vel
+        malesuada turpis justo a justo. Sed aliquet sem ac erat gravida, sed
+        pretium enim pretium.
+      </p>
+
+      <div class="admin-dashboard__hero-actions">
+        <button
+          type="button"
+          class="admin-dashboard__button admin-dashboard__button--primary"
+        >
+          Criar novo produto
+        </button>
+
+        <button
+          type="button"
+          class="admin-dashboard__button admin-dashboard__button--ghost"
+        >
+          Importar catálogo
+        </button>
+      </div>
+    </div>
+
+    <div class="admin-dashboard__hero-side">
+      <div class="admin-dashboard__mini-card" id="tour-kpi">
+        <small>Produtos ativos</small>
+        <strong>1.248</strong>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+
+      <div class="admin-dashboard__feature-banner">
+        <strong>Novo recurso liberado</strong>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at
+          libero sed ligula viverra fermentum id vitae lectus.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="admin-dashboard__grid">
+    <article class="admin-dashboard__card admin-dashboard__card--span-8" id="tour-metrics">
+      <h3>Métricas principais</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+        ultricies velit ut blandit suscipit. Suspendisse potenti.
+      </p>
+
+      <div class="admin-dashboard__metrics">
+        <div class="admin-dashboard__metric" *ngFor="let item of metrics">
+          <small>{{ item.label }}</small>
+          <strong>{{ item.value }}</strong>
+        </div>
+      </div>
+
+      <div class="admin-dashboard__chart"></div>
+    </article>
+
+    <article class="admin-dashboard__card admin-dashboard__card--span-4" id="tour-actions">
+      <h3>Ações rápidas</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed eros
+        nec arcu gravida tristique.
+      </p>
+
+      <div class="admin-dashboard__list">
+        <div class="admin-dashboard__list-item" *ngFor="let item of quickActions">
+          <div class="admin-dashboard__thumb"></div>
+
+          <div>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+          </div>
+
+          <span
+            class="admin-dashboard__badge"
+            [ngClass]="{
+              'admin-dashboard__badge--success': item.statusType === 'success',
+              'admin-dashboard__badge--warning': item.statusType === 'warning',
+              'admin-dashboard__badge--danger': item.statusType === 'danger'
+            }"
+          >
+            {{ item.status }}
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <article class="admin-dashboard__card admin-dashboard__card--span-6" id="tour-products">
+      <h3>Produtos recentes</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eu leo
+        eu neque posuere tempor.
+      </p>
+
+      <div class="admin-dashboard__list">
+        <div class="admin-dashboard__list-item" *ngFor="let item of recentProducts">
+          <div class="admin-dashboard__thumb"></div>
+
+          <div>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+          </div>
+
+          <span
+            class="admin-dashboard__badge"
+            [ngClass]="{
+              'admin-dashboard__badge--success': item.statusType === 'success',
+              'admin-dashboard__badge--warning': item.statusType === 'warning',
+              'admin-dashboard__badge--danger': item.statusType === 'danger'
+            }"
+          >
+            {{ item.status }}
+          </span>
+        </div>
+      </div>
+    </article>
+
+    <article class="admin-dashboard__card admin-dashboard__card--span-6" id="tour-insights">
+      <h3>Insights do sistema</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus posuere
+        ipsum vel massa vehicula, a ullamcorper leo posuere.
+      </p>
+
+      <div class="admin-dashboard__list">
+        <div class="admin-dashboard__list-item" *ngFor="let item of insights">
+          <div class="admin-dashboard__thumb"></div>
+
+          <div>
+            <strong>{{ item.title }}</strong>
+            <p>{{ item.description }}</p>
+          </div>
+
+          <span
+            class="admin-dashboard__badge"
+            [ngClass]="{
+              'admin-dashboard__badge--success': item.statusType === 'success',
+              'admin-dashboard__badge--warning': item.statusType === 'warning',
+              'admin-dashboard__badge--danger': item.statusType === 'danger'
+            }"
+          >
+            {{ item.status }}
+          </span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <aside class="admin-dashboard__help" id="tour-help-card">
+    <strong>Central de ajuda</strong>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere,
+      massa a dapibus feugiat, lacus urna cursus sem, sed pretium massa erat non
+      arcu.
+    </p>
+
+    <button
+      type="button"
+      class="admin-dashboard__button admin-dashboard__button--ghost"
+      (click)="restartTutorial()"
+    >
+      Ver tutorial novamente
+    </button>
+  </aside>
+</section>

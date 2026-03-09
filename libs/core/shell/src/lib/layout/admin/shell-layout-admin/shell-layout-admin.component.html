@@ -1,0 +1,17 @@
+<!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-layout-admin\shell-layout-admin.component.html-->
+<div class="admin-shell">
+  <lib-shell-admin-sidebar
+    class="admin-shell__sidebar"
+    [brandTitle]="brandTitle"
+    [brandSubtitle]="brandSubtitle"
+    [navItems]="navItems"
+  />
+
+  <div class="admin-shell__content">
+    <lib-shell-admin-toolbar class="admin-shell__toolbar" />
+
+    <main class="admin-shell__main">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

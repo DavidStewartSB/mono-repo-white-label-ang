@@ -1,6 +1,6 @@
 // apps/ju-marmitaria/src/app/app.routes.ts
 import { Route } from '@angular/router';
-import { ShellLayoutComponent } from '@cardapio-online/shell';
+import { ShellLayoutAdminComponent, ShellLayoutComponent } from '@cardapio-online/shell';
 
 
 export const appRoutes: Route[] = [
@@ -9,6 +9,23 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('@cardapio-online/login').then((m) => m.LoginModule),
   },
+{
+  path: 'admin',
+  component: ShellLayoutAdminComponent,
+  children: [
+    { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+    {
+      path: 'agendamento',
+      loadChildren: () =>
+        import('@cardapio-online/agendamento').then((m) => m.AgendamentoModule),
+    },
+    {
+      path: 'dashboard',
+      loadChildren: () =>
+        import('@cardapio-online/dashboard').then((m) => m.DashboardModule),
+    },
+  ],
+},
   {
     path: '',
     component: ShellLayoutComponent,
