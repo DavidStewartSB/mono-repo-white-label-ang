@@ -1,3 +1,4 @@
+//cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-toolbar\shell-admin-toolbar.component.ts
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
