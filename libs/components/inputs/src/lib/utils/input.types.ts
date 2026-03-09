@@ -1,7 +1,9 @@
 export type TipoInput =
   | 'text'
+  | 'password'
   | 'dropdown'
   | 'search'
+   | 'tel'
   | 'number'
   | 'email'
   | 'datetime'

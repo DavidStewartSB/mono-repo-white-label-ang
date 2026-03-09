@@ -1,0 +1,89 @@
+<!--cardapio-online\libs\components\inputs\src\lib\input.component.html-->
+<div class="input">
+    @if (legend) {
+    <label [for]="id" class="input__label">
+        <span class="input__label--legend">{{ legend }}</span>
+
+        @if (isRequired) {
+        <span class="input__label--required">*</span>
+        }
+    </label>
+    }
+
+<div class="input__wrapper">
+  @if (type === 'text') {
+    <ng-container>
+      <lib-input-texto
+        [id]="id"
+        [placeholder]="placeholder"
+        [control]="control"
+        [legend]="legend"
+        [mask]="mask"
+        [errorMessagers]="errorMessagers"
+        [size]="size"
+        [useFormControl]="useFormControl"
+        [valueOptions]="valueOptions"
+        [disabled]="disabled"
+      ></lib-input-texto>
+    </ng-container>
+  }
+
+  @if (type === 'password') {
+    <ng-container>
+      <lib-input-password
+        [id]="id"
+        [placeholder]="placeholder"
+        [control]="control"
+        [legend]="legend"
+        [mask]="mask"
+        [errorMessagers]="errorMessagers"
+        [size]="size"
+        [useFormControl]="useFormControl"
+        [valueOptions]="valueOptions"
+        [disabled]="disabled"
+      ></lib-input-password>
+    </ng-container>
+  }
+  @if (type === 'email') {
+  <ng-container>
+    <lib-input-email
+      [id]="id"
+      [placeholder]="placeholder"
+      [control]="control"
+      [legend]="legend"
+      [mask]="mask"
+      [errorMessagers]="errorMessagers"
+      [size]="size"
+      [useFormControl]="useFormControl"
+      [valueOptions]="valueOptions"
+      [disabled]="disabled"
+    ></lib-input-email>
+  </ng-container>
+}
+@if (type === 'tel') {
+  <ng-container>
+    <lib-input-tel
+      [id]="id"
+      [placeholder]="placeholder"
+      [control]="control"
+      [legend]="legend"
+      [mask]="mask"
+      [errorMessagers]="errorMessagers"
+      [size]="size"
+      [useFormControl]="useFormControl"
+      [valueOptions]="valueOptions"
+      [disabled]="disabled"
+    ></lib-input-tel>
+  </ng-container>
+}
+</div>
+
+@if (hasError && errorMessagers.length > 0) {
+  <div class="input__errors">
+    @for (message of errorMessagers; track message) {
+      <span class="input__error">{{ message }}</span>
+    }
+  </div>
+}
+
+</div>

@@ -1,1 +1,6 @@
-export interface IInputSelect { value: string; label?: string }
+export interface IInputSelect {
+  value: string | number;
+  label: string;
+  description?: string;
+  disabled?: boolean;
+}

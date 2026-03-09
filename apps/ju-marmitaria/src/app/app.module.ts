@@ -26,7 +26,7 @@ import { environment } from '../environments/environment';
     {
       provide: APP_CONFIG,
  useValue: {
-      appName: 'Brand',
+      appName: 'Ju Marmitaria',
       brandPrimary: '#7c3aed',
       brandLogoUrl: '/assets/brand/logo.png',
 

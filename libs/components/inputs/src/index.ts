@@ -11,3 +11,7 @@ export * from './lib/lib-input-password/input-password.component';
 export * from './lib/input-container/input-container.component';
 
 export * from './lib/ui-input-checkbox/input-checkbox.component';
+
+export * from './lib/input.component';
+
+export * from './lib/lib-input-tel/lib-input-tel.component';

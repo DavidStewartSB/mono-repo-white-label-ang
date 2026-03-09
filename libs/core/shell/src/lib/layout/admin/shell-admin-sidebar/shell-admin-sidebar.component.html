@@ -1,10 +1,10 @@
 <!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-sidebar\shell-admin-sidebar.component.html-->
 <aside class="admin-sidebar" id="tour-sidebar">
   <div class="admin-sidebar__brand">
-    <div class="admin-sidebar__brand-badge">P</div>
+    <div class="admin-sidebar__brand-badge"><img [src]="cfg.brandLogoUrl" alt="" width="50" height="50"></div>
 
     <div class="admin-sidebar__brand-content">
-      <h1 class="admin-sidebar__brand-title">{{ brandTitle }}</h1>
+      <h1 class="admin-sidebar__brand-title">{{ cfg.appName }}</h1>
       <p class="admin-sidebar__brand-subtitle">{{ brandSubtitle }}</p>
     </div>
   </div>
@@ -24,9 +24,9 @@
       </span>
     </a>
   </div>
-
+<!-- 
   <div class="admin-sidebar__help" id="tour-help-card">
-    <strong class="admin-sidebar__help-title">Central de ajuda</strong>
+    <strong class="admin-sidebar__help-title">Central de ajudas</strong>
 
     <p class="admin-sidebar__help-text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, massa a dapibus feugiat.
@@ -39,5 +39,5 @@
 >
   Ver tutorial novamente
 </button>
-  </div>
+  </div> -->
 </aside>

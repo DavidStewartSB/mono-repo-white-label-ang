@@ -1,1 +1,109 @@
-<p>input-checkbox works!</p>
+<div
+  class="input-checkbox"
+  [class.input-checkbox--inline]="isInline"
+  [class.input-checkbox--column]="!isInline"
+  [class.input-checkbox--list]="isListMode"
+  [class.input-checkbox--single]="isSingleMode"
+>
+  @if (legend) {
+    <div class="input-checkbox__header">
+      <span class="input-checkbox__legend">{{ legend }}</span>
+
+      @if (description) {
+        <span class="input-checkbox__description">{{ description }}</span>
+      }
+    </div>
+  }
+
+  @if (isSingleMode) {
+    <label class="input-checkbox__item" [class.input-checkbox__item--disabled]="disabled">
+      <span class="input-checkbox__control">
+        <input
+          class="input-checkbox__native"
+          [id]="id"
+          type="checkbox"
+          [formControl]="formControl!"
+          [disabled]="disabled"
+          (change)="onSingleChange($event)"
+        />
+
+        <span class="input-checkbox__box">
+          <svg
+            class="input-checkbox__check"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M3.5 8.5L6.5 11.5L12.5 5.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </span>
+
+      <span class="input-checkbox__content">
+        <span class="input-checkbox__label">{{ legend }}</span>
+
+        @if (description) {
+          <span class="input-checkbox__text">{{ description }}</span>
+        }
+      </span>
+    </label>
+  }
+
+  @if (isListMode) {
+    <div
+      class="input-checkbox__list"
+      [class.input-checkbox__list--inline]="isInline"
+      [class.input-checkbox__list--column]="!isInline"
+    >
+      @for (item of valueOptions; track trackByValue($index, item)) {
+        <label
+          class="input-checkbox__item"
+          [class.input-checkbox__item--disabled]="disabled || !!item.disabled"
+        >
+          <span class="input-checkbox__control">
+            <input
+              class="input-checkbox__native"
+              type="checkbox"
+              [checked]="isChecked(item.value)"
+              [disabled]="disabled || !!item.disabled"
+              (change)="onListChange(item.value, $any($event.target).checked)"
+            />
+
+            <span class="input-checkbox__box">
+              <svg
+                class="input-checkbox__check"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M3.5 8.5L6.5 11.5L12.5 5.5"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+          </span>
+
+          <span class="input-checkbox__content">
+            <span class="input-checkbox__label">{{ item.label }}</span>
+
+            @if (item.description) {
+              <span class="input-checkbox__text">{{ item.description }}</span>
+            }
+          </span>
+        </label>
+      }
+    </div>
+  }
+</div>

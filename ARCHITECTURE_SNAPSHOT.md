@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-09T20:19:42.592Z
+- **Gerado em:** 2026-03-09T21:48:27.835Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -213,11 +213,6 @@ cardapio-online/
 │   │   │   │   │   │   ├── input-container.component.scss
 │   │   │   │   │   │   ├── input-container.component.spec.ts
 │   │   │   │   │   │   └── input-container.component.ts
-│   │   │   │   │   ├── lib-input/
-│   │   │   │   │   │   ├── input.component.html
-│   │   │   │   │   │   ├── input.component.scss
-│   │   │   │   │   │   ├── input.component.spec.ts
-│   │   │   │   │   │   └── input.component.ts
 │   │   │   │   │   ├── lib-input-email/
 │   │   │   │   │   │   ├── input-email.component.html
 │   │   │   │   │   │   ├── input-email.component.scss
@@ -228,6 +223,11 @@ cardapio-online/
 │   │   │   │   │   │   ├── input-password.component.scss
 │   │   │   │   │   │   ├── input-password.component.spec.ts
 │   │   │   │   │   │   └── input-password.component.ts
+│   │   │   │   │   ├── lib-input-tel/
+│   │   │   │   │   │   ├── lib-input-tel.component.html
+│   │   │   │   │   │   ├── lib-input-tel.component.scss
+│   │   │   │   │   │   ├── lib-input-tel.component.spec.ts
+│   │   │   │   │   │   └── lib-input-tel.component.ts
 │   │   │   │   │   ├── lib-input-texto/
 │   │   │   │   │   │   ├── input-texto.component.html
 │   │   │   │   │   │   ├── input-texto.component.scss
@@ -245,6 +245,10 @@ cardapio-online/
 │   │   │   │   │   │   ├── input.config.interface.ts
 │   │   │   │   │   │   ├── input.types.ts
 │   │   │   │   │   │   └── mensagens.errors.ts
+│   │   │   │   │   ├── input.component.html
+│   │   │   │   │   ├── input.component.scss
+│   │   │   │   │   ├── input.component.spec.ts
+│   │   │   │   │   ├── input.component.ts
 │   │   │   │   │   └── inputs.module.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── test-setup.ts

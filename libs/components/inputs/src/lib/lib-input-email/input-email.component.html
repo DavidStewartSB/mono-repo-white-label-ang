@@ -1,1 +1,78 @@
-<p>input-email works!</p>
+@if (formControl) {
+  <div class="input-email">
+    <span class="input-email__icon" [class.input-email__icon--error]="hasError" aria-hidden="true">
+      <svg
+        class="input-email__icon-svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 7.5C4 6.67157 4.67157 6 5.5 6H18.5C19.3284 6 20 6.67157 20 7.5V16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5V7.5Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M5 7L12 12.25L19 7"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+
+    <input
+      class="input-email__field"
+      [class.input-email__field--error]="hasError"
+      [id]="id"
+      type="email"
+      inputmode="email"
+      autocomplete="email"
+      autocapitalize="off"
+      spellcheck="false"
+      [placeholder]="placeholder"
+      [formControl]="formControl"
+      [disabled]="disabled"
+      (blur)="onBlur()"
+    />
+  </div>
+} @else {
+  <div class="input-email">
+    <span class="input-email__icon" [class.input-email__icon--error]="hasError" aria-hidden="true">
+      <svg
+        class="input-email__icon-svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4 7.5C4 6.67157 4.67157 6 5.5 6H18.5C19.3284 6 20 6.67157 20 7.5V16.5C20 17.3284 19.3284 18 18.5 18H5.5C4.67157 18 4 17.3284 4 16.5V7.5Z"
+          stroke="currentColor"
+          stroke-width="1.8"
+        />
+        <path
+          d="M5 7L12 12.25L19 7"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </span>
+
+    <input
+      class="input-email__field"
+      [class.input-email__field--error]="hasError"
+      [id]="id"
+      type="email"
+      inputmode="email"
+      autocomplete="email"
+      autocapitalize="off"
+      spellcheck="false"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      (blur)="onBlur()"
+    />
+  </div>
+}

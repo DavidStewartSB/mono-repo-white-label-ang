@@ -38,11 +38,15 @@ export abstract class InputGLobal implements OnChanges {
     this.syncDisabled();
   }
 
-get formControl() {
-  return this.control as FormControl | undefined;
+get formControl(): FormControl | null {
+  return this.control instanceof FormControl ? this.control : null;
 }
   // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures
-  get disabled() { return this.disabledValue; }
+get disabled() { return this.disabledValue; }
+
+get hasError(): boolean {
+  return !!this.control?.invalid && !!(this.control?.touched || this.control?.dirty);
+}
   get isRequired(): boolean {
     if (!this.formControl?.validator) return false;
     const validator = this.formControl.validator({} as any);
@@ -65,21 +69,28 @@ get formControl() {
   return this.getErrorMessage(errorKey);
 }
 
-    checkValidation() {
-    if (!this.control) {
-      return;
-    }
-
-    const errors = this.control.errors;
-
-    if (!errors) {
-      this.errorMessagers = [];
-      return;
-    }
-
-    const errorKeys = Object.keys(errors);
-    this.errorMessagers = errorKeys.map(key => this.getErrorMessage(key));
+checkValidation() {
+  if (!this.control) {
+    return;
   }
+
+  const shouldShowErrors = this.control.touched || this.control.dirty;
+
+  if (!shouldShowErrors) {
+    this.errorMessagers = [];
+    return;
+  }
+
+  const errors = this.control.errors;
+
+  if (!errors) {
+    this.errorMessagers = [];
+    return;
+  }
+
+  const errorKeys = Object.keys(errors);
+  this.errorMessagers = errorKeys.map((key) => this.getErrorMessage(key));
+}
 
     private syncDisabled() {
     if (!this.control) return;
