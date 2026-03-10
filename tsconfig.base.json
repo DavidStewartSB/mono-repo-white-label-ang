@@ -19,6 +19,9 @@
         "libs/featureds/agendamento/src/index.ts"
       ],
       "@cardapio-online/auth": ["libs/core/auth/src/index.ts"],
+      "@cardapio-online/breadcrumb": [
+        "libs/components/breadcrumb/src/index.ts"
+      ],
       "@cardapio-online/button": ["libs/components/button/src/index.ts"],
       "@cardapio-online/categories": ["libs/featureds/categories/src/index.ts"],
       "@cardapio-online/company": ["libs/featureds/company/src/index.ts"],

@@ -1,33 +1,43 @@
 <section class="product-form-admin">
-  <header class="product-form-admin__header">
-    <h1 class="product-form-admin__title">{{ titulo }} <small style="font-size: 12px;" *ngIf="productId">#{{ productId }}</small></h1>
+<header class="product-form-admin__header">
+  <lib-ui-breadcrumb
+    class="product-form-admin__breadcrumb"
+    [items]="breadcrumbItems"
+  ></lib-ui-breadcrumb>
 
-    <p class="product-form-admin__meta">
-      Modo atual: <strong>{{ modo }}</strong>
-    </p>
-  </header>
+  <h1 class="product-form-admin__title">
+    {{ titulo }}
+    <small class="product-form-admin__id" *ngIf="productId">
+      #{{ productId }}
+    </small>
+  </h1>
+
+  <p class="product-form-admin__meta">
+    Modo atual: <strong>{{ modo }}</strong>
+  </p>
+</header>
 
  <form
   class="product-form-admin__form"
   [formGroup]="form"
   (ngSubmit)="salvar()"
 >
-  <div class="product-form-admin__grid">
-    <div class="product-form-admin__field">
-      <lib-ui-input-photo 
-       [label]="'Foto do produto'"
-  [helperText]="'Envie a imagem principal do produto'"
-  [remoteUrl]="imagePreviewUrl"
-  [loading]="isImageUploading"
-  [errorMessage]="imageErrorMessage"
-  [mode]="'cover'"
-  (fileSelected)="onProductImageSelected($event)"
-  (fileRemoved)="onProductImageRemoved()"
-  (invalidFile)="onProductImageInvalid($event)"
-      >
+<div class="product-form-admin__field" style="max-width: 500px; margin: 0 auto;">
+  <lib-ui-input-photo 
+   [label]="'Foto do produto'"
+[helperText]="'Envie a imagem principal do produto'"
+[remoteUrl]="imagePreviewUrl"
+[loading]="isImageUploading"
+[errorMessage]="imageErrorMessage"
+[mode]="'cover'"
+(fileSelected)="onProductImageSelected($event)"
+(fileRemoved)="onProductImageRemoved()"
+(invalidFile)="onProductImageInvalid($event)"
+  >
 
-      </lib-ui-input-photo>
-    </div>
+  </lib-ui-input-photo>
+</div>
+  <div class="product-form-admin__grid">
     <div class="product-form-admin__field">
       <lib-input
         id="product-name"

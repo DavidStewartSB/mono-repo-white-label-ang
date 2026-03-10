@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { IInputSelect } from 'libs/components/inputs/src/lib/utils/input-select.interface';
 import { MediaUploadService } from '@cardapio-online/media';
 import { finalize } from 'rxjs';
+import { BreadcrumbItem } from 'libs/components/breadcrumb/src/lib/models/breadcrumb-item.interface';
 @Component({
   selector: 'lib-product-form-admin',
   templateUrl: './product-form-admin.component.html',
@@ -58,6 +59,30 @@ export class ProductFormAdminComponent {
   protected selectedCategories: Array<string | number> = ['marmita', 'bebida'];
   protected selectedTags: Array<string | number> = ['promo'];
   protected selectedExtras: Array<string | number> = ['talher'];
+get breadcrumbItems(): BreadcrumbItem[] {
+  const items: BreadcrumbItem[] = [
+    {
+      label: 'Produtos',
+      route: ['/admin/produtos/lista'],
+    },
+  ];
+
+  if (this.productId) {
+    items.push({
+      label: 'Editar produto',
+      isActive: true,
+    });
+
+    return items;
+  }
+
+  items.push({
+    label: 'Novo produto',
+    isActive: true,
+  });
+
+  return items;
+}
 
   protected readonly categoryOptions: IInputSelect[] = [
     {

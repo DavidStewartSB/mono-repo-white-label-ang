@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-10T02:02:23.273Z
+- **Gerado em:** 2026-03-10T02:04:24.762Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`

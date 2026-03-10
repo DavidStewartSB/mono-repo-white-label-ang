@@ -1,3 +1,4 @@
+import { BreadcrumbModule } from './../../../../../components/breadcrumb/src/lib/breadcrumb.module';
 import { InputsModule } from './../../../../../components/inputs/src/lib/inputs.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -10,7 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputPhotoModule } from '@cardapio-online/input-photo'
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule, InputPhotoModule],
+  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule, InputPhotoModule, BreadcrumbModule],
   declarations: [ProductListAdminComponent, ProductFormAdminComponent],
   exports: [ProductListAdminComponent, ProductFormAdminComponent],
 })

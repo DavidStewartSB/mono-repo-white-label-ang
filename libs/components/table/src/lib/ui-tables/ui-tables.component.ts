@@ -2,6 +2,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
 import { UiTableAction, UiTableCellTemplateContext, UiTableColumn } from '../models/table.interface';
 import { UiTableCellTemplates } from '../models/table.type';
+import { BreadcrumbItem } from 'libs/components/breadcrumb/src/lib/models/breadcrumb-item.interface';
 
 @Component({
   selector: 'lib-ui-tables',
@@ -18,6 +19,9 @@ private readonly elementRef = inject(ElementRef<HTMLElement>);
   @Input() tabelaVazia = 'Nenhum registro encontrado.';
   @Input() loading = false;
 
+  @Input() addActionLabel: string | null = null;
+  @Input() addActionRoute: string | any[] | null = null;
+
   @Input() headerTitle = '';
   @Input() headerSubtitle = '';
 
@@ -32,6 +36,8 @@ private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   @Input() actions: UiTableAction[] = [];
   @Input() customCellTemplates: UiTableCellTemplates = {};
+
+  @Input() breadcrumbs: BreadcrumbItem[] = [];
 
   @Output() perPageChange = new EventEmitter<number>();
   @Output() pageChange = new EventEmitter<number>();

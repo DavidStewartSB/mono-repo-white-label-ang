@@ -1,0 +1,35 @@
+<nav class="ui-breadcrumb" aria-label="Breadcrumb" *ngIf="items.length">
+  <ol class="ui-breadcrumb__list">
+    <li
+      class="ui-breadcrumb__item"
+      *ngFor="let item of items; let last = last"
+    >
+      <ng-container *ngIf="!last && item.route; else breadcrumbCurrent">
+        <a
+          class="ui-breadcrumb__link"
+          [routerLink]="item.route"
+        >
+          {{ item.label }}
+        </a>
+      </ng-container>
+
+      <ng-template #breadcrumbCurrent>
+        <span
+          class="ui-breadcrumb__current"
+          [class.ui-breadcrumb__current--active]="last || item.isActive"
+          [attr.aria-current]="last ? 'page' : null"
+        >
+          {{ item.label }}
+        </span>
+      </ng-template>
+
+      <span
+        class="ui-breadcrumb__separator"
+        *ngIf="!last"
+        aria-hidden="true"
+      >
+        /
+      </span>
+    </li>
+  </ol>
+</nav>

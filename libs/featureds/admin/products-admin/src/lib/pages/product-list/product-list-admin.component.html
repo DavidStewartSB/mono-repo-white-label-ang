@@ -1,5 +1,10 @@
 <!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.html-->
 <lib-ui-tables
+  [addActionLabel]="'Adicionar produto'"
+  [addActionRoute]="['/admin/produtos/novo']"
+[breadcrumbs]="[
+    { label: 'Produtos', isActive: true }
+  ]"
   [receivedData]="items"
   [columns]="columns"
   [displayedColumns]="displayedColumns"

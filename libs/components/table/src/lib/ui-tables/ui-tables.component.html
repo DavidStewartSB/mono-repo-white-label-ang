@@ -1,40 +1,60 @@
 <!--cardapio-online\libs\components\table\src\lib\ui-tables\ui-tables.component.html-->
 
 <section class="ui-table">
-  <header
-    class="ui-table__header"
-    *ngIf="headerTitle || headerSubtitle || perPageOptions.length"
-  >
-    <div class="ui-table__header-left">
+<header
+  class="ui-table__header"
+  *ngIf="breadcrumbs.length || headerTitle || headerSubtitle || perCatOptions.length || addActionLabel"
+>
+  <div class="ui-table__header-left">
+    <lib-ui-breadcrumb
+      class="ui-table__breadcrumb"
+      *ngIf="breadcrumbs.length"
+      [items]="breadcrumbs"
+    ></lib-ui-breadcrumb>
+
+    <div
+      class="ui-table__title-row"
+      *ngIf="headerTitle || addActionLabel"
+    >
       <h2 class="ui-table__title" *ngIf="headerTitle">
         {{ headerTitle }}
       </h2>
 
-      <p class="ui-table__subtitle" *ngIf="headerSubtitle">
-        {{ headerSubtitle }}
-      </p>
     </div>
-            <div class="ui-table__header-right" *ngIf="perPageOptions.length">
-      <label class="ui-table__per-page">
-        <span class="ui-table__per-page-label">
-          Categoria
-        </span>
+    
+    <p class="ui-table__subtitle" *ngIf="headerSubtitle">
+      {{ headerSubtitle }}
+    </p>
+    <a
+      *ngIf="addActionLabel && addActionRoute"
+      class="ui-table__add-action" style="justify-self: flex-end;"
+      [routerLink]="addActionRoute"
+    >
+      {{ addActionLabel }}
+    </a>
+  </div>
 
-        <select
-          class="ui-table__select"
-          [value]="selectedPerPage"
-          (change)="onPerPageChange($event)"
+  <div class="ui-table__header-right" *ngIf="perCatOptions.length">
+    <label class="ui-table__per-page">
+      <span class="ui-table__per-page-label">
+        Categoria
+      </span>
+
+      <select
+        class="ui-table__select"
+        [value]="selectedPerPage"
+        (change)="onPerPageChange($event)"
+      >
+        <option
+          *ngFor="let option of perCatOptions"
+          [value]="option"
         >
-          <option
-            *ngFor="let option of perCatOptions"
-            [value]="option"
-          >
-            {{ option }}
-          </option>
-        </select>
-      </label>
-    </div>
-  </header>
+          {{ option }}
+        </option>
+      </select>
+    </label>
+  </div>
+</header>
 
   <div *ngIf="loading" class="ui-table__state">
     Carregando dados...

@@ -8,6 +8,17 @@
 .ui-table {
   width: 100%;
   max-width: 100%;
+
+  &__breadcrumb {
+    margin-bottom: 0.375rem;
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+  }
+
   &__actions {
     position: relative;
     display: inline-flex;
@@ -128,11 +139,9 @@
     &:hover:not(:disabled) {
       color: var(--shell-text, #0f172a);
       background: var(--shell-surface-soft, #f8fafc);
-      border-color: color-mix(
-        in srgb,
-        var(--shell-brand, #2563eb) 20%,
-        var(--shell-line, rgba(15, 23, 42, 0.16))
-      );
+      border-color: color-mix(in srgb,
+          var(--shell-brand, #2563eb) 20%,
+          var(--shell-line, rgba(15, 23, 42, 0.16)));
       transform: translateY(-1px);
     }
 
@@ -144,11 +153,9 @@
 
     &--active {
       color: #ffffff;
-      background: linear-gradient(
-        135deg,
-        var(--shell-brand, #2563eb),
-        var(--shell-brand-2, #7c3aed)
-      );
+      background: linear-gradient(135deg,
+          var(--shell-brand, #2563eb),
+          var(--shell-brand-2, #7c3aed));
       border-color: transparent;
 
       &:hover {
@@ -158,21 +165,24 @@
 
     &--ghost {
       padding: 0 16px;
-    }}
-&__header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 20px;
-  padding: 18px 18px 20px;
-  background: var(--shell-panel, rgba(255, 255, 255, 0.88));
-  border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
-  border-radius: 22px;
-  box-shadow: var(--shell-shadow, 0 20px 60px rgba(15, 23, 42, 0.08));
-  backdrop-filter: blur(12px);
-}
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 18px 18px 20px;
+    background: var(--shell-panel, rgba(255, 255, 255, 0.88));
+    border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
+    border-radius: 22px;
+    box-shadow: var(--shell-shadow, 0 20px 60px rgba(15, 23, 42, 0.08));
+    backdrop-filter: blur(12px);
+  }
+
   &__header-left {
     min-width: 0;
   }
@@ -183,33 +193,33 @@
     justify-content: flex-start;
   }
 
-&__title {
-  margin: 0;
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: var(--shell-text, #0f172a);
-}
+  &__title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--shell-text, #0f172a);
+  }
 
-&__subtitle {
-  margin: 8px 0 0;
-  max-width: 680px;
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--shell-text-muted, #64748b);
-}
+  &__subtitle {
+    margin: 8px 0 0;
+    max-width: 680px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--shell-text-muted, #64748b);
+  }
 
-&__per-page {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 16px;
-  background: var(--shell-surface-strong, rgba(255, 255, 255, 0.86));
-  border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
-  border-radius: 16px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
-}
+  &__per-page {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--shell-surface-strong, rgba(255, 255, 255, 0.86));
+    border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  }
 
   &__per-page-label {
     font-size: 14px;
@@ -230,6 +240,7 @@
     outline: none;
     cursor: pointer;
   }
+
   &__state {
     padding: 40px 20px;
     font-size: 14px;
@@ -245,17 +256,17 @@
     }
   }
 
-&__wrapper {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: visible;
-  border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
-  border-radius: 24px;
-  background: var(--shell-panel-2, #ffffff);
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
-  -webkit-overflow-scrolling: touch;
-}
+  &__wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
+    border-radius: 24px;
+    background: var(--shell-panel-2, #ffffff);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    -webkit-overflow-scrolling: touch;
+  }
 
   &__wrapper::-webkit-scrollbar {
     height: 12px;
@@ -281,20 +292,20 @@
   }
 
   &__head-cell {
- position: sticky;
-  top: 0;
-  z-index: 1;
-  padding: 16px;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: 0.12em;
-  text-align: left;
-  text-transform: uppercase;
-  color: var(--shell-text-muted, #64748b);
-  background: var(--shell-panel-3, #f8fafc);
-  border-bottom: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
-  white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0.12em;
+    text-align: left;
+    text-transform: uppercase;
+    color: var(--shell-text-muted, #64748b);
+    background: var(--shell-panel-3, #f8fafc);
+    border-bottom: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
+    white-space: nowrap;
 
     &--actions {
       width: 96px;
@@ -314,21 +325,19 @@
     }
   }
 
-&__row {
-  transition: background-color 0.2s ease;
+  &__row {
+    transition: background-color 0.2s ease;
 
-  &:hover {
-    background: color-mix(
-      in srgb,
-      var(--shell-brand-soft, rgba(37, 99, 235, 0.1)) 42%,
-      transparent
-    );
-  }
+    &:hover {
+      background: color-mix(in srgb,
+          var(--shell-brand-soft, rgba(37, 99, 235, 0.1)) 42%,
+          transparent);
+    }
 
-  &:last-child .ui-table__cell {
-    border-bottom: 0;
+    &:last-child .ui-table__cell {
+      border-bottom: 0;
+    }
   }
-}
 
   &__text {
     font-size: 14px;
@@ -394,53 +403,122 @@
     justify-content: center;
   }
 
-&__icon-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  font-size: 18px;
-  color: var(--shell-text-muted, #475569);
-  background: var(--shell-surface-strong, #ffffff);
-  border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
-  border-radius: 12px;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+  &__icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-size: 18px;
+    color: var(--shell-text-muted, #475569);
+    background: var(--shell-surface-strong, #ffffff);
+    border: 1px solid var(--shell-line, rgba(15, 23, 42, 0.08));
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
 
-  &:hover {
-    color: var(--shell-text, #0f172a);
-    background: color-mix(
-      in srgb,
-      var(--shell-brand-soft, rgba(37, 99, 235, 0.1)) 48%,
-      var(--shell-surface-strong, #ffffff)
-    );
-    border-color: color-mix(
-      in srgb,
-      var(--shell-brand, #2563eb) 24%,
-      var(--shell-line, rgba(15, 23, 42, 0.16))
-    );
-    transform: translateY(-1px);
-  }
-
-  
-}
-}
-
-@media (max-width: 767px) {
-  .ui-table {
-    &__table {
-      min-width: 860px;
+    &:hover {
+      color: var(--shell-text, #0f172a);
+      background: color-mix(in srgb,
+          var(--shell-brand-soft, rgba(37, 99, 235, 0.1)) 48%,
+          var(--shell-surface-strong, #ffffff));
+      border-color: color-mix(in srgb,
+          var(--shell-brand, #2563eb) 24%,
+          var(--shell-line, rgba(15, 23, 42, 0.16)));
+      transform: translateY(-1px);
     }
 
-    &__head-cell,
-    &__cell {
-      padding: 14px;
+
+  }
+
+    &__header-left {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.375rem;
+    min-width: 0;
+  }
+
+  &__breadcrumb {
+    margin-bottom: 0.125rem;
+  }
+
+  &__title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__add-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.5rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid transparent;
+    border-radius: var(--r-md);
+    background: linear-gradient(
+      135deg,
+      var(--brand-primary),
+      color-mix(in srgb, var(--brand-secondary) 88%, var(--brand-primary))
+    );
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: var(--shadow-1);
+    transition:
+      background 180ms var(--ease),
+      box-shadow 180ms var(--ease),
+      transform 180ms var(--ease),
+      opacity 180ms var(--ease);
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-2);
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--brand-primary) 82%, white 18%),
+        color-mix(in srgb, var(--brand-secondary) 82%, white 18%)
+      );
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .ui-table {
+    &__header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__header-right {
+      justify-content: flex-start;
+    }
+
+    &__title-row {
+      align-items: stretch;
+    }
+
+    &__add-action {
+      width: 100%;
+      justify-content: center;
     }
   }
 }
@@ -448,16 +526,12 @@
 html[data-theme='dark'] .ui-table {
   &__header {
     background:
-      linear-gradient(
-        135deg,
+      linear-gradient(135deg,
         color-mix(in srgb, var(--shell-brand-soft, rgba(110, 168, 254, 0.12)) 55%, var(--shell-panel, rgba(18, 25, 46, 0.82))),
-        var(--shell-panel, rgba(18, 25, 46, 0.82))
-      );
-    border-color: color-mix(
-      in srgb,
-      var(--shell-brand-soft-border, rgba(110, 168, 254, 0.35)) 60%,
-      var(--shell-line, rgba(255, 255, 255, 0.08))
-    );
+        var(--shell-panel, rgba(18, 25, 46, 0.82)));
+    border-color: color-mix(in srgb,
+        var(--shell-brand-soft-border, rgba(110, 168, 254, 0.35)) 60%,
+        var(--shell-line, rgba(255, 255, 255, 0.08)));
     box-shadow:
       0 20px 40px rgba(0, 0, 0, 0.22),
       inset 0 1px 0 rgba(255, 255, 255, 0.04);
