@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-10T00:39:34.856Z
+- **Gerado em:** 2026-03-10T02:02:23.273Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -105,6 +105,7 @@ cardapio-online/
 │   │   │   ├── assets/
 │   │   │   │   └── brand/
 │   │   │   │       ├── empty.jpg
+│   │   │   │       ├── framed-pictured.svg
 │   │   │   │       └── logo.png
 │   │   │   ├── environments/
 │   │   │   │   ├── environment.dev.ts
@@ -205,6 +206,26 @@ cardapio-online/
 │   │   │   ├── tsconfig.json
 │   │   │   ├── tsconfig.lib.json
 │   │   │   └── tsconfig.spec.json
+│   │   ├── input-photo/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── input-photo-mode.types.ts
+│   │   │   │   │   │   └── input-photo.interfaces.ts
+│   │   │   │   │   ├── ui-input-photo/
+│   │   │   │   │   │   ├── ui-input-photo.component.html
+│   │   │   │   │   │   ├── ui-input-photo.component.scss
+│   │   │   │   │   │   ├── ui-input-photo.component.spec.ts
+│   │   │   │   │   │   └── ui-input-photo.component.ts
+│   │   │   │   │   └── input-photo.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
 │   │   ├── inputs/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
@@ -239,6 +260,7 @@ cardapio-online/
 │   │   │   │   │   │   ├── input-checkbox.component.spec.ts
 │   │   │   │   │   │   └── input-checkbox.component.ts
 │   │   │   │   │   ├── utils/
+│   │   │   │   │   │   ├── _input-field-foundation.scss
 │   │   │   │   │   │   ├── input-global.ts
 │   │   │   │   │   │   ├── input-message.interface.ts
 │   │   │   │   │   │   ├── input-select.interface.ts
@@ -378,6 +400,24 @@ cardapio-online/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
 │   │   │   │   │   └── loading.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
+│   │   ├── media/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── data-access/
+│   │   │   │   │   │   ├── media-upload.service.spec.ts
+│   │   │   │   │   │   └── media-upload.service.ts
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   ├── media-upload.interfaces.ts
+│   │   │   │   │   │   └── media-upload.types.ts
+│   │   │   │   │   └── media.module.ts
 │   │   │   │   ├── index.ts
 │   │   │   │   └── test-setup.ts
 │   │   │   ├── jest.config.ts

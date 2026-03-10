@@ -3,7 +3,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { IInputSelect } from 'libs/components/inputs/src/lib/utils/input-select.interface';
-
+import { MediaUploadService } from '@cardapio-online/media';
+import { finalize } from 'rxjs';
 @Component({
   selector: 'lib-product-form-admin',
   templateUrl: './product-form-admin.component.html',
@@ -12,7 +13,10 @@ import { IInputSelect } from 'libs/components/inputs/src/lib/utils/input-select.
 })
 export class ProductFormAdminComponent {
   private readonly route = inject(ActivatedRoute);
-
+ imagePreviewUrl: string | null = null;
+  imageErrorMessage: string | null = null;
+  isImageUploading = false;
+   constructor(private readonly mediaUploadService: MediaUploadService) {}
   protected readonly productId =
     this.route.snapshot.paramMap.get('id') ?? null;
 
@@ -157,5 +161,34 @@ export class ProductFormAdminComponent {
       selectedTags: this.selectedTags,
       selectedExtras: this.selectedExtras,
     });
+  }
+
+   onProductImageSelected(file: File): void {
+    this.imageErrorMessage = null;
+    this.isImageUploading = true;
+
+    this.mediaUploadService
+      .uploadImage({
+        endpoint: `/products/${this.productId}/image`,
+        file,
+      })
+      .pipe(finalize(() => (this.isImageUploading = false)))
+      .subscribe({
+        next: (response) => {
+          this.imagePreviewUrl = response.image.url;
+        },
+        error: () => {
+          this.imageErrorMessage = 'Não foi possível enviar a imagem.';
+        },
+      });
+  }
+
+  onProductImageRemoved(): void {
+    this.imagePreviewUrl = null;
+    this.imageErrorMessage = null;
+  }
+
+  onProductImageInvalid(message: string): void {
+    this.imageErrorMessage = message;
   }
 }

@@ -36,6 +36,7 @@
       "@cardapio-online/loaders": ["libs/components/loaders/src/index.ts"],
       "@cardapio-online/loading": ["libs/core/loading/src/index.ts"],
       "@cardapio-online/login": ["libs/featureds/login/src/index.ts"],
+      "@cardapio-online/media": ["libs/core/media/src/index.ts"],
       "@cardapio-online/onboarding": ["libs/core/onboarding/src/index.ts"],
       "@cardapio-online/orders": ["libs/featureds/orders/src/index.ts"],
       "@cardapio-online/products-admin": [

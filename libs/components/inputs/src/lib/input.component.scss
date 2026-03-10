@@ -1,3 +1,4 @@
+//cardapio-online\libs\components\inputs\src\lib\input.component.scss
 .input {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@
   }
 
   &__label--legend {
-    color: #344054;
+    color: var(--text);
     font-size: 0.875rem;
     font-weight: 600;
     line-height: 1.25rem;
@@ -20,15 +21,15 @@
   }
 
   &__label--required {
-    color: #dc2626;
+    color: var(--danger);
     font-size: 0.875rem;
     font-weight: 700;
     line-height: 1;
   }
 
   &__wrapper {
-    width: 100%;
     position: relative;
+    width: 100%;
   }
 
   &__errors {
@@ -37,17 +38,17 @@
     gap: 0.1875rem;
     margin-top: 0.125rem;
     padding-left: 0.125rem;
-    animation: input-errors-fade-in 180ms ease-out;
+    animation: input-errors-fade-in 180ms var(--ease);
     transform-origin: top left;
   }
 
   &__error {
-    color: #b42318;
+    color: var(--danger);
     font-size: 0.75rem;
     font-weight: 500;
     line-height: 1.2;
     letter-spacing: -0.01em;
-    opacity: 0.92;
+    opacity: 0.95;
   }
 }
 

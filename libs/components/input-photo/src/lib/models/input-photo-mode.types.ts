@@ -1,0 +1,1 @@
+export type InputPhotoMode = 'cover' | 'avatar' | 'square';

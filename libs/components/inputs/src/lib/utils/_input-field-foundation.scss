@@ -1,0 +1,196 @@
+@mixin input-field-base($min-height: 3.125rem, $padding: 0.9375rem 1rem) {
+  width: 100%;
+  min-height: $min-height;
+  padding: $padding;
+  border: 1px solid var(--field-border, var(--line));
+  border-radius: var(--r-md);
+  background: var(
+    --field-bg,
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-2) 96%, transparent) 0%,
+      color-mix(in srgb, var(--surface) 98%, transparent) 100%
+    )
+  );
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  outline: none;
+  box-shadow: var(--shadow-1);
+  transition:
+    border-color 180ms var(--ease),
+    box-shadow 180ms var(--ease),
+    background 180ms var(--ease),
+    background-color 180ms var(--ease),
+    color 180ms var(--ease),
+    transform 120ms var(--ease);
+
+  &::placeholder {
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  &:hover {
+    border-color: var(
+      --field-border-hover,
+      color-mix(in srgb, var(--line) 58%, var(--text) 42%)
+    );
+    box-shadow: var(--shadow-2);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--field-border-focus, var(--accent));
+    background: var(
+      --field-bg-focus,
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-2) 98%, transparent) 0%,
+        color-mix(in srgb, var(--surface) 100%, transparent) 100%
+      )
+    );
+    box-shadow:
+      var(
+        --field-ring-focus,
+        0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent)
+      ),
+      var(--shadow-2);
+  }
+
+  &:disabled {
+    background: var(
+      --field-bg-disabled,
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--surface-muted) 94%, transparent) 0%,
+        color-mix(in srgb, var(--surface-soft) 100%, transparent) 100%
+      )
+    );
+    border-color: var(--field-border-disabled, var(--line));
+    color: color-mix(in srgb, var(--muted) 78%, transparent);
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.72;
+  }
+}
+
+@mixin input-field-error {
+  border-color: var(--field-border-error, var(--danger));
+  background: var(
+    --field-bg-error,
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--danger) 4%, var(--surface-2)) 0%,
+      color-mix(in srgb, var(--danger) 6%, var(--surface)) 100%
+    )
+  );
+  box-shadow:
+    var(
+      --field-ring-error-soft,
+      0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent)
+    ),
+    var(--shadow-1);
+
+  &:hover {
+    border-color: var(--field-border-error, var(--danger));
+    box-shadow:
+      var(
+        --field-ring-error-soft,
+        0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent)
+      ),
+      var(--shadow-2);
+  }
+
+  &:focus,
+  &:focus-visible {
+    border-color: var(--field-border-error, var(--danger));
+    box-shadow:
+      var(
+        --field-ring-error,
+        0 0 0 4px color-mix(in srgb, var(--danger) 14%, transparent)
+      ),
+      var(--shadow-2);
+  }
+}
+
+@mixin input-prefix-icon($left: 0.9375rem, $size: 1.125rem) {
+  position: absolute;
+  top: 50%;
+  left: $left;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  color: var(--icon-muted);
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: color 160ms var(--ease), opacity 160ms var(--ease);
+}
+
+@mixin input-action-button(
+  $right: 0.625rem,
+  $size: 2.375rem,
+  $radius: var(--r-sm)
+) {
+  position: absolute;
+  top: 50%;
+  right: $right;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $size;
+  height: $size;
+  padding: 0;
+  border: 0;
+  border-radius: $radius;
+  background: transparent;
+  color: var(--icon-muted);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition:
+    background-color 160ms var(--ease),
+    color 160ms var(--ease),
+    transform 160ms var(--ease),
+    box-shadow 160ms var(--ease);
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--text) 6%, transparent);
+    color: var(--icon);
+  }
+
+  &:focus-visible {
+    outline: none;
+    background-color: color-mix(in srgb, var(--accent) 8%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 16%, transparent);
+    color: var(--icon);
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(0.96);
+  }
+
+  &:disabled {
+    color: color-mix(in srgb, var(--muted) 72%, transparent);
+    cursor: not-allowed;
+    background: transparent;
+    box-shadow: none;
+    opacity: 0.6;
+  }
+}
+
+@mixin input-action-button-error {
+  color: var(--danger);
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--danger) 8%, transparent);
+    color: var(--danger);
+  }
+
+  &:focus-visible {
+    background-color: color-mix(in srgb, var(--danger) 8%, transparent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 16%, transparent);
+  }
+}

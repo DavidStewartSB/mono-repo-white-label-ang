@@ -7,9 +7,10 @@ import { ProductListAdminComponent } from './pages/product-list/product-list-adm
 import { ProductFormAdminComponent } from './pages/product-form/product-form-admin.component';
 import { TablesModule } from '@cardapio-online/tables';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InputPhotoModule } from '@cardapio-online/input-photo'
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule],
+  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule, InputPhotoModule],
   declarations: [ProductListAdminComponent, ProductFormAdminComponent],
   exports: [ProductListAdminComponent, ProductFormAdminComponent],
 })

@@ -1,0 +1,83 @@
+<div class="input-photo" [class.input-photo--disabled]="disabled" [class.input-photo--loading]="loading">
+  <div class="input-photo__header">
+    <label class="input-photo__label">
+      {{ label }}
+      <span *ngIf="required" class="input-photo__required">*</span>
+    </label>
+
+    <p *ngIf="helperText" class="input-photo__helper">
+      {{ helperText }}
+    </p>
+  </div>
+
+  <div
+    class="input-photo__dropzone"
+    [class.input-photo__dropzone--dragover]="isDragOver"
+    [class.input-photo__dropzone--has-image]="hasImage"
+    [class.input-photo__dropzone--avatar]="mode === 'avatar'"
+    [class.input-photo__dropzone--square]="mode === 'square'"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave($event)"
+    (drop)="onDrop($event)"
+  >
+    <ng-container *ngIf="previewUrl; else emptyState">
+      <div
+        class="input-photo__preview"
+        [class.input-photo__preview--avatar]="mode === 'avatar'"
+        [class.input-photo__preview--square]="mode === 'square'"
+      >
+        <img
+          class="input-photo__image"
+          [src]="previewUrl!"
+          [alt]="selectedFileName || 'Pré-visualização da imagem'"
+        />
+      </div>
+    </ng-container>
+
+    <ng-template #emptyState>
+      <div class="input-photo__empty">
+      <img src="assets/brand/framed-pictured.svg" alt="frame" width="100" height="100">
+        <p class="input-photo__empty-title">Arraste uma imagem aqui</p>
+        <p class="input-photo__empty-subtitle">ou use o botão abaixo para selecionar</p>
+      </div>
+    </ng-template>
+
+    <div *ngIf="loading" class="input-photo__overlay">
+      <span class="input-photo__overlay-text">Enviando imagem...</span>
+    </div>
+  </div>
+
+  <div class="input-photo__meta" *ngIf="selectedFileName || errorMessage">
+    <div *ngIf="selectedFileName" class="input-photo__file">
+      <span class="input-photo__file-name">{{ selectedFileName }}</span>
+      <span *ngIf="sizeLabel" class="input-photo__file-size">{{ sizeLabel }}</span>
+    </div>
+
+    <p *ngIf="errorMessage" class="input-photo__error">
+      {{ errorMessage }}
+    </p>
+  </div>
+
+  <div class="input-photo__actions">
+    <label class="input-photo__button" [class.input-photo__button--disabled]="disabled || loading">
+      <input
+        type="file"
+        class="input-photo__native-input"
+        [accept]="accept"
+        [disabled]="disabled || loading"
+        (change)="onInputChange($event)"
+      />
+      {{ buttonText }}
+    </label>
+
+    <button
+      *ngIf="hasImage"
+      type="button"
+      class="input-photo__remove-button"
+      [disabled]="disabled || loading"
+      (click)="removeImage()"
+    >
+      Remover imagem
+    </button>
+  </div>
+</div>

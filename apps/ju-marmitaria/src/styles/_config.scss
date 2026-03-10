@@ -81,6 +81,37 @@
   --popover-description: #475569;
   --popover-progress: #2563eb;
   --popover-soft-btn: rgba(15, 23, 42, 0.06);
+
+  --field-bg: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-2) 96%, transparent) 0%,
+    color-mix(in srgb, var(--surface) 98%, transparent) 100%
+  );
+  --field-bg-focus: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-2) 98%, transparent) 0%,
+    color-mix(in srgb, var(--surface) 100%, transparent) 100%
+  );
+  --field-bg-disabled: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--surface-muted) 94%, transparent) 0%,
+    color-mix(in srgb, var(--surface-soft) 100%, transparent) 100%
+  );
+  --field-bg-error: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--danger) 4%, var(--surface-2)) 0%,
+    color-mix(in srgb, var(--danger) 6%, var(--surface)) 100%
+  );
+
+  --field-border: var(--line);
+  --field-border-hover: color-mix(in srgb, var(--line) 58%, var(--text) 42%);
+  --field-border-focus: var(--accent);
+  --field-border-error: var(--danger);
+  --field-border-disabled: var(--line);
+
+  --field-ring-focus: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+  --field-ring-error-soft: 0 0 0 4px color-mix(in srgb, var(--danger) 10%, transparent);
+  --field-ring-error: 0 0 0 4px color-mix(in srgb, var(--danger) 14%, transparent);
 }
 
 html[data-theme='dark'] {
