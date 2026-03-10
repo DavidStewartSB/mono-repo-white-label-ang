@@ -1,1 +1,18 @@
-<p>ui-loader works!</p>
+<div
+  class="ui-loader"
+  [class.ui-loader--overlay]="mode === 'overlay'"
+  [class.ui-loader--inline]="mode === 'inline'"
+  [class.ui-loader--sm]="size === 'sm'"
+  [class.ui-loader--md]="size === 'md'"
+  [class.ui-loader--lg]="size === 'lg'"
+  aria-live="polite"
+  aria-busy="true"
+>
+  <div class="ui-loader__content">
+    <span class="ui-loader__spinner" aria-hidden="true"></span>
+
+    <span class="ui-loader__label" *ngIf="label">
+      {{ label }}
+    </span>
+  </div>
+</div>

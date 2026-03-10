@@ -1,29 +1,150 @@
-<!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.html-->
-<lib-ui-tables
-  [addActionLabel]="'Adicionar produto'"
-  [addActionRoute]="['/admin/produtos/novo']"
-[breadcrumbs]="[
-    { label: 'Produtos', isActive: true }
-  ]"
-  [receivedData]="items"
-  [columns]="columns"
-  [displayedColumns]="displayedColumns"
-  [loading]="isLoading"
-  [headerTitle]="'Produtos cadastrados'"
-  [headerSubtitle]="'Visualização em tabela com navegação horizontal e ações por registro.'"
-  [perPageLabel]="'Itens por página'"
-  [perPageOptions]="[10, 20, 30, 50]"
-  [selectedPerPage]="limit"
-  [currentPage]="page"
-  [totalItems]="total"
-  [paginationLabel]="'registros'"
-  [actions]="tableActions"
-  [customCellTemplates]="customCellTemplates"
-  (perPageChange)="onPerPageChange($event)"
-  (pageChange)="onPageChange($event)"
-  (actionClick)="onTableAction($event)"
-  tabelaVazia="Nenhum produto encontrado."
-></lib-ui-tables>
+@if (loadError) {
+  <section class="product-list-admin">
+    <div class="product-list-admin__error-state">
+      <div class="product-list-admin__error-icon">!</div>
+
+      <div class="product-list-admin__error-content">
+        <h2 class="product-list-admin__error-title">
+          Falha ao carregar produtos
+        </h2>
+
+        <p class="product-list-admin__error-text">
+          {{ loadError }}
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="product-list-admin__retry-button"
+        (click)="onRetryLoad()"
+      >
+        Tentar novamente
+      </button>
+    </div>
+  </section>
+} @else {
+  @defer (when initialLoadResolved) {
+    <lib-ui-tables
+      [addActionLabel]="'Adicionar produto'"
+      [addActionRoute]="addActionRoute"
+      [breadcrumbs]="breadcrumbs"
+      [receivedData]="items"
+      [columns]="columns"
+      [displayedColumns]="displayedColumns"
+      [loading]="isLoading"
+      [headerTitle]="'Produtos cadastrados'"
+      [headerSubtitle]="'Visualização em tabela com navegação horizontal e ações por registro.'"
+      [perPageLabel]="'Itens por página'"
+      [perPageOptions]="[10, 20, 30, 50]"
+      [selectedPerPage]="limit"
+      [currentPage]="page"
+      [totalItems]="total"
+      [paginationLabel]="'registros'"
+      [actions]="tableActions"
+      [customCellTemplates]="customCellTemplates"
+      (perPageChange)="onPerPageChange($event)"
+      (pageChange)="onPageChange($event)"
+      (actionClick)="onTableAction($event)"
+      tabelaVazia="Nenhum produto encontrado."
+    ></lib-ui-tables>
+  } @placeholder (minimum 600ms) {
+    <section class="product-list-admin-skeleton" aria-hidden="true">
+      <div class="product-list-admin-skeleton__header">
+        <div class="product-list-admin-skeleton__breadcrumb"></div>
+
+        <div class="product-list-admin-skeleton__title-row">
+          <div class="product-list-admin-skeleton__title"></div>
+          <div class="product-list-admin-skeleton__action"></div>
+        </div>
+
+        <div class="product-list-admin-skeleton__subtitle"></div>
+      </div>
+
+      <div class="product-list-admin-skeleton__table">
+        <div class="product-list-admin-skeleton__table-head">
+          <span class="product-list-admin-skeleton__head-cell product-list-admin-skeleton__head-cell--wide"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell product-list-admin-skeleton__head-cell--small"></span>
+        </div>
+
+        @for (row of skeletonRows; track row) {
+          <div class="product-list-admin-skeleton__row">
+            <div class="product-list-admin-skeleton__product">
+              <div class="product-list-admin-skeleton__image"></div>
+
+              <div class="product-list-admin-skeleton__product-content">
+                <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--title"></div>
+                <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--text"></div>
+              </div>
+            </div>
+
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__badge"></div>
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__tags">
+              <span class="product-list-admin-skeleton__tag"></span>
+              <span class="product-list-admin-skeleton__tag"></span>
+            </div>
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__icon-button"></div>
+          </div>
+        }
+      </div>
+    </section>
+  } @loading (minimum 300ms) {
+    <section class="product-list-admin-skeleton" aria-hidden="true">
+      <div class="product-list-admin-skeleton__header">
+        <div class="product-list-admin-skeleton__breadcrumb"></div>
+
+        <div class="product-list-admin-skeleton__title-row">
+          <div class="product-list-admin-skeleton__title"></div>
+          <div class="product-list-admin-skeleton__action"></div>
+        </div>
+
+        <div class="product-list-admin-skeleton__subtitle"></div>
+      </div>
+
+      <div class="product-list-admin-skeleton__table">
+        <div class="product-list-admin-skeleton__table-head">
+          <span class="product-list-admin-skeleton__head-cell product-list-admin-skeleton__head-cell--wide"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell"></span>
+          <span class="product-list-admin-skeleton__head-cell product-list-admin-skeleton__head-cell--small"></span>
+        </div>
+
+        @for (row of skeletonRows; track row) {
+          <div class="product-list-admin-skeleton__row">
+            <div class="product-list-admin-skeleton__product">
+              <div class="product-list-admin-skeleton__image"></div>
+
+              <div class="product-list-admin-skeleton__product-content">
+                <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--title"></div>
+                <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--text"></div>
+              </div>
+            </div>
+
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__badge"></div>
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__tags">
+              <span class="product-list-admin-skeleton__tag"></span>
+              <span class="product-list-admin-skeleton__tag"></span>
+            </div>
+            <div class="product-list-admin-skeleton__line product-list-admin-skeleton__line--cell"></div>
+            <div class="product-list-admin-skeleton__icon-button"></div>
+          </div>
+        }
+      </div>
+    </section>
+  }
+}
 
 <ng-template
   #nameCellTemplate

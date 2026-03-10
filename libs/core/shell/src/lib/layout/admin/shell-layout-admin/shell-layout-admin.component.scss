@@ -205,11 +205,13 @@
     grid-template-columns: 1fr;
     padding: 16px;
     gap: 16px;
-
+    
     &__overlay,
     &__profile-overlay {
+
       position: fixed;
       inset: 0;
+      
       display: block;
       background: rgba(15, 23, 42, 0.36);
       opacity: 0;

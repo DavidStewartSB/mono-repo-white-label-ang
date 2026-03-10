@@ -1,7 +1,7 @@
 # Snapshot da Arquitetura
 
 - **Root:** `C:\dev\angular-arch\cardapio-online`
-- **Gerado em:** 2026-03-10T02:04:24.762Z
+- **Gerado em:** 2026-03-10T02:33:16.065Z
 - **Formato:** `md`
 - **Profundidade máxima:** `12`
 - **Incluir arquivos:** `true`
@@ -147,6 +147,25 @@ cardapio-online/
 │   └── proposta-featureds.txt
 ├── libs/
 │   ├── components/
+│   │   ├── breadcrumb/
+│   │   │   ├── src/
+│   │   │   │   ├── lib/
+│   │   │   │   │   ├── models/
+│   │   │   │   │   │   └── breadcrumb-item.interface.ts
+│   │   │   │   │   ├── ui-breadcrumb/
+│   │   │   │   │   │   ├── ui-breadcrumb.component.html
+│   │   │   │   │   │   ├── ui-breadcrumb.component.scss
+│   │   │   │   │   │   ├── ui-breadcrumb.component.spec.ts
+│   │   │   │   │   │   └── ui-breadcrumb.component.ts
+│   │   │   │   │   └── breadcrumb.module.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── test-setup.ts
+│   │   │   ├── jest.config.ts
+│   │   │   ├── project.json
+│   │   │   ├── README.md
+│   │   │   ├── tsconfig.json
+│   │   │   ├── tsconfig.lib.json
+│   │   │   └── tsconfig.spec.json
 │   │   ├── button/
 │   │   │   ├── src/
 │   │   │   │   ├── lib/
@@ -557,6 +576,8 @@ cardapio-online/
 │       │       │   │   │       ├── product-list-admin.component.scss
 │       │       │   │   │       ├── product-list-admin.component.spec.ts
 │       │       │   │   │       └── product-list-admin.component.ts
+│       │       │   │   ├── utils/
+│       │       │   │   │   └── breadcrumb-items.const.ts
 │       │       │   │   ├── lib.routes.ts
 │       │       │   │   └── products-admin.module.ts
 │       │       │   ├── index.ts

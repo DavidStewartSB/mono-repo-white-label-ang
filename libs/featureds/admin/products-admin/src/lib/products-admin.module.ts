@@ -1,3 +1,4 @@
+import { LoadersModule } from './../../../../../components/loaders/src/lib/loaders.module';
 import { BreadcrumbModule } from './../../../../../components/breadcrumb/src/lib/breadcrumb.module';
 import { InputsModule } from './../../../../../components/inputs/src/lib/inputs.module';
 import { NgModule } from '@angular/core';
@@ -11,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputPhotoModule } from '@cardapio-online/input-photo'
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule, InputPhotoModule, BreadcrumbModule],
+  imports: [CommonModule, RouterModule.forChild(productsAdminRoutes), TablesModule, InputsModule, ReactiveFormsModule, InputPhotoModule, BreadcrumbModule, LoadersModule],
   declarations: [ProductListAdminComponent, ProductFormAdminComponent],
   exports: [ProductListAdminComponent, ProductFormAdminComponent],
 })

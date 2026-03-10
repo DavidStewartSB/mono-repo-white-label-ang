@@ -1,8 +1,21 @@
-//cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.ts
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
-import { ProductsAdminService } from '../../data-access/products-admin.service';
-import { UiTableAction, UiTableCellTemplateContext, UiTableCellTemplates, UiTableColumn } from '@cardapio-online/tables'
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  UiTableAction,
+  UiTableCellTemplateContext,
+  UiTableCellTemplates,
+  UiTableColumn,
+} from '@cardapio-online/tables';
+import { BreadcrumbItem } from '@cardapio-online/breadcrumb';
+import { ProductsAdminService } from '../../data-access/products-admin.service';
 
 @Component({
   selector: 'lib-product-list-admin',
@@ -24,7 +37,18 @@ export class ProductListAdminComponent implements OnInit {
   protected page = 1;
   protected limit = 10;
   protected total = 0;
+
   protected isLoading = true;
+  protected initialLoadResolved = false;
+  protected loadError: string | null = null;
+
+  protected readonly skeletonRows = Array.from({ length: 6 }, (_, index) => index);
+
+  protected readonly breadcrumbs: BreadcrumbItem[] = [
+    { label: 'Produtos', isActive: true },
+  ];
+
+  protected readonly addActionRoute: string[] = ['/admin/produtos/novo'];
 
   protected readonly displayedColumns: string[] = [
     'name',
@@ -124,6 +148,10 @@ export class ProductListAdminComponent implements OnInit {
     this.applyPagination();
   }
 
+  protected onRetryLoad(): void {
+    this.loadProducts();
+  }
+
   protected onTableAction(event: {
     action: UiTableAction;
     row: Record<string, unknown>;
@@ -172,6 +200,8 @@ export class ProductListAdminComponent implements OnInit {
 
   private loadProducts(): void {
     this.isLoading = true;
+    this.initialLoadResolved = false;
+    this.loadError = null;
     this.cdr.markForCheck();
 
     this.productsAdminService.getProducts().subscribe({
@@ -186,6 +216,9 @@ export class ProductListAdminComponent implements OnInit {
         this.page = 1;
 
         this.applyPagination(false);
+        this.initialLoadResolved = true;
+        this.loadError = null;
+        this.cdr.markForCheck();
       },
       error: (error) => {
         console.error('Erro ao carregar produtos mockados:', error);
@@ -193,6 +226,8 @@ export class ProductListAdminComponent implements OnInit {
         this.items = [];
         this.total = 0;
         this.isLoading = false;
+        this.initialLoadResolved = true;
+        this.loadError = 'Não foi possível carregar os produtos.';
         this.cdr.markForCheck();
       },
     });

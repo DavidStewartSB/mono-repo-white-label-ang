@@ -1,28 +1,49 @@
-//cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-form\product-form-admin.component.ts
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { IInputSelect } from 'libs/components/inputs/src/lib/utils/input-select.interface';
-import { MediaUploadService } from '@cardapio-online/media';
+import { ActivatedRoute, Router } from '@angular/router';
 import { finalize } from 'rxjs';
-import { BreadcrumbItem } from 'libs/components/breadcrumb/src/lib/models/breadcrumb-item.interface';
+import { MediaUploadService } from '@cardapio-online/media';
+import { BreadcrumbItem } from '@cardapio-online/breadcrumb';
+import { IInputSelect } from 'libs/components/inputs/src/lib/utils/input-select.interface';
+import {
+  ProductsAdminService,
+  SaveProductPayload,
+} from '../../data-access/products-admin.service';
+
 @Component({
   selector: 'lib-product-form-admin',
   templateUrl: './product-form-admin.component.html',
   styleUrl: './product-form-admin.component.scss',
-   changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductFormAdminComponent {
+export class ProductFormAdminComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
- imagePreviewUrl: string | null = null;
-  imageErrorMessage: string | null = null;
-  isImageUploading = false;
-   constructor(private readonly mediaUploadService: MediaUploadService) {}
-  protected readonly productId =
-    this.route.snapshot.paramMap.get('id') ?? null;
+  private readonly router = inject(Router);
+  private readonly cdr = inject(ChangeDetectorRef);
+  private readonly productsAdminService = inject(ProductsAdminService);
+  private readonly mediaUploadService = inject(MediaUploadService);
 
+  protected readonly productId = this.route.snapshot.paramMap.get('id') ?? null;
   protected readonly modo =
     this.route.snapshot.queryParamMap.get('modo') ?? 'cadastro';
+
+  protected imagePreviewUrl: string | null = null;
+  protected imageErrorMessage: string | null = null;
+  protected isImageUploading = false;
+
+  protected isInitialLoading = true;
+  protected initialLoadResolved = false;
+  protected initialLoadError: string | null = null;
+
+  protected isSubmitting = false;
+
+  protected readonly skeletonGroups = Array.from({ length: 4 }, (_, index) => index);
 
   protected readonly form = new FormGroup({
     name: new FormControl<string>('', {
@@ -59,30 +80,43 @@ export class ProductFormAdminComponent {
   protected selectedCategories: Array<string | number> = ['marmita', 'bebida'];
   protected selectedTags: Array<string | number> = ['promo'];
   protected selectedExtras: Array<string | number> = ['talher'];
-get breadcrumbItems(): BreadcrumbItem[] {
-  const items: BreadcrumbItem[] = [
-    {
-      label: 'Produtos',
-      route: ['/admin/produtos/lista'],
-    },
-  ];
 
-  if (this.productId) {
+  ngOnInit(): void {
+    if (!this.productId) {
+      this.isInitialLoading = false;
+      this.initialLoadResolved = true;
+      this.initialLoadError = null;
+      this.cdr.markForCheck();
+      return;
+    }
+
+    this.loadProductById();
+  }
+
+  get breadcrumbItems(): BreadcrumbItem[] {
+    const items: BreadcrumbItem[] = [
+      {
+        label: 'Produtos',
+        route: ['/admin/produtos/lista'],
+      },
+    ];
+
+    if (this.productId) {
+      items.push({
+        label: this.modo === 'visualizacao' ? 'Visualização de produto' : 'Editar produto',
+        isActive: true,
+      });
+
+      return items;
+    }
+
     items.push({
-      label: 'Editar produto',
+      label: 'Novo produto',
       isActive: true,
     });
 
     return items;
   }
-
-  items.push({
-    label: 'Novo produto',
-    isActive: true,
-  });
-
-  return items;
-}
 
   protected readonly categoryOptions: IInputSelect[] = [
     {
@@ -145,6 +179,10 @@ get breadcrumbItems(): BreadcrumbItem[] {
     return 'Cadastro de produto';
   }
 
+  protected get isReadOnlyMode(): boolean {
+    return this.modo === 'visualizacao';
+  }
+
   protected get nameControl(): FormControl<string> {
     return this.form.controls.name;
   }
@@ -173,34 +211,92 @@ get breadcrumbItems(): BreadcrumbItem[] {
     return this.form.controls.allowNotes;
   }
 
+  protected onRetryLoad(): void {
+    if (!this.productId) {
+      return;
+    }
+
+    this.loadProductById();
+  }
+
   protected salvar(): void {
+    if (this.isReadOnlyMode || this.isSubmitting) {
+      return;
+    }
+
     this.form.markAllAsTouched();
 
     if (this.form.invalid) {
       return;
     }
 
-    console.log('Payload mock do produto:', {
+    const payload: SaveProductPayload = {
       ...this.form.getRawValue(),
       selectedCategories: this.selectedCategories,
       selectedTags: this.selectedTags,
       selectedExtras: this.selectedExtras,
-    });
+    };
+
+    this.isSubmitting = true;
+    this.cdr.markForCheck();
+
+    const request$ = this.productId
+      ? this.productsAdminService.updateProduct(this.productId, payload)
+      : this.productsAdminService.createProduct(payload);
+
+    request$
+      .pipe(
+        finalize(() => {
+          this.isSubmitting = false;
+          this.cdr.markForCheck();
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('Produto salvo com sucesso:', response);
+
+          if (!this.productId && response.id) {
+            void this.router.navigate(['/admin/produtos/editar', response.id], {
+              queryParams: { modo: 'edicao' },
+            });
+            return;
+          }
+
+          void this.router.navigate(['/admin/produtos/lista']);
+        },
+        error: (error) => {
+          console.error('Erro ao salvar produto:', error);
+        },
+      });
   }
 
-   onProductImageSelected(file: File): void {
+  protected onProductImageSelected(file: File): void {
+    if (!this.productId) {
+      this.imageErrorMessage =
+        'Salve o produto primeiro para enviar a imagem.';
+      this.cdr.markForCheck();
+      return;
+    }
+
     this.imageErrorMessage = null;
     this.isImageUploading = true;
+    this.cdr.markForCheck();
 
     this.mediaUploadService
       .uploadImage({
         endpoint: `/products/${this.productId}/image`,
         file,
       })
-      .pipe(finalize(() => (this.isImageUploading = false)))
+      .pipe(
+        finalize(() => {
+          this.isImageUploading = false;
+          this.cdr.markForCheck();
+        })
+      )
       .subscribe({
         next: (response) => {
           this.imagePreviewUrl = response.image.url;
+          this.imageErrorMessage = null;
         },
         error: () => {
           this.imageErrorMessage = 'Não foi possível enviar a imagem.';
@@ -208,12 +304,69 @@ get breadcrumbItems(): BreadcrumbItem[] {
       });
   }
 
-  onProductImageRemoved(): void {
+  protected onProductImageRemoved(): void {
     this.imagePreviewUrl = null;
     this.imageErrorMessage = null;
+    this.cdr.markForCheck();
   }
 
-  onProductImageInvalid(message: string): void {
+  protected onProductImageInvalid(message: string): void {
     this.imageErrorMessage = message;
+    this.cdr.markForCheck();
+  }
+
+  private loadProductById(): void {
+    if (!this.productId) {
+      return;
+    }
+
+    this.isInitialLoading = true;
+    this.initialLoadResolved = false;
+    this.initialLoadError = null;
+    this.cdr.markForCheck();
+
+    this.productsAdminService.getProductById(this.productId).subscribe({
+      next: (product) => {
+        this.form.patchValue({
+          name: product.name ?? '',
+          password: '123456',
+          email: 'produto@ju-marmitaria.local',
+          phone: '13999999999',
+          active: Boolean(product.isActive),
+          featured: Array.isArray(product.tags)
+            ? product.tags.includes('destaque')
+            : false,
+          allowNotes: true,
+        });
+
+        this.selectedCategories = product.category?.name
+          ? [String(product.category.name).toLowerCase()]
+          : ['marmita'];
+
+        this.selectedTags = Array.isArray(product.tags)
+          ? product.tags
+          : [];
+
+        this.selectedExtras = ['talher'];
+
+        this.imagePreviewUrl = String(product.image ?? 'assets/brand/empty.jpg');
+
+        if (this.isReadOnlyMode) {
+          this.form.disable({ emitEvent: false });
+        }
+
+        this.isInitialLoading = false;
+        this.initialLoadResolved = true;
+        this.initialLoadError = null;
+        this.cdr.markForCheck();
+      },
+      error: (error) => {
+        console.error('Erro ao carregar produto por id:', error);
+        this.isInitialLoading = false;
+        this.initialLoadResolved = true;
+        this.initialLoadError = 'Não foi possível carregar os dados do produto.';
+        this.cdr.markForCheck();
+      },
+    });
   }
 }

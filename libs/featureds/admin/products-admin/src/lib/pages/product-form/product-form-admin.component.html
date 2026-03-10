@@ -1,195 +1,299 @@
-<section class="product-form-admin">
-<header class="product-form-admin__header">
-  <lib-ui-breadcrumb
-    class="product-form-admin__breadcrumb"
-    [items]="breadcrumbItems"
-  ></lib-ui-breadcrumb>
+<!--cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-form\product-form-admin.component.html-->
+@if (initialLoadError) {
+  <section class="product-form-admin">
+    <div class="product-form-admin__error-state">
+      <div class="product-form-admin__error-icon">!</div>
 
-  <h1 class="product-form-admin__title">
-    {{ titulo }}
-    <small class="product-form-admin__id" *ngIf="productId">
-      #{{ productId }}
-    </small>
-  </h1>
+      <div class="product-form-admin__error-content">
+        <h2 class="product-form-admin__error-title">
+          Falha ao carregar produto
+        </h2>
 
-  <p class="product-form-admin__meta">
-    Modo atual: <strong>{{ modo }}</strong>
-  </p>
-</header>
-
- <form
-  class="product-form-admin__form"
-  [formGroup]="form"
-  (ngSubmit)="salvar()"
->
-<div class="product-form-admin__field" style="max-width: 500px; margin: 0 auto;">
-  <lib-ui-input-photo 
-   [label]="'Foto do produto'"
-[helperText]="'Envie a imagem principal do produto'"
-[remoteUrl]="imagePreviewUrl"
-[loading]="isImageUploading"
-[errorMessage]="imageErrorMessage"
-[mode]="'cover'"
-(fileSelected)="onProductImageSelected($event)"
-(fileRemoved)="onProductImageRemoved()"
-(invalidFile)="onProductImageInvalid($event)"
-  >
-
-  </lib-ui-input-photo>
-</div>
-  <div class="product-form-admin__grid">
-    <div class="product-form-admin__field">
-      <lib-input
-        id="product-name"
-        type="text"
-        legend="Nome do produto"
-        placeholder="Digite o nome do produto"
-        [control]="nameControl"
-      ></lib-input>
-    </div>
-
-    <div class="product-form-admin__field">
-      <lib-input
-        id="product-password"
-        type="password"
-        legend="Senha interna"
-        placeholder="Digite a senha interna"
-        [control]="passwordControl"
-      ></lib-input>
-    </div>
-
-    <div class="product-form-admin__field">
-      <lib-input
-        id="product-email"
-        type="email"
-        legend="E-mail de contato"
-        placeholder="Digite o e-mail de contato"
-        [control]="emailControl"
-      ></lib-input>
-    </div>
-
-    <div class="product-form-admin__field">
-      <lib-input
-        id="product-phone"
-        type="tel"
-        legend="Telefone"
-        placeholder="Digite o telefone"
-        [control]="phoneControl"
-      ></lib-input>
-    </div>
-  </div>
-
-  <section class="product-form-admin__section">
-    <header class="product-form-admin__section-header">
-      <h2 class="product-form-admin__section-title">Checkbox unitário</h2>
-      <p class="product-form-admin__section-text">
-        Cenários simples para flags booleanas do produto.
-      </p>
-    </header>
-
-    <div class="product-form-admin__checkbox-grid">
-      <div class="product-form-admin__checkbox-card">
-        <lib-input-checkbox
-          id="active"
-          mode="single"
-          legend="Produto ativo"
-          description="Quando marcado, o produto ficará disponível para venda."
-          [control]="activeControl"
-        ></lib-input-checkbox>
+        <p class="product-form-admin__error-text">
+          {{ initialLoadError }}
+        </p>
       </div>
 
-      <div class="product-form-admin__checkbox-card">
-        <lib-input-checkbox
-          id="featured"
-          mode="single"
-          legend="Produto em destaque"
-          description="Exibe o produto em áreas de destaque do cardápio."
-          [control]="featuredControl"
-        ></lib-input-checkbox>
-      </div>
-
-      <div class="product-form-admin__checkbox-card">
-        <lib-input-checkbox
-          id="allow-notes"
-          mode="single"
-          legend="Permitir observações"
-          description="Cliente poderá adicionar observações ao item."
-          [control]="allowNotesControl"
-        ></lib-input-checkbox>
-      </div>
+      <button
+        type="button"
+        class="product-form-admin__retry-button"
+        (click)="onRetryLoad()"
+      >
+        Tentar novamente
+      </button>
     </div>
   </section>
-
-  <section class="product-form-admin__section">
-    <header class="product-form-admin__section-header">
-      <h2 class="product-form-admin__section-title">Checkbox em lista vertical</h2>
-      <p class="product-form-admin__section-text">
-        Ideal para grupos maiores com descrição por item.
-      </p>
-    </header>
-
-    <div class="product-form-admin__checkbox-card">
-      <lib-input-checkbox
-        mode="list"
-        layout="column"
-        legend="Categorias"
-        description="Selecione uma ou mais categorias"
-        [valueOptions]="categoryOptions"
-        [selectedValues]="selectedCategories"
-        (selectedValuesChange)="selectedCategories = $event"
-      ></lib-input-checkbox>
-    </div>
-  </section>
-
-  <section class="product-form-admin__section">
-    <header class="product-form-admin__section-header">
-      <h2 class="product-form-admin__section-title">Checkbox em lista inline</h2>
-      <p class="product-form-admin__section-text">
-        Bom para tags curtas e seleções rápidas.
-      </p>
-    </header>
-
-    <div class="product-form-admin__checkbox-card">
-      <lib-input-checkbox
-        mode="list"
-        layout="inline"
-        legend="Tags do produto"
-        description="Selecione os marcadores visuais"
-        [valueOptions]="tagOptions"
-        [selectedValues]="selectedTags"
-        (selectedValuesChange)="selectedTags = $event"
-      ></lib-input-checkbox>
-    </div>
-  </section>
-
-  <section class="product-form-admin__section">
-    <header class="product-form-admin__section-header">
-      <h2 class="product-form-admin__section-title">Checkbox com lista curta</h2>
-      <p class="product-form-admin__section-text">
-        Exemplo de bloco menor com descrições operacionais.
-      </p>
-    </header>
-
-    <div class="product-form-admin__checkbox-card">
-      <lib-input-checkbox
-        mode="list"
-        layout="column"
-        legend="Itens adicionais"
-        description="Preferências relacionadas ao envio"
-        [valueOptions]="extraOptions"
-        [selectedValues]="selectedExtras"
-        (selectedValuesChange)="selectedExtras = $event"
-      ></lib-input-checkbox>
-    </div>
-  </section>
-
-  <div class="product-form-admin__actions">
-    <button
-      class="product-form-admin__submit"
-      type="submit"
+} @else {
+  @defer (when initialLoadResolved) {
+    <section
+      class="product-form-admin"
+      [class.product-form-admin--submitting]="isSubmitting"
     >
-      Salvar produto
-    </button>
-  </div>
-</form>
-</section>
+@if (isSubmitting) {
+  <lib-ui-loader
+    class="product-form-admin__loader"
+    [mode]="'overlay'"
+    [size]="'md'"
+    [label]="'Salvando produto...'"
+  ></lib-ui-loader>
+}
+
+      <header class="product-form-admin__header">
+        <lib-ui-breadcrumb
+          class="product-form-admin__breadcrumb"
+          [items]="breadcrumbItems"
+        ></lib-ui-breadcrumb>
+
+        <h1 class="product-form-admin__title">
+          {{ titulo }}
+          <small class="product-form-admin__id" *ngIf="productId">
+            #{{ productId }}
+          </small>
+        </h1>
+
+        <p class="product-form-admin__meta">
+          Modo atual: <strong>{{ modo }}</strong>
+        </p>
+      </header>
+
+      <form
+        class="product-form-admin__form"
+        [formGroup]="form"
+        (ngSubmit)="salvar()"
+      >
+        <div class="product-form-admin__photo-field">
+          <lib-ui-input-photo
+            [label]="'Foto do produto'"
+            [helperText]="'Envie a imagem principal do produto'"
+            [remoteUrl]="imagePreviewUrl"
+            [loading]="isImageUploading"
+            [errorMessage]="imageErrorMessage"
+            [mode]="'cover'"
+            [disabled]="isSubmitting || isReadOnlyMode"
+            (fileSelected)="onProductImageSelected($event)"
+            (fileRemoved)="onProductImageRemoved()"
+            (invalidFile)="onProductImageInvalid($event)"
+          >
+          </lib-ui-input-photo>
+        </div>
+
+        <section class="product-form-admin__section">
+          <header class="product-form-admin__section-header">
+            <h2 class="product-form-admin__section-title">Informações do Produto</h2>
+            <p class="product-form-admin__section-text">
+              Informações necessárias do produto
+            </p>
+          </header>
+
+          <div class="product-form-admin__grid">
+            <div class="product-form-admin__field">
+              <lib-input
+                id="product-name"
+                type="text"
+                legend="Nome do produto"
+                placeholder="Digite o nome do produto"
+                [control]="nameControl"
+              ></lib-input>
+            </div>
+
+            <div class="product-form-admin__field">
+              <lib-input
+                id="product-password"
+                type="password"
+                legend="Senha interna"
+                placeholder="Digite a senha interna"
+                [control]="passwordControl"
+              ></lib-input>
+            </div>
+
+            <div class="product-form-admin__field">
+              <lib-input
+                id="product-email"
+                type="email"
+                legend="E-mail de contato"
+                placeholder="Digite o e-mail de contato"
+                [control]="emailControl"
+              ></lib-input>
+            </div>
+
+            <div class="product-form-admin__field">
+              <lib-input
+                id="product-phone"
+                type="tel"
+                legend="Telefone"
+                placeholder="Digite o telefone"
+                [control]="phoneControl"
+              ></lib-input>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-form-admin__section">
+          <header class="product-form-admin__section-header">
+            <h2 class="product-form-admin__section-title">Checkbox unitário</h2>
+            <p class="product-form-admin__section-text">
+              Cenários simples para flags booleanas do produto.
+            </p>
+          </header>
+
+          <div class="product-form-admin__checkbox-grid">
+            <div class="product-form-admin__checkbox-card">
+              <lib-input-checkbox
+                id="active"
+                mode="single"
+                legend="Produto ativo"
+                description="Quando marcado, o produto ficará disponível para venda."
+                [control]="activeControl"
+              ></lib-input-checkbox>
+            </div>
+
+            <div class="product-form-admin__checkbox-card">
+              <lib-input-checkbox
+                id="featured"
+                mode="single"
+                legend="Produto em destaque"
+                description="Exibe o produto em áreas de destaque do cardápio."
+                [control]="featuredControl"
+              ></lib-input-checkbox>
+            </div>
+
+            <div class="product-form-admin__checkbox-card">
+              <lib-input-checkbox
+                id="allow-notes"
+                mode="single"
+                legend="Permitir observações"
+                description="Cliente poderá adicionar observações ao item."
+                [control]="allowNotesControl"
+              ></lib-input-checkbox>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-form-admin__section">
+          <header class="product-form-admin__section-header">
+            <h2 class="product-form-admin__section-title">Checkbox em lista vertical</h2>
+            <p class="product-form-admin__section-text">
+              Ideal para grupos maiores com descrição por item.
+            </p>
+          </header>
+
+          <div class="product-form-admin__checkbox-card">
+            <lib-input-checkbox
+              mode="list"
+              layout="column"
+              legend="Categorias"
+              description="Selecione uma ou mais categorias"
+              [valueOptions]="categoryOptions"
+              [selectedValues]="selectedCategories"
+              (selectedValuesChange)="selectedCategories = $event"
+            ></lib-input-checkbox>
+          </div>
+        </section>
+
+        <section class="product-form-admin__section">
+          <header class="product-form-admin__section-header">
+            <h2 class="product-form-admin__section-title">Checkbox em lista inline</h2>
+            <p class="product-form-admin__section-text">
+              Bom para tags curtas e seleções rápidas.
+            </p>
+          </header>
+
+          <div class="product-form-admin__checkbox-card">
+            <lib-input-checkbox
+              mode="list"
+              layout="inline"
+              legend="Tags do produto"
+              description="Selecione os marcadores visuais"
+              [valueOptions]="tagOptions"
+              [selectedValues]="selectedTags"
+              (selectedValuesChange)="selectedTags = $event"
+            ></lib-input-checkbox>
+          </div>
+        </section>
+
+        <section class="product-form-admin__section">
+          <header class="product-form-admin__section-header">
+            <h2 class="product-form-admin__section-title">Checkbox com lista curta</h2>
+            <p class="product-form-admin__section-text">
+              Exemplo de bloco menor com descrições operacionais.
+            </p>
+          </header>
+
+          <div class="product-form-admin__checkbox-card">
+            <lib-input-checkbox
+              mode="list"
+              layout="column"
+              legend="Itens adicionais"
+              description="Preferências relacionadas ao envio"
+              [valueOptions]="extraOptions"
+              [selectedValues]="selectedExtras"
+              (selectedValuesChange)="selectedExtras = $event"
+            ></lib-input-checkbox>
+          </div>
+        </section>
+
+        <div class="product-form-admin__actions">
+          <button
+            class="product-form-admin__submit"
+            type="submit"
+            [disabled]="isSubmitting || isReadOnlyMode"
+          >
+            {{ isSubmitting ? 'Salvando...' : 'Salvar produto' }}
+          </button>
+        </div>
+      </form>
+    </section>
+  } @placeholder (minimum 500ms) {
+    <section class="product-form-admin-skeleton" aria-hidden="true">
+      <div class="product-form-admin-skeleton__header">
+        <div class="product-form-admin-skeleton__breadcrumb"></div>
+        <div class="product-form-admin-skeleton__title"></div>
+        <div class="product-form-admin-skeleton__meta"></div>
+      </div>
+
+      <div class="product-form-admin-skeleton__photo"></div>
+
+      @for (group of skeletonGroups; track group) {
+        <div class="product-form-admin-skeleton__section">
+          <div class="product-form-admin-skeleton__section-title"></div>
+          <div class="product-form-admin-skeleton__section-text"></div>
+
+          <div class="product-form-admin-skeleton__grid">
+            <div class="product-form-admin-skeleton__field"></div>
+            <div class="product-form-admin-skeleton__field"></div>
+          </div>
+        </div>
+      }
+
+      <div class="product-form-admin-skeleton__actions">
+        <div class="product-form-admin-skeleton__submit"></div>
+      </div>
+    </section>
+  } @loading (minimum 300ms) {
+    <section class="product-form-admin-skeleton" aria-hidden="true">
+      <div class="product-form-admin-skeleton__header">
+        <div class="product-form-admin-skeleton__breadcrumb"></div>
+        <div class="product-form-admin-skeleton__title"></div>
+        <div class="product-form-admin-skeleton__meta"></div>
+      </div>
+
+      <div class="product-form-admin-skeleton__photo"></div>
+
+      @for (group of skeletonGroups; track group) {
+        <div class="product-form-admin-skeleton__section">
+          <div class="product-form-admin-skeleton__section-title"></div>
+          <div class="product-form-admin-skeleton__section-text"></div>
+
+          <div class="product-form-admin-skeleton__grid">
+            <div class="product-form-admin-skeleton__field"></div>
+            <div class="product-form-admin-skeleton__field"></div>
+          </div>
+        </div>
+      }
+
+      <div class="product-form-admin-skeleton__actions">
+        <div class="product-form-admin-skeleton__submit"></div>
+      </div>
+    </section>
+  }
+}
