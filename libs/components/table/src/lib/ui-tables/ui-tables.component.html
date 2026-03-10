@@ -14,11 +14,10 @@
         {{ headerSubtitle }}
       </p>
     </div>
-
-    <div class="ui-table__header-right" *ngIf="perPageOptions.length">
+            <div class="ui-table__header-right" *ngIf="perPageOptions.length">
       <label class="ui-table__per-page">
         <span class="ui-table__per-page-label">
-          {{ perPageLabel }}
+          Categoria
         </span>
 
         <select
@@ -27,7 +26,7 @@
           (change)="onPerPageChange($event)"
         >
           <option
-            *ngFor="let option of perPageOptions"
+            *ngFor="let option of perCatOptions"
             [value]="option"
           >
             {{ option }}
@@ -64,6 +63,7 @@
             {{ column.label }}
           </th>
         </tr>
+        
       </thead>
 
       <tbody class="ui-table__body">
@@ -201,6 +201,26 @@
         <span>Próxima</span>
         <i class="bx bx-chevron-right"></i>
       </button>
+    </div>
+        <div class="ui-table__header-right" *ngIf="perPageOptions.length">
+      <label class="ui-table__per-page">
+        <span class="ui-table__per-page-label">
+          {{ perPageLabel }}
+        </span>
+
+        <select
+          class="ui-table__select"
+          [value]="selectedPerPage"
+          (change)="onPerPageChange($event)"
+        >
+          <option
+            *ngFor="let option of perPageOptions"
+            [value]="option"
+          >
+            {{ option }}
+          </option>
+        </select>
+      </label>
     </div>
   </footer>
 </section>

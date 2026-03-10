@@ -23,6 +23,7 @@ private readonly elementRef = inject(ElementRef<HTMLElement>);
 
   @Input() perPageLabel = 'Itens por página';
   @Input() perPageOptions: number[] = [10, 20, 30, 50];
+  @Input() perCatOptions: string[] = ['Todos', 'Bebidas', 'Produto', '30', '50'];
   @Input() selectedPerPage: number | null = null;
 
   @Input() currentPage = 1;

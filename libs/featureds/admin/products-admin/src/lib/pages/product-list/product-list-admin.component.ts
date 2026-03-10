@@ -1,7 +1,6 @@
 //cardapio-online\libs\featureds\admin\products-admin\src\lib\pages\product-list\product-list-admin.component.ts
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductsAdminService } from '../../data-access/products-admin.service';
-import { ProductAdminItem } from '../../models/product-admin-item.type';
 import { UiTableAction, UiTableCellTemplateContext, UiTableCellTemplates, UiTableColumn } from '@cardapio-online/tables'
 import { Router } from '@angular/router';
 
@@ -34,7 +33,6 @@ export class ProductListAdminComponent implements OnInit {
     'price',
     'tags',
     'createdAt',
-    'updatedAt',
     'actions',
   ];
 
@@ -75,12 +73,6 @@ export class ProductListAdminComponent implements OnInit {
     {
       key: 'createdAt',
       label: 'Criado em',
-      type: 'date',
-      width: '150px',
-    },
-    {
-      key: 'updatedAt',
-      label: 'Atualizado em',
       type: 'date',
       width: '150px',
     },

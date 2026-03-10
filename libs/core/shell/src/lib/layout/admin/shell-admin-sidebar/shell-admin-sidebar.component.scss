@@ -1,3 +1,4 @@
+//cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-sidebar\shell-admin-sidebar.component.scss
 :host {
   display: block;
 }
@@ -7,7 +8,8 @@
   flex-direction: column;
   gap: 18px;
   height: calc(100vh - 48px);
-  position: sticky;
+  position: fixed;
+  width: 290px;
   top: 24px;
   padding: 18px;
   border-radius: 24px;
@@ -135,6 +137,6 @@
 @media (max-width: 1100px) {
   .admin-sidebar {
     position: static;
-    height: auto;
+    height: 100%;
   }
 }

@@ -9,9 +9,10 @@ import { DrawerModule } from '@cardapio-online/drawer';
 import { ShellLayoutAdminComponent } from './layout/admin/shell-layout-admin/shell-layout-admin.component';
 import { ShellAdminSidebarComponent } from './layout/admin/shell-admin-sidebar/shell-admin-sidebar.component';
 import { ShellAdminToolbarComponent } from './layout/admin/shell-admin-toolbar/shell-admin-toolbar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, DrawerModule],
+  imports: [CommonModule, RouterModule, DrawerModule, FormsModule],
   declarations: [
     ShellLayoutComponent,
     ShellHeaderComponent,

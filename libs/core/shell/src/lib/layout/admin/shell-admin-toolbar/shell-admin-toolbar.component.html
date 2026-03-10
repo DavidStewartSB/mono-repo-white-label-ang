@@ -1,25 +1,57 @@
 <!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-toolbar\shell-admin-toolbar.component.html-->
 <section class="admin-toolbar" id="tour-toolbar">
-  <div class="admin-toolbar__left">
-    <span class="admin-toolbar__chip" *ngFor="let chip of chips">
-      {{ chip.label }}: {{ chip.value }}
-    </span>
-  </div>
-
   <div class="admin-toolbar__right">
-    <input
-      class="admin-toolbar__search"
-      type="text"
-      placeholder="Pesquisar produto, SKU, categoria..."
-    />
+    <button
+      type="button"
+      class="admin-toolbar__menu-button admin-toolbar__button admin-toolbar__button--ghost"
+      (click)="toggleMenu()"
+      aria-label="Alternar navegação"
+    >
+      ☰
+    </button>
+    <div class="admin-toolbar__search-wrap">
+      <span class="admin-toolbar__search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle
+            cx="11"
+            cy="11"
+            r="6.5"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <path
+            d="M16 16L20 20"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+      </span>
+
+      <input
+        class="admin-toolbar__search"
+        type="text"
+        name="toolbarSearch"
+        placeholder="Pesquisar produto, SKU, categoria..."
+        [(ngModel)]="searchTerm"
+        (blur)="handleSearchBlur()"
+      />
+    </div>
 
     <button
-      id="tour-theme-toggle"
       type="button"
-      class="admin-toolbar__button admin-toolbar__button--ghost"
-      (click)="toggleTheme()"
+      class="admin-toolbar__profile"
+      (click)="openProfilePanel()"
+      aria-label="Abrir painel do usuário"
     >
-      Tema
+      <span class="admin-toolbar__profile-avatar">
+        <img [src]="user.photoUrl" [alt]="user.name" />
+      </span>
+
+      <span class="admin-toolbar__profile-content">
+        <strong class="admin-toolbar__profile-name">{{ user.name }}</strong>
+        <span class="admin-toolbar__profile-role">{{ user.role }}</span>
+      </span>
     </button>
   </div>
 </section>

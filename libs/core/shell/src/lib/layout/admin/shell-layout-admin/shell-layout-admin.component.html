@@ -1,20 +1,100 @@
 <!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-layout-admin\shell-layout-admin.component.html-->
 <div class="admin-shell">
+<div
+  class="admin-shell__overlay"
+  [class.admin-shell__overlay--visible]="isSidebarOpen()"
+  (click)="closeSidebar()"
+></div>
+<div
+  class="admin-shell__profile-overlay"
+  [class.admin-shell__profile-overlay--visible]="isProfilePanelOpen()"
+  (click)="closeProfilePanel()"
+></div>
   <lib-shell-admin-sidebar
     class="admin-shell__sidebar"
+    [class.admin-shell__sidebar--open]="isSidebarOpen()"
     [brandTitle]="brandTitle"
     [brandSubtitle]="brandSubtitle"
     [navItems]="resolvedNavItems"
+    [isMobileOpen]="isSidebarOpen()"
+    (sidebarNavigate)="closeSidebar()"
   />
 
-  <div class="admin-shell__content">
-  <lib-shell-admin-toolbar
+   <div class="admin-shell__content">
+<lib-shell-admin-toolbar
   class="admin-shell__toolbar"
   [chips]="toolbarChips"
+  [user]="currentUser"
+  (menuToggle)="toggleSidebar()"
+  (profilePanelToggle)="toggleProfilePanel()"
 />
-
     <main class="admin-shell__main">
       <router-outlet></router-outlet>
     </main>
   </div>
 </div>
+ <aside
+    class="admin-shell__profile-panel"
+    [class.admin-shell__profile-panel--open]="isProfilePanelOpen()"
+  >
+    <div class="admin-shell__profile-header">
+      <button
+        type="button"
+        class="admin-shell__profile-close"
+        (click)="closeProfilePanel()"
+        aria-label="Fechar painel do usuário"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="admin-shell__profile-section">
+      <span class="admin-shell__profile-section-title">Usuário</span>
+
+      <div class="admin-shell__profile-card">
+        <span class="admin-shell__profile-avatar admin-shell__profile-avatar--large">
+          <img [src]="currentUser.photoUrl" [alt]="currentUser.name" />
+        </span>
+
+        <div class="admin-shell__profile-user-content">
+          <strong class="admin-shell__profile-name">{{ currentUser.name }}</strong>
+          <span class="admin-shell__profile-role">{{ currentUser.role }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-shell__profile-section">
+      <span class="admin-shell__profile-section-title">Preferências</span>
+
+      <button
+        type="button"
+        class="admin-shell__profile-action"
+        (click)="toggleTheme()"
+      >
+        {{ isDarkTheme() ? 'Modo Claro ☀️' : 'Modo Escuro 🌙' }}
+      </button>
+    </div>
+
+    <div class="admin-shell__profile-section">
+      <span class="admin-shell__profile-section-title">Conta</span>
+
+      <button
+        type="button"
+        class="admin-shell__profile-action admin-shell__profile-action--primary"
+        (click)="goToProfile()"
+      >
+        Configurar perfil
+      </button>
+    </div>
+
+    <div class="admin-shell__profile-footer">
+      <button
+        type="button"
+        class="admin-shell__profile-action admin-shell__profile-action--danger"
+        (click)="logout()"
+      >
+        Sair da conta
+      </button>
+    </div>
+  </aside>

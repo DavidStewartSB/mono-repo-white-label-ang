@@ -29,6 +29,9 @@
       "@cardapio-online/drawer": ["libs/components/drawer/src/index.ts"],
       "@cardapio-online/forms": ["libs/components/forms/src/index.ts"],
       "@cardapio-online/http": ["libs/core/http/src/index.ts"],
+      "@cardapio-online/input-photo": [
+        "libs/components/input-photo/src/index.ts"
+      ],
       "@cardapio-online/inputs": ["libs/components/inputs/src/index.ts"],
       "@cardapio-online/loaders": ["libs/components/loaders/src/index.ts"],
       "@cardapio-online/loading": ["libs/core/loading/src/index.ts"],

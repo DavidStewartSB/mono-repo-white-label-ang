@@ -1,7 +1,13 @@
 <!--cardapio-online\libs\core\shell\src\lib\layout\admin\shell-admin-sidebar\shell-admin-sidebar.component.html-->
-<aside class="admin-sidebar" id="tour-sidebar">
+<aside
+  class="admin-sidebar"
+  [class.admin-sidebar--mobile-open]="isMobileOpen"
+  id="tour-sidebar"
+>
   <div class="admin-sidebar__brand">
-    <div class="admin-sidebar__brand-badge"><img [src]="cfg.brandLogoUrl" alt="" width="50" height="50"></div>
+    <div class="admin-sidebar__brand-badge">
+      <img [src]="cfg.brandLogoUrl" alt="" width="50" height="50" />
+    </div>
 
     <div class="admin-sidebar__brand-content">
       <h1 class="admin-sidebar__brand-title">{{ cfg.appName }}</h1>
@@ -17,6 +23,7 @@
       class="admin-sidebar__nav-link"
       routerLinkActive="admin-sidebar__nav-link--active"
       [routerLink]="item.route"
+      (click)="handleNavigate()"
     >
       <span class="admin-sidebar__nav-label">{{ item.label }}</span>
       <span class="admin-sidebar__nav-badge" *ngIf="item.badge !== undefined">
@@ -24,7 +31,8 @@
       </span>
     </a>
   </div>
-<!-- 
+
+  <!--
   <div class="admin-sidebar__help" id="tour-help-card">
     <strong class="admin-sidebar__help-title">Central de ajudas</strong>
 
@@ -32,12 +40,13 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere, massa a dapibus feugiat.
     </p>
 
-   <button
-  type="button"
-  class="admin-sidebar__help-action"
-  (click)="restartTutorial()"
->
-  Ver tutorial novamente
-</button>
-  </div> -->
+    <button
+      type="button"
+      class="admin-sidebar__help-action"
+      (click)="restartTutorial()"
+    >
+      Ver tutorial novamente
+    </button>
+  </div>
+  -->
 </aside>
