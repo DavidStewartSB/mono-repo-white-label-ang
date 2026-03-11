@@ -1,6 +1,28 @@
 // libs/core/shell/src/lib/layout/shell-layout/shell-layout.component.scss
-main {
-   min-height: 100svh; //Ideal que tenha um calc do footer e do header;
+:host {
+  display: block;
+}
+
+.l-shell {
+  --shell-header-height: calc(64px + env(safe-area-inset-top));
+  --shell-footer-height: 56px;
+
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
+}
+
+.l-shell__main {
+  flex: 1 1 auto;
+  min-height: calc(100svh - var(--shell-header-height) - var(--shell-footer-height));
+  display: flex;
+  flex-direction: column;
+}
+
+.l-shell__container {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-block: 0.75rem 1rem;
 }

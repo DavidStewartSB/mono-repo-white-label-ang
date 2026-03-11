@@ -5,6 +5,7 @@ export type AppConfig = {
   appName: string;
   brandPrimary: string;
   brandLogoUrl: string;
+  mascoteLogo: string;
 
   environmentName: 'local' | 'dev' | 'prod';
   apiBaseUrl: string;

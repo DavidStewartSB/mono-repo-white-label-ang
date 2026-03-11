@@ -7,8 +7,8 @@
       (click)="onBrandClickToLogin($event)"
       aria-label="Ir para o início"
     >
-      <img class="c-brand__mark" [src]="cfg.brandLogoUrl" [alt]="cfg.appName" />
-      <span class="c-brand__name">{{ cfg.appName }}</span>
+      <img class="c-brand__mark" [src]="cfg.mascoteLogo" [alt]="cfg.appName ? cfg.appName + ' Logo' : 'MenuHub'" width="100" height="100" />
+      <span class="c-brand__name">{{ cfg.appName ?? 'Menu Hub'}}</span>
     </a>
     @if(showButtons) {
       <div class="l-topbar__actions">

@@ -53,13 +53,13 @@
 }
 
 .c-auth__logo{
-  width: 86px;
-  height: 86px;
+width: 200px;
+height: 200px;
   border-radius: 22px;
   border: 1px solid var(--stroke);
-  background: color-mix(in srgb, var(--surface-2) 70%, transparent);
+  // background: color-mix(in srgb, var(--surface-2) 70%, transparent);
   overflow: hidden;
-  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  // box-shadow: 0 18px 40px rgba(0,0,0,.18);
   display: grid;
   place-items: center;
 }

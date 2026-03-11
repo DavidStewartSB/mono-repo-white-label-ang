@@ -9,6 +9,7 @@ export type AppConfigApiResponse = {
   appName: string;
   brandPrimary: string;
   brandLogoUrl: string;
+  mascoteLogo: string;
 };
 
 @Injectable({ providedIn: 'root' })
@@ -50,7 +51,7 @@ if (!dto || typeof dto.appName !== 'string' || typeof dto.brandPrimary !== 'stri
       appName: dto.appName,
       brandPrimary: dto.brandPrimary,
       brandLogoUrl: dto.brandLogoUrl,
-
+     mascoteLogo: dto.mascoteLogo,
       environmentName: params.environmentName,
       apiBaseUrl: params.apiBaseUrl,
 
