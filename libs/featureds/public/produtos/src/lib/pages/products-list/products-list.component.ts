@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
-import { ProductsService } from '../../../data-access/products.service';
+import { ProductsService } from '../../data-access/products.service';
 import { Router } from '@angular/router';
 type ProductDisplayMode = 'list' | 'grid';
 interface ProductItem {
@@ -234,7 +234,7 @@ export class ProductsListComponent  {
   }
 
   protected navigateToProduct(productId: string): void {
-    this.router.navigate(['/products', productId]);
+    this.router.navigate(['/item', productId]);
   }
 
   protected addProduct(event: Event, product: ProductItem): void {

@@ -45,7 +45,7 @@
       "@cardapio-online/products-admin": [
         "libs/featureds/admin/products-admin/src/index.ts"
       ],
-      "@cardapio-online/produtos": ["libs/featureds/produtos/src/index.ts"],
+      "@cardapio-online/produtos": ["libs/featureds/public/produtos/src/index.ts"],
       "@cardapio-online/shell": ["libs/core/shell/src/index.ts"],
       "@cardapio-online/tables": ["libs/components/table/src/index.ts"],
       "@cardapio-online/tenant": ["libs/core/tenant/src/index.ts"],
